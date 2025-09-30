@@ -8,12 +8,11 @@ function App() {
   return (
     <>
       <main>
-        {activeView === "news" && <NewsView />}
+        {/* {activeView === "news" && <NewsView />}
         {activeView === "stats" && <StatsView />}
         {activeView === "predict" && <PredictView />}
         {activeView === "review" && <ReviewView />}
-        {activeView === "boards" && <BoardsView />}
-
+        {activeView === "boards" && <BoardsView />} */}
       </main>
       <FooterNav activeView={activeView} setActiveView={setActiveView} />
     </>
