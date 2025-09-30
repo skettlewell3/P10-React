@@ -1,0 +1,71 @@
+{
+    "HANDYMANS": {
+        "title":"Handymans Supplies",
+        "tel":"0113 253 4200",
+        "email":"sales@handymanssupplies.com",
+        "web":"https://handymanssupplies.co.uk",
+        "img":"./imgs/businessData/handymans3.png",
+        "alt":"Handymans Shop",
+        "address": {
+            "line1":"17 Fountain Street",
+            "line2":"Morley",
+            "line3":"LS27 9AE"
+        },
+        "hours": {
+            "mon":"8:30 - 17:00",
+            "tue":"8:30 - 17:00",        
+            "wed":"8:30 - 17:00",        
+            "thu":"8:30 - 17:00",        
+            "fri":"8:30 - 17:00",        
+            "sat":"9:30 - 16:00",
+            "sun":"9:00 - 14:00" 
+        },
+        "modalLayout": ["ContactSection", "HoursSection", "AddressSection"]
+    },
+    "SMITHROB": {
+        "title":"Smith Robinson",
+        "tel":"0113 252 3222",
+        "email":"insurance@smith-robinson.co.uk",
+        "web":"https://smith-robinson.co.uk",
+        "img":"./imgs/businessData/smithrobinson.png",
+        "alt":"Smith Robinson Logo",
+        "address": {
+            "line1":"2 Cadman Court",
+            "line2":"Morley",
+            "line3":"LS27 0RX"
+        },
+        "hours": {
+            "mon":"9:00 - 17:00",
+            "tue":"9:00 - 17:00",        
+            "wed":"9:00 - 17:00",        
+            "thu":"9:00 - 17:00",        
+            "fri":"9:00 - 17:00",        
+            "sat":"Closed",
+            "sun":"Closed" 
+        },
+        "modalLayout": ["ContactSection", "HoursSection", "AddressSection"]
+    },
+    "CUCINA": {
+        "title":"Cucina Cafe, Bar & Restaurant",
+        "tel":"0113 2532113",
+        "email":"info@cucina2001.co.uk",
+        "web":"https://cucinacafebarandrestaurant.co.uk/",
+        "img":"./imgs/businessData/cucina.jpg",
+        "alt":"Cucina Cafe, Bar & Restaurant",
+        "address": {
+            "line1":"106A Queen Street",
+            "line2":"Morley",
+            "line3":"LS27 9EB"
+        },
+        "hours": {
+            "mon":"9:00 - 15:30",
+            "tue":"9:00 - 15:30",        
+            "wed":"9:00 - 15:30",        
+            "thu":"9:00 - 15:30",        
+            "fri":"9:00 - 15:30",        
+            "sat":"9:00 - 22:00",
+            "sun":"10:00 - 20:00" 
+        },
+        "modalLayout": ["ContactSection", "HoursSection", "AddressSection"]
+    }
+}
