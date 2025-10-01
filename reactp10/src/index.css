@@ -5,12 +5,21 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #464545;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --blue: rgb(28, 44, 91);
+  --green: rgb(32, 100, 60);
+  --bkgrey: #555;
+  --gtable: rgba(50, 153, 91, .3);
+  --gold: #ccaa39;
+  --silver: #B0B8C0;
+  --bronze: #8C5A2C;
+  --tpblue: rgb(28, 44, 91, 0.9);
 }
 
 a {
@@ -56,6 +65,128 @@ button:focus-visible {
 }
 
 /* Project CSS */
+#headerProfile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  background-color: green;
+  box-shadow: 0 1px 3px rgba(0,0,0,1);
+  z-index: 50;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr;
+}
+
+#playerCard {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
+  column-gap: 0.25em;
+  padding: 0.25em;
+}
+
+#playerImg {
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,1);
+  border: 4px solid white;
+  max-height: 3.5rem;
+}
+
+#playerCardText {
+  border: 4px solid white;
+  line-height: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  max-height: 3.5rem;
+  padding: 0.25em;
+  box-shadow: 0 1px 2px rgba(0,0,0,1);
+  border-radius: 4px;
+  background-color: var(--green);
+}
+
+#playerCardName {
+  text-align: start;
+  font-size: 1.3rem;
+}
+
+#playerCardRanking, #playerCardScore {
+  font-size: 0.8rem;
+  text-align: end;
+}
+
+#appDropdown {
+  padding: 0.25em;
+  position: relative;
+}
+
+#dropdownToggle {
+  display: flex; 
+  align-items: center;
+  gap: 0.5em; 
+  height: 3.5rem;
+  width: 100%;
+  background-color: var(--blue);
+  color: white;
+  border: 4px solid white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#appName {
+  text-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+#appLogo {
+  border-radius: 50%;
+  align-self: center;
+  margin: 0 auto;
+}
+
+.appLogo {
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+}
+
+#dropdownMenu {
+  position: absolute;
+  right: 0.25em;
+  left: 0.25em;
+  top: 100%;
+  background-color: var(--blue);
+  color: white;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0.25em;
+  border: 4px solid white;
+  border-radius: 4px;
+}
+
+#appDropdown.open #dropdownMenu {
+  display: block;
+}
+
+#dropdownMenu li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+  margin: 0.125em 0;
+  font-size: 0.9rem;
+}
+
+#dropdownMenu li:hover {
+  background-color: rgba(255, 255, 255, 0.699);
+  color: var(--blue);
+  padding: 0.125em;
+  font-size: 1rem;
+}
+
+
 #footerNav {
  position: fixed;
  bottom: 0;
@@ -73,7 +204,7 @@ button:focus-visible {
  grid-template-rows: 1fr;
  column-gap: 0.25em;
  height: 4rem;
- font-size: 0.875rem;
+ font-size: 1rem;
  margin-left: 0.25em;
  margin-right: 0.25em;
  padding-top: 0.25em;
@@ -86,10 +217,11 @@ button:focus-visible {
  justify-content: center;
  height: 3.5rem;
  background-color: green;
- padding: 0 0.2em;
+ padding: 0.2em;
  box-shadow: 0 1px 2px rgba(0,0,0,1);
  border-radius: 3px;
  color: white;
+ cursor: pointer;
 }
 
 .footerItem.footerFocal {
@@ -113,6 +245,7 @@ button:focus-visible {
   position: relative;
   top: -1.5rem;
   z-index: 10;
+  cursor: pointer;
 }
 
 #navPredict {
