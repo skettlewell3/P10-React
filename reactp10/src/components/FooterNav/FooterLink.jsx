@@ -1,5 +1,5 @@
 export default function FooterLink({ label, icon, id, activeView, setActiveView }) {
-  const className = `footerItem ${activeView === label ? " footerFocal" : ""}`;
+  const className = `footerItem ${activeView.toLowerCase() === label.toLowerCase() ? " footerFocal" : ""}`;
     return (
     <button
       id={id}

@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #464545;
+  /* background-color: #e90f0fe1; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,6 +22,10 @@
   --tpblue: rgb(28, 44, 91, 0.9);
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -33,11 +37,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #242424;
+  /* display: flex; */
+  /* min-width: 320px;
+  min-height: 100vh; */
+  background-color: var(--blue);
 }
 
 h1 {
@@ -129,6 +132,7 @@ button:focus-visible {
   height: 3.5rem;
   width: 100%;
   background-color: var(--blue);
+  box-shadow: 0 1px 3px rgba(0,0,0,1);
   color: white;
   border: 4px solid white;
   border-radius: 4px;
@@ -225,25 +229,26 @@ button:focus-visible {
 }
 
 .footerItem.footerFocal {
-  color: green !important;
+  color: var(--green) !important;
   background-color: white !important;
 }
 
 .footerCenter.footerFocal {
-  color: white !important;
-  background-color: green !important;
+  color: var(--green) !important;
+  background-color: white !important;
 }
 
 .footerCenter {
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
-  background-color: white;
-  color: green;
+  background-color: green;
+  border: 1px solid white;
+  color: white;
   font-weight: bold;
   box-shadow: 0 4px 4px rgba(0,0,0,0.2);
   position: relative;
-  top: -1.5rem;
+  top: -1.1rem;
   z-index: 10;
   cursor: pointer;
 }
