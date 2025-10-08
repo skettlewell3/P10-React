@@ -1,12 +1,17 @@
-export default function FooterCenter({ label, icon, id, activeView, setActiveView }) {
+export default function FooterCenter({ label, icon, id, activeView, setActiveView, handleSubmit }) {
   const className = `footerCenter ${activeView.toLowerCase() === label.toLowerCase() ? " footerFocal" : ""}`;
-    return (
+  
+  return (
     <button
       id={id}
       className={className}
-      onClick={() => setActiveView(label.toLowerCase())}
+      onClick={(e) => 
+        activeView.toLowerCase() === label.toLowerCase()
+        ? handleSubmit(e)
+        : setActiveView(label.toLowerCase())
+      }
     >
-      {label}
+      {activeView.toLowerCase() === label.toLowerCase() ? "Submit" : label}
       <img src={icon} alt={label} className="icon" />
     </button>
   );

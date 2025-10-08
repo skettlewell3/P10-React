@@ -14,15 +14,18 @@ export default function FixtureList( {gameweek, mode} ) {
     }, [gameweek]);
 
     return (
-        <div id="fixtures">
-        {fixtures.map((fixture, idx) => (
-            <FixtureFieldset
-                key={idx}
-                fixture={fixture}
-                mode={mode}
-            />
-        ))}
-        </div>
+    
+        <form id="fixtures">
+            {fixtures.map((fixture, idx) => (
+                <FixtureFieldset
+                    key={idx}
+                    fixture={fixture}
+                    mode={mode}
+                />
+            ))}
+        
+        </form>
+    
     )
 }
 

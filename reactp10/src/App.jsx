@@ -9,9 +9,16 @@ import StatsView from './components/StatsView';
 import PredictView from './components/PredictView';
 import ReviewView from './components/ReviewView';
 import BoardsView from './components/BoardsView';
+import { CURRENT_WEEK } from './config';
 
 function App() {
   const [activeView, setActiveView] = useState("predict");
+  const [activeWeek, setActiveWeek] = useState(CURRENT_WEEK - 1)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Thanks for playing!")
+  };
 
   return (
     <>
@@ -22,11 +29,23 @@ function App() {
           {activeView === "news" && <NewsView />}
           {activeView === "stats" && <StatsView />}
           {activeView === "predict" && <PredictView />}
-          {activeView === "review" && <ReviewView />}
-          {activeView === "boards" && <BoardsView />}
+          {activeView === "review" && 
+            <ReviewView
+              activeWeek={activeWeek}
+              setActiveWeek={setActiveWeek} 
+            />}
+          {activeView === "boards" && 
+            <BoardsView 
+              activeWeek={activeWeek}
+              setActiveWeek={setActiveWeek}
+            />}
         </ContentContainer>          
         
-        <FooterNav activeView={activeView} setActiveView={setActiveView} />
+        <FooterNav 
+          activeView={activeView} 
+          setActiveView={setActiveView} 
+          handleSubmit={handleSubmit}
+        />
       </AppContainer>
     </>
   )

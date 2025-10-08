@@ -72,15 +72,15 @@
         { "day": "Mon", "ko": "20:00", "home": "Everton",    "away": "West Ham",    "hgoal": "1", "agoal": "1" }
     ],
     "7": [
-        { "day": "Fri", "ko": "20:00", "home": "Bournemouth","away": "Fulham",      "hgoal": "", "agoal": "" },
-        { "day": "Sat", "ko": "12:30", "home": "Leeds",      "away": "Tottenham",   "hgoal": "", "agoal": "" },
-        { "day": "Sat", "ko": "15:00", "home": "Arsenal",    "away": "West Ham",    "hgoal": "", "agoal": "" },
-        { "day": "Sat", "ko": "15:00", "home": "Man Utd",    "away": "Sunderland",  "hgoal": "", "agoal": "" },
-        { "day": "Sat", "ko": "17:30", "home": "Chelsea",    "away": "Liverpool",   "hgoal": "", "agoal": "" },
-        { "day": "Sun", "ko": "14:00", "home": "Aston Villa","away": "Burnley",     "hgoal": "", "agoal": "" },
-        { "day": "Sun", "ko": "14:00", "home": "Everton",    "away": "Crystal P",   "hgoal": "", "agoal": "" },
-        { "day": "Sun", "ko": "14:00", "home": "Newcastle",  "away": "Forest",      "hgoal": "", "agoal": "" },
-        { "day": "Sun", "ko": "14:00", "home": "Wolves",     "away": "Brighton",    "hgoal": "", "agoal": "" },
-        { "day": "Sun", "ko": "16:30", "home": "Brentford",  "away": "Man City",    "hgoal": "", "agoal": "" }
+        { "day": "Fri", "ko": "20:00", "home": "Bournemouth","away": "Fulham",      "hgoal": "3", "agoal": "1" },
+        { "day": "Sat", "ko": "12:30", "home": "Leeds",      "away": "Tottenham",   "hgoal": "1", "agoal": "2" },
+        { "day": "Sat", "ko": "15:00", "home": "Arsenal",    "away": "West Ham",    "hgoal": "2", "agoal": "0" },
+        { "day": "Sat", "ko": "15:00", "home": "Man Utd",    "away": "Sunderland",  "hgoal": "2", "agoal": "0" },
+        { "day": "Sat", "ko": "17:30", "home": "Chelsea",    "away": "Liverpool",   "hgoal": "2", "agoal": "1" },
+        { "day": "Sun", "ko": "14:00", "home": "Aston Villa","away": "Burnley",     "hgoal": "2", "agoal": "1" },
+        { "day": "Sun", "ko": "14:00", "home": "Everton",    "away": "Crystal P",   "hgoal": "2", "agoal": "1" },
+        { "day": "Sun", "ko": "14:00", "home": "Newcastle",  "away": "Forest",      "hgoal": "2", "agoal": "0" },
+        { "day": "Sun", "ko": "14:00", "home": "Wolves",     "away": "Brighton",    "hgoal": "1", "agoal": "1" },
+        { "day": "Sun", "ko": "16:30", "home": "Brentford",  "away": "Man City",    "hgoal": "0", "agoal": "1" }
     ]
 }

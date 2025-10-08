@@ -1,7 +1,7 @@
 import FooterLink from "./FooterLink";
 import FooterCenter from "./FooterCenter";
 
-export default function FooterNav({ activeView, setActiveView }) {
+export default function FooterNav({ activeView, setActiveView, handleSubmit }) {
   return (
     <footer id="footerNav">
       <nav id="navBarFooter">
@@ -25,6 +25,7 @@ export default function FooterNav({ activeView, setActiveView }) {
           id="navPredict"
           activeView={activeView}
           setActiveView={setActiveView}
+          handleSubmit={handleSubmit}
         />
         <FooterLink
           label="Review"
