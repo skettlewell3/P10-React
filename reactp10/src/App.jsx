@@ -14,6 +14,8 @@ import { CURRENT_WEEK } from './config';
 function App() {
   const [activeView, setActiveView] = useState("predict");
   const [activeWeek, setActiveWeek] = useState(CURRENT_WEEK - 1)
+  const [activeLens, setActiveLens] = useState("week");
+  const [subjectType, setSubjectType] = useState("user");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,12 +34,18 @@ function App() {
           {activeView === "review" && 
             <ReviewView
               activeWeek={activeWeek}
-              setActiveWeek={setActiveWeek} 
+              setActiveWeek={setActiveWeek}
+              subjectType={subjectType}
+              setSubjectType={setSubjectType}
             />}
           {activeView === "boards" && 
             <BoardsView 
               activeWeek={activeWeek}
               setActiveWeek={setActiveWeek}
+              activeLens={activeLens} 
+              setActiveLens={setActiveLens}
+              subjectType={subjectType}
+              setSubjectType={setSubjectType}
             />}
         </ContentContainer>          
         

@@ -1,16 +1,32 @@
 import GwNav from "./GwNav/GwNav"
 import BoardContainer from "./LeaderBoards/BoardContainer"
-import ViewTitle from "./ViewTitle"
+import ViewTitleContainer from "./ViewTitleContainer"
 
-export default function NewsView( {activeWeek, setActiveWeek} ) {
+export default function BoardsView( {
+        activeWeek, 
+        setActiveWeek, 
+        activeLens, 
+        setActiveLens, 
+        subjectType,
+        setSubjectType
+    } ) {
+
     return (
         <>
-        <ViewTitle title="Leaderboards" /> 
-        <GwNav 
-            activeWeek={activeWeek}
-            setActiveWeek={setActiveWeek}
-        />
-        <BoardContainer />        
+            <ViewTitleContainer 
+                title="Leaderboards"
+                subjectType={subjectType}
+                setSubjectType={setSubjectType}
+            /> 
+            <GwNav 
+                activeWeek={activeWeek}
+                setActiveWeek={setActiveWeek}
+            />
+            <BoardContainer 
+                activeWeek={activeWeek}
+                activeLens={activeLens}
+                subjectType={subjectType}
+            />        
         </>
 
     )

@@ -82,5 +82,18 @@
         { "day": "Sun", "ko": "14:00", "home": "Newcastle",  "away": "Forest",      "hgoal": "2", "agoal": "0" },
         { "day": "Sun", "ko": "14:00", "home": "Wolves",     "away": "Brighton",    "hgoal": "1", "agoal": "1" },
         { "day": "Sun", "ko": "16:30", "home": "Brentford",  "away": "Man City",    "hgoal": "0", "agoal": "1" }
+    ],
+    "8": [
+        { "day": "Sat", "ko": "12:30", "home": "Forest",     "away": "Chelsea",    "hgoal": "", "agoal": "" },
+        { "day": "Sat", "ko": "15:00", "home": "Brighton",   "away": "Newcastle",  "hgoal": "", "agoal": "" },
+        { "day": "Sat", "ko": "15:00", "home": "Burnley",    "away": "Leeds",      "hgoal": "", "agoal": "" },
+        { "day": "Sat", "ko": "15:00", "home": "Crystal P",  "away": "Bournemouth","hgoal": "", "agoal": "" },
+        { "day": "Sat", "ko": "15:00", "home": "Man City",   "away": "Everton",    "hgoal": "", "agoal": "" },
+        { "day": "Sat", "ko": "15:00", "home": "Sunderland", "away": "Wolves",     "hgoal": "", "agoal": "" },
+        { "day": "Sat", "ko": "17:30", "home": "Fulham",     "away": "Arsenal",    "hgoal": "", "agoal": "" },
+        { "day": "Sun", "ko": "14:00", "home": "Tottenham",  "away": "Aston Villa","hgoal": "", "agoal": "" },
+        { "day": "Sun", "ko": "16:30", "home": "Liverpool",  "away": "Man Utd",    "hgoal": "", "agoal": "" },
+        { "day": "Mon", "ko": "20:00", "home": "West Ham",   "away": "Brentford",  "hgoal": "", "agoal": "" }
     ]
+
 }
