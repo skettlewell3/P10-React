@@ -49,6 +49,7 @@
 #titleContainer {
   display: flex;
   justify-content: space-between;
+  gap: 0.5em;
   width: 100%;
 }
 
@@ -65,11 +66,36 @@
   color: white;
 }
 
+#viewTitleBoards {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  border: 3px solid white;
+  border-radius: 4px;
+  width: fit-content;
+  color: white;
+  background-color: var(--tpblue);
+  gap: 0.5em;
+  padding: 0.1em 0.5em;
+  font-size: 1.1em;
+}
+
 /* WeekNav */
 
 #weekNav {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: .25em;
+  margin-bottom: 0.25em;
+  width: 98%;
+  max-height: 3vh;
+  color: white;    
+}
+
+#weekNavBoard {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: .25em;
   margin-bottom: 0.25em;
@@ -91,12 +117,21 @@
 
 #gwDisplay {
   width: 60%;   
-  text-align: center;    
+  text-align: center;  
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;  
 }
 
-#gwDisplay, .nav-arrow{
-  height: 1.5em;
-  padding: 0.125em;
+#gwDisplayBoards {
+  width: 60%;   
+  text-align: center;  
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;  
+}
+
+#gwDisplay, #gwDisplayBoards, .nav-arrow{
+  height: 1.75em;
+  padding: 0.25em;
   line-height: 1.2em;
   font-size: 1em;
   background-color: #1c2c5b;
@@ -110,11 +145,21 @@
 #prevWeek {
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
+  border-top-right-radius: 0;
 }
 
 #nextWeek {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  border-top-left-radius: 0;
+}
+
+#lensSelect {
+  background-color: var(--blue);
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 0.9em;
 }
 
 

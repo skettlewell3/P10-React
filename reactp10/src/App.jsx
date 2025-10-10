@@ -4,11 +4,11 @@ import AppContainer from './components/AppContainer';
 import FooterNav from './components/FooterNav/FooterNav';
 import HeaderProfile from './components/HeaderProfile/HeaderProfile';
 import ContentContainer from './components/ContentContainer';
-import NewsView from './components/NewsView';
-import StatsView from './components/StatsView';
-import PredictView from './components/PredictView';
-import ReviewView from './components/ReviewView';
-import BoardsView from './components/BoardsView';
+import NewsView from './components/Views/NewsView';
+import StatsView from './components/Views/StatsView';
+import PredictView from './components/Views/PredictView';
+import ReviewView from './components/Views/ReviewView';
+import BoardsView from './components/Views/BoardsView';
 import { CURRENT_WEEK } from './config';
 
 function App() {
@@ -28,18 +28,29 @@ function App() {
         <HeaderProfile />     
 
         <ContentContainer>
-          {activeView === "news" && <NewsView />}
-          {activeView === "stats" && <StatsView />}
-          {activeView === "predict" && <PredictView />}
+          {activeView === "news" && 
+            <NewsView 
+              
+          />}
+          {activeView === "stats" && 
+            <StatsView 
+            
+          />}
+          {activeView === "predict" && 
+            <PredictView 
+              
+          />}
           {activeView === "review" && 
             <ReviewView
               activeWeek={activeWeek}
               setActiveWeek={setActiveWeek}
               subjectType={subjectType}
               setSubjectType={setSubjectType}
+
             />}
           {activeView === "boards" && 
             <BoardsView 
+              activeView={activeView}
               activeWeek={activeWeek}
               setActiveWeek={setActiveWeek}
               activeLens={activeLens} 

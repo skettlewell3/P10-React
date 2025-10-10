@@ -1,4 +1,4 @@
-import { classifyTeamName } from "../utils/utils";
+import { classifyTeamName } from "../../utils/utils";
 
 export default function FixtureFieldset( {fixture, mode} ) {
     const { day, ko, home, away, hgoal, agoal } = fixture;

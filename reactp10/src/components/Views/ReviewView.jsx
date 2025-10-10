@@ -1,7 +1,6 @@
-import { CURRENT_WEEK } from "../config"
-import FixtureList from "./FixtureList"
-import ViewTitle from "./ViewTitle"
-import GwNav from "./GwNav/GwNav"
+import FixtureList from "../Fixtures/FixtureList"
+import ViewTitle from "../ViewTitle"
+import GwNav from "../GwNav/GwNav"
 
 export default function ReviewView( {activeWeek, setActiveWeek} ) {
     return (
