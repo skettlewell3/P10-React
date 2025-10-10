@@ -5,7 +5,7 @@ export default function FixtureList( {gameweek, mode} ) {
     const [fixtures, setFixtures] = useState([]);
 
     useEffect(() => {
-        fetch('/src/data/fixtureData.json')
+        fetch('/data/fixtureData.json')
         .then((res) => res.json())
         .then((data) => {
             setFixtures(data[gameweek] || [])

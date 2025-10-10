@@ -1,6 +1,6 @@
-import ViewTitle from "./ViewTitle";
-import {CURRENT_WEEK} from '../config';
-import FixtureList from "./FixtureList";
+import ViewTitle from "../ViewTitle";
+import {CURRENT_WEEK} from '../../config';
+import FixtureList from "../Fixtures/FixtureList";
 
 export default function NewsView() {
     return (

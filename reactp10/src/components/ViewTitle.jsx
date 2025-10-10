@@ -1,7 +1,7 @@
 export default function ViewTitle({ title }) {
     return (
         <div id="viewTitle">
-            {title.toUpperCase()}
+            {String(title).toUpperCase()}
         </div>
     )
 }
