@@ -55,7 +55,6 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -243,7 +242,7 @@ button:focus-visible {
   height: 6rem;
   border-radius: 50%;
   background-color: green;
-  border: 1px solid white;
+  border: 1px solid black;
   color: white;
   font-weight: bold;
   box-shadow: 0 4px 4px rgba(0,0,0,0.2);
@@ -267,15 +266,3 @@ button:focus-visible {
   display: block;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
