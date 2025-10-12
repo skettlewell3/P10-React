@@ -1,4 +1,4 @@
-import SubjectSelect from "./SubjectSelect";
+import SubjectSelectSVG from "./SubjectSelectSVG";
 import ViewTitle from "./ViewTitle";
 import ViewTitleBoards from "./ViewTitleBoards";
 
@@ -13,13 +13,12 @@ export default function ViewTitleContainer( {subjectType,
 
     return (
         <div id="titleContainer">
-
             <TitleComponent 
                 title={title}
                 activeLens={activeLens}
                 setActiveLens={setActiveLens}
             />
-            <SubjectSelect 
+            <SubjectSelectSVG 
                 subjectType={subjectType}
                 setSubjectType={setSubjectType}
             />

@@ -6,7 +6,7 @@ export default function NewsView() {
     return (
         <>
             <ViewTitle title={`Gameweek: ${CURRENT_WEEK}`} />  
-            <FixtureList gameweek={CURRENT_WEEK} mode="form" />      
+            <FixtureList gameweek={CURRENT_WEEK} mode="form" />   
         </>
     )
 }
