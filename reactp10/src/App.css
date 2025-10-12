@@ -39,7 +39,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4.5rem .5rem;
+  padding: 4.3rem .5rem;
   overflow-y: auto;
   margin: 0 auto;
   border: 1px solid white;
@@ -284,7 +284,7 @@ input[type=number] {
 
 .boardAlign {
   display: grid;
-  grid-template-columns: 0.8fr 30% 1fr repeat(5, 0.9fr) 1fr;
+  grid-template-columns: 0.8fr 26% 1fr repeat(5, 0.9fr) 1fr;
   padding: 0;
   margin: 0;
   gap: 0.25em;
