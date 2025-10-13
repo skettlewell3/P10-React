@@ -1,11 +1,11 @@
 import PlayerCard from "./PlayerCard";
 import AppDropdown from "./AppDropdown";
 
-export default function HeaderProfile({overallRanking, userName, overallScore}) {
+export default function HeaderProfile({overallRanking, user, overallScore}) {
     return (
         <header id="headerProfile">
             <PlayerCard 
-            userName={userName}
+            user={user}
             overallRanking={overallRanking}
             overallScore={overallScore} />
             <AppDropdown />

@@ -87,7 +87,7 @@
   justify-content: center;
   align-items: center;
   gap: .25em;
-  margin-bottom: 0.25em;
+  margin: 0.125em 0;
   width: 98%;
   max-height: 3vh;
   color: white;    
@@ -199,13 +199,14 @@
   padding: 0;   
 } */
 
-.match {
+.fixturesCard {
   border: 2px solid white;
   border-radius: 5px;
   padding: 0;
+  background-image: linear-gradient(to top, #1c2c5b, #203c6a, #264c78, #2f5d86, #3a6e93, #3a6e93, #3a6e93, #3a6e93, #2f5d86, #264c78, #203c6a, #1c2c5b);
 }
 
-.matchHeader {
+.fixturesCardHeader {
   display: flex;
   justify-content: center;
   gap: 0.5em;
@@ -213,14 +214,14 @@
   background-color: white;
 }
 
-.matchBody {
+.match {
   display: grid;
   grid-template-columns: 2fr 1fr .3fr 1fr 2fr;
-  padding: 0.25em;
-  background-image: linear-gradient(to top, #1c2c5b, #203c6a, #264c78, #2f5d86, #3a6e93, #3a6e93, #3a6e93, #3a6e93, #2f5d86, #264c78, #203c6a, #1c2c5b);
+  padding: 0.2em;
+  border: none;
 }
 
-.matchBody div {
+.match div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -234,6 +235,7 @@
 
 .homeScore, .awayScore {
   background: white;
+  color: black;
   height: 90%;
   width: 70%;
   margin: auto auto;
