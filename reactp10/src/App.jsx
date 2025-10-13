@@ -10,6 +10,7 @@ import PredictView from './components/Views/PredictView';
 import ReviewView from './components/Views/ReviewView';
 import BoardsView from './components/Views/BoardsView';
 import { CURRENT_WEEK } from './config';
+import AuthGate from './components/AuthGate/AuthGate';
 
 function App() {
   const [activeView, setActiveView] = useState("predict");
@@ -23,50 +24,59 @@ function App() {
   };
 
   return (
-    <>
-      <AppContainer>
-        <HeaderProfile />     
+    <AuthGate>
+      {(user, handleLogout) => (
+        <AppContainer>
 
-        <ContentContainer>
-          {activeView === "news" && 
-            <NewsView 
-              
-          />}
-          {activeView === "stats" && 
-            <StatsView 
+          <HeaderProfile 
+            user={user} 
+            onLogout={handleLogout}
+            overallRanking={1}
+            overallScore={1000}
             
-          />}
-          {activeView === "predict" && 
-            <PredictView 
-              
-          />}
-          {activeView === "review" && 
-            <ReviewView
-              activeWeek={activeWeek}
-              setActiveWeek={setActiveWeek}
-              subjectType={subjectType}
-              setSubjectType={setSubjectType}
+          />     
 
+          <ContentContainer>
+            {activeView === "news" && 
+              <NewsView 
+                
             />}
-          {activeView === "boards" && 
-            <BoardsView 
-              activeView={activeView}
-              activeWeek={activeWeek}
-              setActiveWeek={setActiveWeek}
-              activeLens={activeLens} 
-              setActiveLens={setActiveLens}
-              subjectType={subjectType}
-              setSubjectType={setSubjectType}
+            {activeView === "stats" && 
+              <StatsView 
+              
             />}
-        </ContentContainer>          
-        
-        <FooterNav 
-          activeView={activeView} 
-          setActiveView={setActiveView} 
-          handleSubmit={handleSubmit}
-        />
-      </AppContainer>
-    </>
+            {activeView === "predict" && 
+              <PredictView 
+                
+            />}
+            {activeView === "review" && 
+              <ReviewView
+                activeWeek={activeWeek}
+                setActiveWeek={setActiveWeek}
+                subjectType={subjectType}
+                setSubjectType={setSubjectType}
+
+              />}
+            {activeView === "boards" && 
+              <BoardsView 
+                activeView={activeView}
+                activeWeek={activeWeek}
+                setActiveWeek={setActiveWeek}
+                activeLens={activeLens} 
+                setActiveLens={setActiveLens}
+                subjectType={subjectType}
+                setSubjectType={setSubjectType}
+              />}
+          </ContentContainer>          
+          
+          <FooterNav 
+            activeView={activeView} 
+            setActiveView={setActiveView} 
+            handleSubmit={handleSubmit}
+          />
+        </AppContainer>
+      )}
+    </AuthGate>
   )
 }
 
