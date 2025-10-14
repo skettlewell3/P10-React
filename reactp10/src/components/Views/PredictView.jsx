@@ -1,11 +1,16 @@
-import ViewTitle from "../ViewTitle";
 import {CURRENT_WEEK} from '../../config';
 import FixtureList from "../Fixtures/FixtureList";
+import ViewTitleContainer from "../ViewTitleContainer";
 
-export default function NewsView() {
+export default function PredictView( {activeView, subjectType, setSubjectType} ) {
     return (
         <>
-            <ViewTitle title={`Gameweek: ${CURRENT_WEEK}`} />  
+            <ViewTitleContainer
+                title={`Gameweek: ${CURRENT_WEEK}`}
+                subjectType={subjectType}
+                setSubjectType={setSubjectType}
+                activeView={activeView}
+            />  
             <FixtureList gameweek={CURRENT_WEEK} mode="form" />   
         </>
     )

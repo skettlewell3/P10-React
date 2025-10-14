@@ -1,9 +1,9 @@
-export default function BoardHeader( {activeLens} ) {
+export default function BoardHeader( {subjectType} ) {
     return (
         <div className="boardHead boardAlign ">
             <div >#</div>
             <div id="nameTag">
-                {activeLens === "team" ? "Team" : "Player"}
+                {subjectType === "team" ? "Team" : "Player"}
             </div>
             <div >10s</div>
             <div >R</div>

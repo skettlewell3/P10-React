@@ -11,6 +11,7 @@ export default function FooterNav({ activeView, setActiveView, handleSubmit }) {
           id="navNews"
           activeView={activeView}
           setActiveView={setActiveView}
+          disabled
         />
         <FooterLink
           label="Stats"
@@ -18,6 +19,7 @@ export default function FooterNav({ activeView, setActiveView, handleSubmit }) {
           id="navStats"
           activeView={activeView}
           setActiveView={setActiveView}
+          disabled
         />
         <FooterCenter
           label="Predict"

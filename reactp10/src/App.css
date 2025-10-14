@@ -32,22 +32,14 @@
   border-radius: 10px;
   background-color: var(--green);
   box-shadow: 0 4px 6px var(--green);
+  max-height: 800px;
+  max-width: 426px;
 }
 
 #loginContainer input {
   text-align: center;
 }
 
-#appContainer {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  max-height: 100vh;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  align-items: center;
-}
 
 #contentContainer {
   flex: 1;
@@ -68,6 +60,7 @@
   justify-content: space-between;
   gap: 0.5em;
   width: 100%;
+  margin-top: 0.5em;
 }
 
 #viewTitle {
@@ -77,6 +70,7 @@
   text-align: center;
   /* margin: 0 auto; */
   width: fit-content;
+  max-height: 2em;
   padding: 0.1em 1em;
   font-size: 1.1rem;
   background-color: var(--tpblue);
@@ -370,6 +364,10 @@ input[type=number] {
   box-shadow: 0 1px 1px var(--bkgrey);
 }
 
+#nameTag {
+  font-size: 1.1em;
+}
+
 #boardData {
   overflow-y: auto;
 }
@@ -451,7 +449,7 @@ input[type=number] {
 .bournemouth {
   background-color: #ed1c24;
   color: black;
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
     
 }
 

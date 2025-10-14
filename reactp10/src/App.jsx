@@ -24,59 +24,63 @@ function App() {
   };
 
   return (
-    <AuthGate>
-      {(user, handleLogout) => (
-        <AppContainer>
+    <div id="appWindow">
+      
+      <AuthGate>
+        {(user, handleLogout) => (
+          <AppContainer>
 
-          <HeaderProfile 
-            user={user} 
-            onLogout={handleLogout}
-            overallRanking={1}
-            overallScore={1000}
-            
-          />     
-
-          <ContentContainer>
-            {activeView === "news" && 
-              <NewsView 
-                
-            />}
-            {activeView === "stats" && 
-              <StatsView 
+            <HeaderProfile 
+              user={user} 
+              onLogout={handleLogout}
+              overallRanking={1}
+              overallScore={1000}
               
-            />}
-            {activeView === "predict" && 
-              <PredictView 
-                
-            />}
-            {activeView === "review" && 
-              <ReviewView
-                activeWeek={activeWeek}
-                setActiveWeek={setActiveWeek}
-                subjectType={subjectType}
-                setSubjectType={setSubjectType}
+            />     
 
+            <ContentContainer>
+              {activeView === "news" && 
+                <NewsView 
+                  
               />}
-            {activeView === "boards" && 
-              <BoardsView 
-                activeView={activeView}
-                activeWeek={activeWeek}
-                setActiveWeek={setActiveWeek}
-                activeLens={activeLens} 
-                setActiveLens={setActiveLens}
-                subjectType={subjectType}
-                setSubjectType={setSubjectType}
+              {activeView === "stats" && 
+                <StatsView 
+                
               />}
-          </ContentContainer>          
-          
-          <FooterNav 
-            activeView={activeView} 
-            setActiveView={setActiveView} 
-            handleSubmit={handleSubmit}
-          />
-        </AppContainer>
-      )}
-    </AuthGate>
+              {activeView === "predict" && 
+                <PredictView 
+                  activeView={activeView}
+                  subjectType={subjectType}
+                  setSubjectType={setSubjectType}                  
+              />}
+              {activeView === "review" && 
+                <ReviewView
+                  activeWeek={activeWeek}
+                  setActiveWeek={setActiveWeek}
+                  subjectType={subjectType}
+                  setSubjectType={setSubjectType}
+                />}
+              {activeView === "boards" && 
+                <BoardsView 
+                  activeView={activeView}
+                  activeWeek={activeWeek}
+                  setActiveWeek={setActiveWeek}
+                  activeLens={activeLens} 
+                  setActiveLens={setActiveLens}
+                  subjectType={subjectType}
+                  setSubjectType={setSubjectType}
+                />}
+            </ContentContainer>          
+            
+            <FooterNav 
+              activeView={activeView} 
+              setActiveView={setActiveView} 
+              handleSubmit={handleSubmit}
+            />
+          </AppContainer>
+        )}
+      </AuthGate>
+    </div>
   )
 }
 

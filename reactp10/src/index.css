@@ -26,6 +26,7 @@
   box-sizing: border-box;
 }
 
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -40,7 +41,42 @@ body {
   /* display: flex; */
   /* min-width: 320px;
   min-height: 100vh; */
-  background-color: var(--tpblue);
+  background-color: rgb(28, 44, 91, 0.9);
+}
+
+#appWindow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #111; */
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+#appContainer {
+  position: relative;
+  width: 428px;
+  height: 926px;
+  /* background-color: var(--tpblue); */
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 8px solid #000;
+  border-radius: 20px;
+  box-shadow: 0 0 20px (rgba(223, 221, 221, 1));
+}
+
+@media (max-width: 428px) {
+  #appContainer {
+    width: 100%;
+    height: 100vh;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 
 h1 {
@@ -68,7 +104,7 @@ button:focus-visible {
 
 /* Project CSS */
 #headerProfile {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -192,7 +228,7 @@ button:focus-visible {
 
 
 #footerNav {
- position: fixed;
+ position: absolute;
  bottom: 0;
  left: 0;
  width: 100%;
@@ -226,6 +262,13 @@ button:focus-visible {
  border-radius: 3px;
  color: white;
  cursor: pointer;
+}
+
+.footerDisabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+  filter: grayscale(80%);
 }
 
 .footerItem.footerFocal {
