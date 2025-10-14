@@ -16,7 +16,7 @@ export default function LoginFormTemp( {onLogIn} ) {
 
     return (
         <div id="loginContainer">
-            <h2>Welcome to Perfect10</h2>
+            <img src="/assets/logos/FullLogo_Transparent_NoBuffer.png" alt="logo" />
             <input 
                 type="text" 
                 placeholder='Enter your name'
