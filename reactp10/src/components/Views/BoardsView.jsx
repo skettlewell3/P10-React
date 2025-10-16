@@ -1,4 +1,4 @@
-import { useEffect, useState } from `react`
+import { useEffect, useState } from 'react'
 import GwNav from "../GwNav/GwNav"
 import BoardContainer from "../LeaderBoards/BoardContainer"
 import ViewTitleContainer from "../ViewTitleContainer"
@@ -13,7 +13,7 @@ export default function BoardsView( {
         activeView
     } ) {
         const [businessData, setBusinessData] = useState(null);
-        const [businessError, setBusinessError] = useState(null;)
+        const [businessError, setBusinessError] = useState(null);
 
         useEffect(() => {
             const fetchBusinessData = async () => {

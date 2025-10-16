@@ -436,6 +436,151 @@ input[type=number] {
   color: var(--blue);
 }
 
+/* Team Modal */
+
+#teamModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#teamModalWrapper {
+  background: white;
+  color: black;
+  padding: 1em;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+#teamModal {
+  position: fixed;
+  
+  inset: 0;
+  z-index: 1000;
+  /* background: rgb(153, 153, 153, 0.8); */
+  background-color: var(--tpblue);
+  border: 5px solid white;
+  border-radius: 5px;
+  width: 96vw;
+  height: 94vh;
+  margin: 2vh auto;
+  overflow-y: scroll;
+    
+}
+
+#teamModalCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  width: 96%;
+  color: white;
+  /* outline: 1px solid white; */
+  margin: 0 auto;
+}
+
+#modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin-top: 0.25em;
+    
+}
+
+.p10ModalLogo {
+  height: 8vh;
+  width: 8vh;
+}
+
+#teamModalClose {
+    height: 6vh;
+    width: 6vh;
+    border-radius: 50%;
+    background-color: var(--green);
+    color: var(--blue);
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding-bottom: 0.1em;
+    box-shadow: 0px 2px #333;
+    cursor: pointer;
+}
+
+#teamModalClose:hover {
+    background-color: red;
+}
+
+#modalImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+}
+
+.modalImg {
+  height: 30vh;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.modalCardBody {
+  background-color: var(--blue);
+  width: 100%;
+  height: 90%;
+  margin: auto auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;   
+  overflow-y: scroll;
+}
+
+.modalCardBody > * { 
+  border-bottom: 1px solid white;
+  padding: 0.5em 0; 
+  width: 96%;
+  margin: 0 auto;   
+}
+
+#modalTitle {
+  font-size: 1.5em;    
+}
+
+#modalContact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+#modalWeb, #modalEmail {
+  color: var(--green);
+  cursor: pointer;
+}
+
+#modalAddress {
+  display: flex;
+  flex-direction: column;
+}
+
+#modalTimes {
+  display: flex;
+  justify-content: center;
+  border-bottom: none;
+}
+
+#openingTimesTable {
+  border-collapse: separate;
+  border-spacing: 1em 0.25em;
+  margin-bottom: 1em;
+}
+
 /* Colours */
 
 

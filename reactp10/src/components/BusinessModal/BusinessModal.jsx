@@ -10,11 +10,18 @@ const sectionComponents = {
     hours: HoursSection,
 };
 
-export default function BusinessModal({Business}) {
+export default function BusinessModal({Business, handleCloseModal}) {
+    if (!Business) {
+        console.warn("BusinessModal called with undefined Business");
+        return null;
+    }
+
     return (
         <div id="teamModalCard">
             <div class="modalCardBody">
-                <ModalCardHeader />
+                <ModalCardHeader
+                    closeModal={handleCloseModal}
+                />
                 <LogoSection logo={Business.img} alt={Business.alt} />
                 <h3 id="modalTitle">{Business.title}</h3>
                 {Business.modalLayout.map((sectionName, i) => {

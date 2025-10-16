@@ -66,6 +66,6 @@
             "sat":"9:00 - 22:00",
             "sun":"10:00 - 20:00" 
         },
-        "modalLayout": ["ContactSection", "HoursSection", "AddressSection"]
+        "modalLayout": ["ContactSection", "AddressSection", "HoursSection"]
     }
 }
