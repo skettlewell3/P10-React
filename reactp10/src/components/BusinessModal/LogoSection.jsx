@@ -1,7 +1,7 @@
-export default function LogoSection( src, alt) {
+export default function LogoSection({ logo, alt }) {
     return (
         <div id="modalImageContainer">
-            <img class="modalImg" id="modalLogo" alt={alt} src={src}/>
+            <img className="modalImg" id="modalLogo" alt={alt} src={logo}/>
         </div>
     )
 }

@@ -235,7 +235,7 @@ button:focus-visible {
  background-color: darkgreen;
  /* border-top: 1px solid #e5e7eb; */
  box-shadow: 0 1px 3px rgba(0,0,0,1);
- z-index: 50;
+ z-index: 30;
 }
 
 #navBarFooter {

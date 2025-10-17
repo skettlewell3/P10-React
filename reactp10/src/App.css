@@ -436,6 +436,172 @@ input[type=number] {
   color: var(--blue);
 }
 
+/* Team Modal */
+
+/* #teamModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+} */
+
+/* #teamModalWrapper {
+  background: white;
+  color: black;
+  padding: 1em;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+} */
+
+#teamModal {
+  position: absolute;  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 428px;
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 10px; 
+  background-color: var(--tpblue);
+  border: 3px solid white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  z-index: 50;
+  /* background: rgb(153, 153, 153, 0.8); */
+}
+
+#modalOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+#teamModalCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  width: 96%;
+  color: white;
+  /* outline: 1px solid white; */
+  margin: 0 auto;
+}
+
+#modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin-top: 0.25em;
+    
+}
+
+.p10ModalLogo {
+  height: 8vh;
+  width: 8vh;
+}
+
+#teamModalClose {
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  background-color: var(--green);
+  color: var(--blue);
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 0 0 0.25em 0;
+  box-shadow: 0px 2px #333;
+  cursor: pointer;
+}
+
+#teamModalClose:hover {
+  background-color: rgb(11, 87, 105);
+  color: white;
+}
+
+#modalImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+  padding: 0.5em; 
+}
+
+.modalImg {
+  width: 100%;
+  max-width: 20em;
+  height: 12em;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  
+}
+
+.modalCardBody {
+  background-color: var(--blue);
+  width: 100%;
+  height: 90%;
+  margin: auto auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;   
+  overflow-y: scroll;
+}
+
+.modalCardBody > * { 
+  border-bottom: 1px solid white;
+  padding: 0.5em 0; 
+  width: 96%;
+  margin: 0 auto;   
+}
+
+#modalTitle {
+  font-size: 1.5em;    
+}
+
+#modalContact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+
+#modalWeb, #modalEmail {
+  color: var(--green);
+  cursor: pointer;
+}
+
+#modalAddress {
+  display: flex;
+  flex-direction: column;
+}
+
+#modalTimes {
+  display: flex;
+  justify-content: center;
+  border-bottom: none;
+}
+
+#openingTimesTable {
+  border-collapse: separate;
+  border-spacing: 1em 0.25em;
+  margin-bottom: 1em;
+}
+
 /* Colours */
 
 

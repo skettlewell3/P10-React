@@ -5,6 +5,7 @@ export default function BoardContainer ( {
     activeWeek, 
     subjectType,  
     activeLens, 
+    businessData
 } ) {
 
     return (
@@ -17,6 +18,7 @@ export default function BoardContainer ( {
                 gameweek={activeWeek}
                 subjectType={subjectType}
                 activeLens={activeLens}
+                businessData={businessData}
             />
         </div>
     )

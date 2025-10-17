@@ -14,8 +14,6 @@ export default function FixtureList( {gameweek, mode} ) {
         .catch((err) => console.log("Failed to load fixtures", err));
     }, [gameweek]);
 
-    console.log(mode)
-
     if (mode === "form") {
         const groupedFixtures = fixtures.reduce((acc, fixture) => {
             const key = `${fixture.day}-${fixture.ko}`;
