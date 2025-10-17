@@ -1,6 +1,6 @@
 export default function HoursSection( { hours } ) {
     return (
-        <div id="modalTimes">
+        <div id="modalTime" className="modalSection">
             <table id="openingTimesTable">
                 <tbody>
                     {Object.entries(hours).map(([day, time]) => (

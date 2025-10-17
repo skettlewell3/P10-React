@@ -230,6 +230,7 @@
   grid-template-columns: 2fr 1fr .3fr 1fr 2fr;
   padding: 0.2em;
   border: none;
+  cursor: pointer;
 }
 
 .match div {
@@ -497,42 +498,77 @@ input[type=number] {
   width: 96%;
   color: white;
   /* outline: 1px solid white; */
-  margin: 0 auto;
+  margin: 0.5em auto;
+}
+
+.modalCardBody {
+  background-color: var(--blue);
+  width: 100%;
+  height: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;  
+  overflow-y: scroll;
+}
+
+.modalSection {
+  width: 96%;
+  background-color: var(--tpblue-dark);
+  border-radius: 0.75em;
+  padding: 0.5em 0; 
+  margin: 0.5em 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+.modalSection:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
 #modalHeader {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 95%;
-  margin-top: 0.25em;
-    
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 95%;    
 }
 
 .p10ModalLogo {
-  height: 8vh;
-  width: 8vh;
+  height: 4em;
+  width: 4em;
 }
 
 #teamModalClose {
-  height: 1em;
-  width: 1em;
   border-radius: 50%;
-  background-color: var(--green);
-  color: var(--blue);
-  font-size: 2em;
+  border: none;
+  padding: 0;
+  height: 2em;
+  width: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
-  padding: 0 0 0.25em 0;
-  box-shadow: 0px 2px #333;
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 1;
+  background-color: var(--green);
+  color: var(--blue);
   cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 #teamModalClose:hover {
   background-color: rgb(11, 87, 105);
   color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
 }
 
 #modalImageContainer {
@@ -552,26 +588,18 @@ input[type=number] {
   
 }
 
-.modalCardBody {
-  background-color: var(--blue);
-  width: 100%;
-  height: 90%;
-  margin: auto auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;   
-  overflow-y: scroll;
-}
+
 
 .modalCardBody > * { 
-  border-bottom: 1px solid white;
-  padding: 0.5em 0; 
-  width: 96%;
-  margin: 0 auto;   
+  /* border-bottom: 1px solid white; */
+  /* width: 96%; */
+  /* margin: 0 auto;    */
 }
 
 #modalTitle {
-  font-size: 1.5em;    
+  font-size: 1.5em;   
+  margin-top: -.5em;
+  margin-bottom: 0; 
 }
 
 #modalContact {

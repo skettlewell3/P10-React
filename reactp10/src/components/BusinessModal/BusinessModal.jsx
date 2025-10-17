@@ -22,8 +22,7 @@ export default function BusinessModal({Business, handleCloseModal}) {
                 <ModalCardHeader
                     closeModal={handleCloseModal}
                 />
-                <LogoSection logo={Business.img} alt={Business.alt} />
-                <h3 id="modalTitle">{Business.title}</h3>
+                <LogoSection logo={Business.img} alt={Business.alt} title={Business.title}/>
                 {Business.modalLayout.map((sectionName, i) => {
                     const SectionComponent = sectionComponents[sectionName.replace("Section", "").toLowerCase()];
                     if (!SectionComponent) return null;
