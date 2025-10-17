@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom';
 import BusinessModal from '../BusinessModal/BusinessModal'
 
 export default function BoardRow({ subject, businessData, isTeam }) {
@@ -33,7 +34,6 @@ export default function BoardRow({ subject, businessData, isTeam }) {
         }`}        
         >
             <div className="pos">{pos}</div>
-
             <div 
                 className={`userName ${hasBusiness ? "Clickable" : ""}`}
                 onClick={handleOpenModal}
@@ -49,21 +49,20 @@ export default function BoardRow({ subject, businessData, isTeam }) {
             <div className="gCorrect">{gCorrect}</div>
             <div className="points">{points}</div>
         </fieldset>
-
-        {isModalOpen && (
-            <div id="teamModalOverlay" onClick={handleCloseModal}>
-                <div
-                    id="teamModalWrapper"
-                    onClick={(e) => e.stopPropagation()}
-                >
-                    <BusinessModal 
-                        Business={businessData[name.trim().toUpperCase()]}
-                        handleCloseModal={handleCloseModal}
-                    />
-                </div>
-
-            </div>
-        )}
+        {isModalOpen && 
+            createPortal (
+                <>
+                    <div id="modalOverlay" onClick={handleCloseModal}></div>
+                    <div id="teamModal" >                
+                        <BusinessModal 
+                            Business={businessData[name.trim().toUpperCase()]}
+                            handleCloseModal={handleCloseModal}
+                        />       
+                    </div>,
+                </>,
+                document.getElementById("modal-root")
+            )
+        }
         </>
     )
 }

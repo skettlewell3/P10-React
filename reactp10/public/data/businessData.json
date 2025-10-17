@@ -4,7 +4,7 @@
         "tel":"0113 253 4200",
         "email":"sales@handymanssupplies.com",
         "web":"https://handymanssupplies.co.uk",
-        "img":"./imgs/businessData/handymans3.png",
+        "img":"/assets/imgs/handymans3.png",
         "alt":"Handymans Shop",
         "address": {
             "line1":"17 Fountain Street",
@@ -27,7 +27,7 @@
         "tel":"0113 252 3222",
         "email":"insurance@smith-robinson.co.uk",
         "web":"https://smith-robinson.co.uk",
-        "img":"./imgs/businessData/smithrobinson.png",
+        "img":"/assets/imgs/smithrobinson.png",
         "alt":"Smith Robinson Logo",
         "address": {
             "line1":"2 Cadman Court",
@@ -50,7 +50,7 @@
         "tel":"0113 2532113",
         "email":"info@cucina2001.co.uk",
         "web":"https://cucinacafebarandrestaurant.co.uk/",
-        "img":"./imgs/businessData/cucina.jpg",
+        "img":"/assets/imgs/cucina.jpg",
         "alt":"Cucina Cafe, Bar & Restaurant",
         "address": {
             "line1":"106A Queen Street",

@@ -25,7 +25,7 @@ export default function BusinessModal({Business, handleCloseModal}) {
                 <LogoSection logo={Business.img} alt={Business.alt} />
                 <h3 id="modalTitle">{Business.title}</h3>
                 {Business.modalLayout.map((sectionName, i) => {
-                    const SectionComponent = sectionComponents[sectionName.replace("Section", "")];
+                    const SectionComponent = sectionComponents[sectionName.replace("Section", "").toLowerCase()];
                     if (!SectionComponent) return null;
 
                     if (sectionName === "HoursSection") {
