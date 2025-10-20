@@ -584,16 +584,7 @@ input[type=number] {
   height: 12em;
   object-fit: contain;
   object-position: center;
-  display: block;
-  
-}
-
-
-
-.modalCardBody > * { 
-  /* border-bottom: 1px solid white; */
-  /* width: 96%; */
-  /* margin: 0 auto;    */
+  display: block;  
 }
 
 #modalTitle {

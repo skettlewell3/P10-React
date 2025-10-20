@@ -10,7 +10,7 @@ const sectionComponents = {
     hours: HoursSection,
 };
 
-export default function BusinessModal({Business, handleCloseModal}) {
+export default function BusinessModal({ Business, handleCloseModal }) {
     if (!Business) {
         console.warn("BusinessModal called with undefined Business");
         return null;

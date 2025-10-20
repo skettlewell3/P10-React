@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import LoginFormTemp from './LoginFormTemp';
+import BetaLoginForm from './BetaLoginForm';
 
 export default function AuthGate( { children }) {
     const [user, setUser] = useState(null);
@@ -20,7 +20,9 @@ export default function AuthGate( { children }) {
     }
 
     if (!user) {
-        return <LoginFormTemp onLogIn={handleLogin} />
+        return (
+            <BetaLoginForm onLogIn={handleLogin} />      
+        )
     }
 
     return (
