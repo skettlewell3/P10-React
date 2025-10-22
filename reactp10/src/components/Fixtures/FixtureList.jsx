@@ -1,6 +1,6 @@
 import {useEffect, useState } from 'react';
 import FixturesCard from './FixturesCard';
-import FixtureFieldset from './FixtureFieldset';
+import FixtureFieldset from './FixtureFieldsetDB';
 
 export default function FixtureList( {gameweek, mode} ) {
     const [fixtures, setFixtures] = useState([]);

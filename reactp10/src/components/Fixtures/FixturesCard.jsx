@@ -1,4 +1,4 @@
-import FixtureFieldset from "./FixtureFieldset";
+import FixtureFieldset from "./FixtureFieldsetDB";
 
 export default function FixturesCard( {day, ko, fixtures, mode} ){
 
@@ -8,9 +8,9 @@ export default function FixturesCard( {day, ko, fixtures, mode} ){
                 <div className="day">{day}</div>
                 <div className="ko">{ko}</div>
             </div>
-            {fixtures.map((fixture, idx) => (
+            {fixtures.map((fixture) => (
                <FixtureFieldset 
-                    key={idx}
+                    key={fixture.fixture_id}
                     fixture={fixture}
                     mode={mode}
                 />
