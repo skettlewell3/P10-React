@@ -1,4 +1,4 @@
-import FixtureFieldset from "./FixtureFieldsetDB";
+import FixtureFieldset from "./FixtureFieldset";
 
 export default function FixturesCard( {day, ko, fixtures, mode} ){
 

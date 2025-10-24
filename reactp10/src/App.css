@@ -663,14 +663,14 @@ color: #80bfff;
   color: #d1d3d4;
 }
 
-.crystalp {
+.crystalpalace {
   background-color: #1b458f;
-  color: #c4122e;
+  color: #fff;
   text-shadow: 
-    -.5px -.5px 0 #fff,
-    .5px -.5px 0 #fff,
-    -.5px .5px 0 #fff,
-    .5px .5px 0 #fff;
+    -.5px -.5px 0 #c4122e,
+    .5px -.5px 0 #c4122e,
+    -.5px .5px 0 #c4122e,
+    .5px .5px 0 #c4122e;
 }
 
 .everton {
@@ -683,7 +683,7 @@ color: #80bfff;
   color: #1c2c5b;
 }
 
-.manutd {
+.manunited {
   background-color: #da291c;
   color: #fbe122;
 }
@@ -718,7 +718,7 @@ color: #80bfff;
   color: #211e1e;
 }
 
-.wolves {
+.wolverhamptonwanderers {
   background-color: #fdb913;
   color: #231f20;
 }
@@ -728,7 +728,7 @@ color: #80bfff;
   color: #fff;
 }
 
-.forest {
+.nottinghamforest {
   background-color: #fff;
   color: #e53233;
 }
