@@ -282,6 +282,11 @@ button:focus-visible {
 }
 
 .footerCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0.5em;
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
@@ -294,14 +299,6 @@ button:focus-visible {
   top: -1.1rem;
   z-index: 10;
   cursor: pointer;
-}
-
-#navPredict {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 0.5em;
 }
 
 .icon {

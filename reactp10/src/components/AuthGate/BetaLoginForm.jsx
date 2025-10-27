@@ -17,7 +17,7 @@ export default function BetaLoginForm( {onLogIn} ) {
             .single();
 
         if (error || !data) {
-            setError('Invalid name or PIN');
+            setError('Invalid name or PIN');no
             return;
         }
 

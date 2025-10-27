@@ -1,3 +1,4 @@
+import {Routes, Route, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import './App.css'
 import AppContainer from './components/AppContainer';
@@ -14,7 +15,6 @@ import AuthGate from './components/AuthGate/AuthGate';
 import { FixtureProvider } from './components/Fixtures/FixtureProvider';
 
 function App() {
-  const [activeView, setActiveView] = useState("predict");
   const [activeWeek, setActiveWeek] = useState(CURRENT_WEEK - 1)
   const [activeLens, setActiveLens] = useState("week");
   const [subjectType, setSubjectType] = useState("user");
@@ -41,42 +41,47 @@ function App() {
               />     
 
               <ContentContainer>
-                {activeView === "news" && 
-                  <NewsView 
-                    
-                />}
-                {activeView === "stats" && 
-                  <StatsView 
+                <Routes>
+                  {/* default path - predict view */}
+                  <Route path="/" element={<Navigate to="/predict" replace/>}/> 
+                  <Route path="*" element={<Navigate to="/predict" replace />} />
                   
-                />}
-                {activeView === "predict" && 
-                  <PredictView 
-                    activeView={activeView}
-                    subjectType={subjectType}
-                    setSubjectType={setSubjectType}                  
-                />}
-                {activeView === "review" && 
-                  <ReviewView
-                    activeWeek={activeWeek}
-                    setActiveWeek={setActiveWeek}
-                    subjectType={subjectType}
-                    setSubjectType={setSubjectType}
-                  />}
-                {activeView === "boards" && 
-                  <BoardsView 
-                    activeView={activeView}
-                    activeWeek={activeWeek}
-                    setActiveWeek={setActiveWeek}
-                    activeLens={activeLens} 
-                    setActiveLens={setActiveLens}
-                    subjectType={subjectType}
-                    setSubjectType={setSubjectType}
-                  />}
-              </ContentContainer>          
+                  <Route path='/news' element={<NewsView />}/>
+                  <Route path='/stats' element={<StatsView />}/>
+                  <Route 
+                    path='/predict' 
+                    element={
+                      <PredictView
+                        subjectType={subjectType}
+                        setSubjectType={setSubjectType}
+                      />}
+                  />
+                  <Route 
+                    path='/review' 
+                    element={
+                      <ReviewView
+                        activeWeek={activeWeek}
+                        setActiveWeek={setActiveWeek}
+                        subjectType={subjectType}
+                        setSubjectType={setSubjectType}
+                      />}
+                  />
+                  <Route 
+                    path='/boards' 
+                    element={
+                      <BoardsView 
+                        activeWeek={activeWeek}
+                        setActiveWeek={setActiveWeek}
+                        activeLens={activeLens} 
+                        setActiveLens={setActiveLens}
+                        subjectType={subjectType}
+                        setSubjectType={setSubjectType}
+                      />}
+                  />                  
+                </Routes>
+              </ContentContainer>      
               
               <FooterNav 
-                activeView={activeView} 
-                setActiveView={setActiveView} 
                 handleSubmit={handleSubmit}
               />
             </AppContainer>
