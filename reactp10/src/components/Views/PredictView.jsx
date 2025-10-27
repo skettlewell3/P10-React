@@ -1,5 +1,5 @@
 import {CURRENT_WEEK} from '../../config';
-import FixtureList from "../Fixtures/FixtureList";
+import PredictList from "../Fixtures/PredictList";
 import ViewTitleContainer from "../ViewTitleContainer";
 
 export default function PredictView( {activeView, subjectType, setSubjectType} ) {
@@ -11,7 +11,7 @@ export default function PredictView( {activeView, subjectType, setSubjectType} )
                 setSubjectType={setSubjectType}
                 activeView={activeView}
             />  
-            <FixtureList gameweek={CURRENT_WEEK} mode="form" />   
+            <PredictList gameweek={CURRENT_WEEK} mode="form" />   
         </>
     )
 }
