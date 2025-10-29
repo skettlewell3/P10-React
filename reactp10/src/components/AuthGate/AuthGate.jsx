@@ -1,33 +1,12 @@
-import { useState, useEffect } from 'react'
 import BetaLoginForm from './BetaLoginForm';
+import { useUser } from '../../hooks/useUser';
 
-export default function AuthGate( { children }) {
-    const [user, setUser] = useState(null);
+export default function AuthGate({ children }) {
+  const { user, handleLogin } = useUser();
 
-    useEffect(() => {
-        const savedUser = localStorage.getItem('user');
-        if (savedUser) setUser(JSON.parse(savedUser));
-    }, []);
+  if (!user) {
+    return <BetaLoginForm onLogIn={handleLogin} />;
+  }
 
-    const handleLogin = (user) => {
-        setUser(user);
-        localStorage.setItem("user", JSON.stringify(user));
-    };
-
-    const handleLogout = () => {
-        setUser(null);
-        localStorage.removeItem("user");
-    }
-
-    if (!user) {
-        return (
-            <BetaLoginForm onLogIn={handleLogin} />      
-        )
-    }
-
-    return (
-        <>
-            {children(user, handleLogout)}
-        </>
-    );
+  return <>{children}</>;
 }

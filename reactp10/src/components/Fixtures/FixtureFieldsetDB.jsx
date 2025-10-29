@@ -1,11 +1,11 @@
 import { classifyTeamName } from "../../utils/utils";
 
 export default function FixtureFieldsetDB( { fixture, mode} ) {
-    const { home_team, away_team, home_goals, away_goals } = fixture;
+    const { home_team, home_short, away_short, away_team, home_goals, away_goals } = fixture;
 
     return (
         <fieldset className="match">            
-            <div className={`team home ${classifyTeamName(home_team)}`}>{home_team}</div>
+            <div className={`team home ${classifyTeamName(home_team)}`} title={home_team}>{home_short}</div>
             {mode === "form" ? (
                 <div className="homePred">
                     <input type="number" 
@@ -29,7 +29,7 @@ export default function FixtureFieldsetDB( { fixture, mode} ) {
             ) : (
                 <div className="awayScore">{away_goals}</div>
             )}
-            <div className={`team away ${classifyTeamName(away_team)}`}>{away_team}</div>
+            <div className={`team away ${classifyTeamName(away_team)}`} title={away_team}>{away_short}</div>
         </fieldset>
     )
 }

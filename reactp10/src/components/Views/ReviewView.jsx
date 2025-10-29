@@ -1,6 +1,6 @@
 import ViewTitleContainer from "../ViewTitleContainer"
 import GwNav from "../GwNav/GwNav"
-import FixtureListDB from "../Fixtures/FixtureListDB"
+import ReviewList from "../Fixtures/ReviewList"
 
 export default function ReviewView( {activeWeek, setActiveWeek, subjectType, setSubjectType} ) {
     return (
@@ -14,7 +14,7 @@ export default function ReviewView( {activeWeek, setActiveWeek, subjectType, set
             activeWeek={activeWeek}
             setActiveWeek={setActiveWeek}
         />
-        <FixtureListDB 
+        <ReviewList 
             gameweek={activeWeek}
             mode="review"     
         />  
