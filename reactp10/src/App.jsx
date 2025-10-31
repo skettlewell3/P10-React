@@ -1,11 +1,14 @@
 import { UserProvider } from './providers/UserProvider';
 import AppWithUser from './AppWithUser';
+import { DatabaseProvider } from './providers/DatabaseProvider';
 
 function App() {
   return (
-    <UserProvider>
-      <AppWithUser />
-    </UserProvider>
+    <DatabaseProvider>
+      <UserProvider>
+        <AppWithUser />
+      </UserProvider>
+    </DatabaseProvider>
   );
 }
 
