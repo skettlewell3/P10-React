@@ -1,18 +1,23 @@
-export default function FooterCenter({ label, icon, id, activeView, setActiveView, handleSubmit }) {
-  const className = `footerCenter ${activeView.toLowerCase() === label.toLowerCase() ? " footerFocal" : ""}`;
-  
+import { NavLink, useLocation } from "react-router-dom";
+
+export default function FooterCenter({ label, icon, to, handleSubmit }) {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
   return (
-    <button
-      id={id}
-      className={className}
-      onClick={(e) => 
-        activeView.toLowerCase() === label.toLowerCase()
-        ? handleSubmit(e)
-        : setActiveView(label.toLowerCase())
-      }
+    <NavLink
+      to={to}
+      className={`footerCenter ${isActive ? "footerFocal" : ""}`.trim()}
+      onClick={(e) => {
+        if (isActive && handleSubmit) {
+          e.preventDefault(); // don’t navigate, just submit
+          handleSubmit(e);
+        }
+      }}
     >
-      {activeView.toLowerCase() === label.toLowerCase() ? "Submit" : label}
       <img src={icon} alt={label} className="icon" />
-    </button>
+      {isActive ? "Submit" : label}
+    </NavLink>
   );
 }
+

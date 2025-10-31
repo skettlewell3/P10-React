@@ -1,34 +1,15 @@
-export default function FooterLink({ 
-  label, 
-  icon, 
-  id, 
-  activeView, 
-  setActiveView, 
-  disabled = false 
-}) {
+import { NavLink } from "react-router-dom";
 
-  const isActive = activeView.toLowerCase() === label.toLowerCase;
-  
-  const handleClick = () => {
-    if (disabled) return;
-    setActiveView(label.toLowerCase());
-  }
-
-  const className = `
-    footerItem 
-    ${isActive ? "footerFocal" : ""}
-    ${disabled ? "footerDisabled" : ""}
-    `.trim();
-
-    return (
-    <button
-      id={id}
-      className={className}
-      onClick={handleClick} 
-      disabled={disabled}
+export default function FooterLink({ label, icon, to, disabled = false }) {
+  return (
+    <NavLink
+      to={disabled ? "#" : to}
+      className={({ isActive }) =>
+        `footerItem ${isActive ? "footerFocal" : ""} ${disabled ? "footerDisabled" : ""}`.trim()
+      }
     >
       <img src={icon} alt={label} className="icon" />
       {label}
-    </button>
+    </NavLink>
   );
 }
