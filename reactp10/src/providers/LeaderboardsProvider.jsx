@@ -1,36 +1,51 @@
 import { useState, useEffect, useCallback } from "react";
-import { LeaderboardContext } from "../context/LeaderboardContext";
+import { LeaderboardsContext } from "../context/LeaderboardsContext";
 import { useDatabase } from "../hooks/useDatabase";
 
-export function LeaderboardProvider({ children }) {
+export function LeaderboardsProvider({ children }) {
   const { supabase } = useDatabase();
-  const [weeklyLeaderboards, setWeeklyLeaderboards] = useState([]);
+  const [weeklyLeaderboards, setWeeklyLeaderboards] = useState({});
   const [overallLeaderboard, setOverallLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // once-a-day refresh is fine for leaderboards outside live matches
   const REFRESH_INTERVAL = 1000 * 60 * 60 * 24;
 
   const fetchLeaderboards = useCallback(async () => {
     setLoading(true);
 
-    // static weekly leaderboards table
-    const { data: weeklyData, error: weeklyError } = await supabase
-      .from("weekly_leaderboards")
-      .select("*");
+    try {
+      // static weekly leaderboards table
+      const { data: weeklyData, error: weeklyError } = await supabase
+        .from("weekly_user_leaderboard")
+        .select("*");
 
-    if (weeklyError) console.error("Error fetching weekly leaderboards:", weeklyError);
-    else setWeeklyLeaderboards(weeklyData || []);
+      if (weeklyError) throw weeklyError;
 
-    //  overall leaderboard via RPC
-    const { data: overallData, error: overallError } = await supabase.rpc(
-      "get_user_leaderboard",
-      { gw_id: null }
-    );
+      // group the weekly data by gameweek_id for easy lookups
+      const grouped = weeklyData.reduce((acc, row) => {
+        const gw = row.gameweek_id;
+        if (!acc[gw]) acc[gw] = [];
+        acc[gw].push(row);
+        return acc;
+      }, {});
 
-    if (overallError) console.error("Error fetching overall leaderboard:", overallError);
-    else setOverallLeaderboard(overallData || []);
+      setWeeklyLeaderboards(grouped);
 
-    setLoading(false);
+      // overall leaderboard via RPC
+      const { data: overallData, error: overallError } = await supabase.rpc(
+        "get_user_leaderboard",
+        { p_gameweek: null } 
+      );
+
+      if (overallError) throw overallError;
+
+      setOverallLeaderboard(overallData || []);
+    } catch (err) {
+      console.error("Error fetching leaderboards:", err.message);
+    } finally {
+      setLoading(false);
+    }
   }, [supabase]);
 
   useEffect(() => {
@@ -40,15 +55,15 @@ export function LeaderboardProvider({ children }) {
   }, [fetchLeaderboards, REFRESH_INTERVAL]);
 
   return (
-    <LeaderboardContext.Provider
+    <LeaderboardsContext.Provider
       value={{
-        weeklyLeaderboards,
-        overallLeaderboard,
+        weeklyLeaderboards, // object grouped by week id
+        overallLeaderboard, // overall standings
         loading,
         refreshLeaderboards: fetchLeaderboards,
       }}
     >
       {children}
-    </LeaderboardContext.Provider>
+    </LeaderboardsContext.Provider>
   );
 }

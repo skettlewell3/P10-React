@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const LeaderboardContext = createContext(null);
+export const LeaderboardsContext = createContext(null);

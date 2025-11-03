@@ -18,7 +18,7 @@ export function UserProvider({ children }) {
       .from("beta_users")
       .select("*")
       .eq("name", loginData.name)
-      .eq("pin", loginData.pin)
+      .eq("pin_code", loginData.pin)
       .single();
 
     if (error || !data) {

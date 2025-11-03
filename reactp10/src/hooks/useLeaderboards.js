@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { LeaderboardContext } from "../context/LeaderboardContext";
+import { LeaderboardsContext } from "../context/LeaderboardsContext";
 
-export function useLeaderboard() {
-  const context = useContext(LeaderboardContext);
+export function useLeaderboards() {
+  const context = useContext(LeaderboardsContext);
   if (!context) throw new Error("useLeaderboard must be used within LeaderboardProvider");
   return context;
 }

@@ -14,8 +14,7 @@ import ReviewView from './components/Views/ReviewView';
 import BoardsView from './components/Views/BoardsView';
 
 import { CURRENT_WEEK } from './config';
-import AuthGate from './components/AuthGate/AuthGate';
-import { FixtureProvider } from './components/Fixtures/FixtureProvider';
+import { GameDataProvider } from './providers/GameDataProvider'
 import { useUser } from './hooks/useUser';
 
 export default function AppWithUser() {
@@ -32,61 +31,55 @@ export default function AppWithUser() {
   };
 
   return (
-    <AuthGate>
-      <FixtureProvider>
-        <AppContainer>
-          <HeaderProfile 
-            user={user} 
-            onLogout={handleLogout}
-            overallRanking={1}
-            overallScore={1000}
-          />
-
-          <ContentContainer>
-            <Routes>
-              {/* default path - predict view */}
-              <Route path="/" element={<Navigate to="/predict" replace />} /> 
-              <Route path="*" element={<Navigate to="/predict" replace />} />
-
-              <Route path='/news' element={<NewsView />} />
-              <Route path='/stats' element={<StatsView />} />
-
-              <Route 
-                path='/predict' 
-                element={
-                  <PredictView
-                    subjectType={subjectType}
-                    setSubjectType={setSubjectType}
-                  />}
-              />
-              <Route 
-                path='/review' 
-                element={
-                  <ReviewView
-                    activeWeek={activeWeek}
-                    setActiveWeek={setActiveWeek}
-                    subjectType={subjectType}
-                    setSubjectType={setSubjectType}
-                  />}
-              />
-              <Route 
-                path='/boards' 
-                element={
-                  <BoardsView 
-                    activeWeek={activeWeek}
-                    setActiveWeek={setActiveWeek}
-                    activeLens={activeLens} 
-                    setActiveLens={setActiveLens}
-                    subjectType={subjectType}
-                    setSubjectType={setSubjectType}
-                  />}
-              />
-            </Routes>
-          </ContentContainer>
-
-          <FooterNav handleSubmit={handleSubmit} />
-        </AppContainer>
-      </FixtureProvider>
-    </AuthGate>
+    <GameDataProvider>
+      <AppContainer>
+        <HeaderProfile 
+          user={user} 
+          onLogout={handleLogout}
+          overallRanking={1}
+          overallScore={1000}
+        />
+        <ContentContainer>
+          <Routes>
+            {/* default path - predict view */}
+            <Route path="/" element={<Navigate to="/predict" replace />} /> 
+            <Route path="*" element={<Navigate to="/predict" replace />} />
+            <Route path='/news' element={<NewsView />} />
+            <Route path='/stats' element={<StatsView />} />
+            <Route 
+              path='/predict' 
+              element={
+                <PredictView
+                  subjectType={subjectType}
+                  setSubjectType={setSubjectType}
+                />}
+            />
+            <Route 
+              path='/review' 
+              element={
+                <ReviewView
+                  activeWeek={activeWeek}
+                  setActiveWeek={setActiveWeek}
+                  subjectType={subjectType}
+                  setSubjectType={setSubjectType}
+                />}
+            />
+            <Route 
+              path='/boards' 
+              element={
+                <BoardsView 
+                  activeWeek={activeWeek}
+                  setActiveWeek={setActiveWeek}
+                  activeLens={activeLens} 
+                  setActiveLens={setActiveLens}
+                  subjectType={subjectType}
+                  setSubjectType={setSubjectType}
+                />}
+            />
+          </Routes>
+        </ContentContainer>
+        <FooterNav handleSubmit={handleSubmit} />
+      </AppContainer>
+    </GameDataProvider>
   );
 }

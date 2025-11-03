@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { FixtureContext } from '../../context/FixturesContext';
-import { useDatabase } from '../../hooks/useDatabase';
+import { FixtureContext } from '../context/FixturesContext';
+import { useDatabase } from '../hooks/useDatabase';
 
-export function FixtureProvider({ children }) {
+export function FixturesProvider({ children }) {
     const { supabase } = useDatabase();
     const [fixtures, setFixtures] = useState([]);
     const [loading, setLoading] = useState(true);
