@@ -36,8 +36,6 @@ export default function AppWithUser() {
         <HeaderProfile 
           user={user} 
           onLogout={handleLogout}
-          overallRanking={1}
-          overallScore={1000}
         />
         <ContentContainer>
           <Routes>
