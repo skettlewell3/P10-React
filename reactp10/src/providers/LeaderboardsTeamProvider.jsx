@@ -2,10 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import { LeaderboardsContext } from "../context/LeaderboardsContext";
 import { useDatabase } from "../hooks/useDatabase";
 
-export function LeaderboardsProvider({ children }) {
+export function LeaderboardsTeamProvider({ children }) {
   const { supabase } = useDatabase();
-  const [weeklyLeaderboards, setWeeklyLeaderboards] = useState({});
-  const [overallLeaderboard, setOverallLeaderboard] = useState([]);
+  const [weeklyTeamLeaderboards, setWeeklyTeamLeaderboards] = useState({});
+  const [overallTeamLeaderboard, setOverallTeamLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // once-a-day refresh is fine for leaderboards outside live matches
@@ -17,7 +17,7 @@ export function LeaderboardsProvider({ children }) {
     try {
       // static weekly user leaderboards table
       const { data: weeklyData, error: weeklyError } = await supabase
-        .from("weekly_user_leaderboard")
+        .from("weekly_team_leaderboard")
         .select("*");
 
       if (weeklyError) throw weeklyError;
@@ -30,17 +30,17 @@ export function LeaderboardsProvider({ children }) {
         return acc;
       }, {});
 
-      setWeeklyLeaderboards(grouped);
+      setWeeklyTeamLeaderboards(grouped);
 
       // overall user leaderboard via RPC
       const { data: overallData, error: overallError } = await supabase.rpc(
-        "get_user_leaderboard",
+        "get_team_leaderboard",
         { p_gameweek: null } 
       );
 
       if (overallError) throw overallError;
 
-      setOverallLeaderboard(overallData || []);
+      setOverallTeamLeaderboard(overallData || []);
     } catch (err) {
       console.error("Error fetching leaderboards:", err.message);
     } finally {
@@ -57,8 +57,8 @@ export function LeaderboardsProvider({ children }) {
   return (
     <LeaderboardsContext.Provider
       value={{
-        weeklyLeaderboards, // object grouped by week id
-        overallLeaderboard, // overall standings
+        weeklyTeamLeaderboards, // object grouped by week id
+        overallTeamLeaderboard, // overall standings
         loading,
         refreshLeaderboards: fetchLeaderboards,
       }}
