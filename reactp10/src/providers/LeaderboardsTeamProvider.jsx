@@ -1,24 +1,26 @@
 import { useState, useEffect, useCallback } from "react";
-import { LeaderboardsContext } from "../context/LeaderboardsContext";
+import { LeaderboardsTeamContext } from "../context/LeaderboardsTeamContext";
 import { useDatabase } from "../hooks/useDatabase";
 
 export function LeaderboardsTeamProvider({ children }) {
   const { supabase } = useDatabase();
   const [weeklyTeamLeaderboards, setWeeklyTeamLeaderboards] = useState({});
   const [overallTeamLeaderboard, setOverallTeamLeaderboard] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [teamLoading, setTeamLoading] = useState(true);
 
   // once-a-day refresh is fine for leaderboards outside live matches
   const REFRESH_INTERVAL = 1000 * 60 * 60 * 24;
 
   const fetchLeaderboards = useCallback(async () => {
-    setLoading(true);
+    setTeamLoading(true);
 
     try {
       // static weekly user leaderboards table
       const { data: weeklyData, error: weeklyError } = await supabase
-        .from("weekly_team_leaderboard")
-        .select("*");
+        .from("weekly_club_leaderboard")
+        .select("*")
+        .order("gameweek_id", { ascending:true })
+        .order("rank_position", { ascending:true });
 
       if (weeklyError) throw weeklyError;
 
@@ -34,7 +36,7 @@ export function LeaderboardsTeamProvider({ children }) {
 
       // overall user leaderboard via RPC
       const { data: overallData, error: overallError } = await supabase.rpc(
-        "get_team_leaderboard",
+        "get_club_leaderboard",
         { p_gameweek: null } 
       );
 
@@ -44,7 +46,7 @@ export function LeaderboardsTeamProvider({ children }) {
     } catch (err) {
       console.error("Error fetching leaderboards:", err.message);
     } finally {
-      setLoading(false);
+      setTeamLoading(false);
     }
   }, [supabase]);
 
@@ -55,15 +57,15 @@ export function LeaderboardsTeamProvider({ children }) {
   }, [fetchLeaderboards, REFRESH_INTERVAL]);
 
   return (
-    <LeaderboardsContext.Provider
+    <LeaderboardsTeamContext.Provider
       value={{
         weeklyTeamLeaderboards, // object grouped by week id
         overallTeamLeaderboard, // overall standings
-        loading,
-        refreshLeaderboards: fetchLeaderboards,
+        teamLoading,
+        refreshTeamLeaderboards: fetchLeaderboards,
       }}
     >
       {children}
-    </LeaderboardsContext.Provider>
+    </LeaderboardsTeamContext.Provider>
   );
 }

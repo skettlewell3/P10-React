@@ -1,24 +1,27 @@
 import { useState, useEffect, useCallback } from "react";
-import { LeaderboardsContext } from "../context/LeaderboardsContext";
+import { LeaderboardsUserContext } from "../context/LeaderboardsUserContext";
 import { useDatabase } from "../hooks/useDatabase";
 
 export function LeaderboardsUserProvider({ children }) {
   const { supabase } = useDatabase();
   const [weeklyUserLeaderboards, setWeeklyUserLeaderboards] = useState({});
   const [overallUserLeaderboard, setOverallUserLeaderboard] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [userLoading, setUserLoading] = useState(true);
 
   // once-a-day refresh is fine for leaderboards outside live matches
   const REFRESH_INTERVAL = 1000 * 60 * 60 * 24;
 
   const fetchLeaderboards = useCallback(async () => {
-    setLoading(true);
+    setUserLoading(true);
 
     try {
       // static weekly user leaderboards table
       const { data: weeklyData, error: weeklyError } = await supabase
         .from("weekly_user_leaderboard")
-        .select("*");
+        .select("*")
+        .order("gameweek_id", { ascending:true })
+        .order("rank_position", { ascending:true });
+
 
       if (weeklyError) throw weeklyError;
 
@@ -44,7 +47,7 @@ export function LeaderboardsUserProvider({ children }) {
     } catch (err) {
       console.error("Error fetching leaderboards:", err.message);
     } finally {
-      setLoading(false);
+      setUserLoading(false);
     }
   }, [supabase]);
 
@@ -55,15 +58,15 @@ export function LeaderboardsUserProvider({ children }) {
   }, [fetchLeaderboards, REFRESH_INTERVAL]);
 
   return (
-    <LeaderboardsContext.Provider
+    <LeaderboardsUserContext.Provider
       value={{
         weeklyUserLeaderboards, // object grouped by week id
         overallUserLeaderboard, // overall standings
-        loading,
-        refreshLeaderboards: fetchLeaderboards,
+        userLoading,
+        refreshUserLeaderboards: fetchLeaderboards,
       }}
     >
       {children}
-    </LeaderboardsContext.Provider>
+    </LeaderboardsUserContext.Provider>
   );
 }

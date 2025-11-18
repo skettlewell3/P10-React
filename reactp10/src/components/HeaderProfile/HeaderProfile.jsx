@@ -1,11 +1,11 @@
 import PlayerCard from "./PlayerCard";
 import AppDropdown from "./AppDropdown";
-import { useLeaderboards } from "../../hooks/useLeaderboards";
+import { useLeaderboardsUser } from "../../hooks/useLeaderboardsUser";
 
 export default function HeaderProfile({ user, onLogout }) {
-    const { overallLeaderboard, loading } = useLeaderboards();
+    const { overallUserLeaderboard, loading } = useLeaderboardsUser();
 
-    const userStats = overallLeaderboard.find((row) => row.user_id === user?.user_id);
+    const userStats = overallUserLeaderboard.find((row) => row.user_id === user?.user_id);
 
     const overallRanking = loading ? "-" : userStats?.rank_position ?? "-";
     

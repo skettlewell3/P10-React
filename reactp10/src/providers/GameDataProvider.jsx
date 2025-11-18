@@ -1,14 +1,14 @@
 import { FixturesProvider } from './FixturesProvider';
 import { PredictionsProvider } from './PredictionsProvider';
-import { LeaderboardsProvider } from './LeaderboardsProvider';
+import { LeaderboardsRootProvider } from './LeaderboardsRootProvider';
 
 export function GameDataProvider({ children }) {
     return (
         <FixturesProvider>
             <PredictionsProvider>
-                <LeaderboardsProvider>
+                <LeaderboardsRootProvider>
                     {children}
-                </LeaderboardsProvider>
+                </LeaderboardsRootProvider>
             </PredictionsProvider>
         </FixturesProvider>
     );
