@@ -8,7 +8,7 @@ export function LeaderboardsTeamProvider({ children }) {
   const [overallTeamLeaderboard, setOverallTeamLeaderboard] = useState([]);
   const [teamLoading, setTeamLoading] = useState(true);
 
-  // once-a-day refresh is fine for leaderboards outside live matches
+  // once-a-day refresh for leaderboards outside live matches
   const REFRESH_INTERVAL = 1000 * 60 * 60 * 24;
 
   const fetchLeaderboards = useCallback(async () => {
