@@ -21,7 +21,7 @@ export default function PredictList({ gameweek, mode }) {
     const formData = new FormData(form);
 
     const payload = filteredFixtures.map(fixture => ({
-      user_id: user.id,
+      user_id: user.user_id,
       fixture_id: fixture.fixture_id,
       pred_home_goals: parseInt(formData.get(fixture.home_team)) || 0,
       pred_away_goals: parseInt(formData.get(fixture.away_team)) || 0

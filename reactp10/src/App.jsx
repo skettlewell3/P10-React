@@ -1,11 +1,17 @@
 import { UserProvider } from './providers/UserProvider';
-import AppWithUser from './AppWithUser';
+import { DatabaseProvider } from './providers/DatabaseProvider';
+import  AuthGate  from './components/AuthGate/AuthGate';
+import  AppWithUser  from './AppWithUser';
 
 function App() {
   return (
-    <UserProvider>
-      <AppWithUser />
-    </UserProvider>
+    <DatabaseProvider>
+      <UserProvider>
+        <AuthGate>
+          <AppWithUser />
+        </AuthGate>
+      </UserProvider>
+    </DatabaseProvider>
   );
 }
 
