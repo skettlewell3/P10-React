@@ -1,6 +1,6 @@
 import FixtureFieldsetDB from "./FixtureFieldsetDB";
 
-export default function FixturesCard( {day, ko, fixtures, mode} ){
+export default function FixturesCard( { day, ko, fixtures, mode } ){
 
     return (
         <div className="fixturesCard">

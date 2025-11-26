@@ -11,7 +11,11 @@ export default function PredictView( {activeView, subjectType, setSubjectType} )
                 setSubjectType={setSubjectType}
                 activeView={activeView}
             />  
-            <PredictList gameweek={CURRENT_WEEK} mode="form" />   
+            <PredictList 
+                gameweek={CURRENT_WEEK} 
+                mode="form" 
+                subjectType={subjectType}
+            />   
         </>
     )
 }

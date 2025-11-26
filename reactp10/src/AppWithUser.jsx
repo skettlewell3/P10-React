@@ -31,7 +31,7 @@ export default function AppWithUser() {
   };
 
   return (
-    <GameDataProvider>
+    <GameDataProvider userId={user?.user_id}>
       <AppContainer>
         <HeaderProfile 
           user={user} 

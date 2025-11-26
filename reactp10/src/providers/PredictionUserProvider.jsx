@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { PredictionsUserContext } from "../context/PredictionsUserContext";
 import { useDatabase } from "../hooks/useDatabase";
 
@@ -7,32 +7,35 @@ export function PredictionUserProvider({ userId, children }) {
   const [userPredictions, setUserPredictions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchUserPredictions = useCallback(
-    async (fixtureId) => {
-      if (!fixtureId || !userId) return;
+  useEffect(() => {
+    if (!userId || !supabase) return;
+
+    async function loadUserPredictions() {
       setLoading(true);
 
       try {
-        const { data, error } = await supabase.rpc("get_user_previews", {
-          p_fixture_id: fixtureId,
-          p_user_id: userId
+        const { data, error } = await supabase.rpc("get_user_previews_all", {
+          p_user_id: userId,
         });
 
         if (error) throw error;
+
         setUserPredictions(data || []);
+        console.log('UserDataProvider:', data);
       } catch (err) {
-        console.error("Error fetching user predictions:", err.message);
+        console.error("USER PROVIDER ERROR:", err.message);
+        setUserPredictions([]);
       } finally {
         setLoading(false);
       }
-    },
-    [supabase, userId]
-  );
+    }
+
+    loadUserPredictions();
+  }, [supabase, userId]);
+
 
   return (
-    <PredictionsUserContext.Provider
-      value={{ userPredictions, loading, fetchUserPredictions }}
-    >
+    <PredictionsUserContext.Provider value={{ userPredictions, loading }}>
       {children}
     </PredictionsUserContext.Provider>
   );

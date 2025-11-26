@@ -1,1 +1,1 @@
-export const CURRENT_WEEK = 12;
+export const CURRENT_WEEK = 13;

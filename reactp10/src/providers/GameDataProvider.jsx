@@ -2,10 +2,10 @@ import { FixturesProvider } from './FixturesProvider';
 import { PredictionRootProvider } from './PredictionRootProvider';
 import { LeaderboardsRootProvider } from './LeaderboardsRootProvider';
 
-export function GameDataProvider({ children }) {
+export function GameDataProvider({ userId, children }) {
     return (
         <FixturesProvider>
-            <PredictionRootProvider>
+            <PredictionRootProvider userId={userId}>
                 <LeaderboardsRootProvider>
                     {children}
                 </LeaderboardsRootProvider>
