@@ -21,7 +21,7 @@ export function PredictionUserProvider({ userId, children }) {
         if (error) throw error;
 
         setUserPredictions(data || []);
-        console.log('UserDataProvider:', data);
+        // console.log('UserDataProvider:', data);
       } catch (err) {
         console.error("USER PROVIDER ERROR:", err.message);
         setUserPredictions([]);
