@@ -1,8 +1,6 @@
-import { useGameweek } from "../../hooks/useGameweeks"
+import { CURRENT_WEEK } from "../../config";
 
 export default function GwNav( {activeWeek, setActiveWeek} ) {
-    const { currentWeek, currentGwStatus } = useGameweek();
-    console.log(currentWeek, currentGwStatus)
 
     const handlePrevWeek = () => {
         setActiveWeek(activeWeek => activeWeek - 1);
@@ -31,11 +29,7 @@ export default function GwNav( {activeWeek, setActiveWeek} ) {
                 id="nextWeek" 
                 className="nav-arrow"
                 onClick={handleNextWeek}
-                disabled={
-                    activeWeek >= (currentGwStatus === "live"
-                        ? currentWeek 
-                        : currentWeek - 1)
-                }
+                disabled={activeWeek >= CURRENT_WEEK - 1}
             >
                 <svg viewBox="0 0 24 24" className="arrow-icon" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>

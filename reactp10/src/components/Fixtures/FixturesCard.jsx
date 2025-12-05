@@ -1,4 +1,5 @@
 import FixtureFieldsetDB from "./FixtureFieldsetDB";
+import PredictPreviews from "./PredictPreviews";
 
 export default function FixturesCard( { day, ko, fixtures, mode } ){
 
@@ -13,6 +14,7 @@ export default function FixturesCard( { day, ko, fixtures, mode } ){
                     key={fixture.fixture_id}
                     fixture={fixture}
                     mode={mode}
+                    toggledContent={<PredictPreviews />}
                 />
             ))}
         </div>

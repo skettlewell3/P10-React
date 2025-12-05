@@ -17,7 +17,8 @@ export function PredictionClubProvider({ userId, children }) {
         const { data, error } = await supabase.rpc("get_club_previews_all", { 
           p_user_id: userId 
         });
-
+        
+        console.log("Club previews RPC data:", data, error);
         if (error) throw error;
 
         setClubPredictions(data || []);
@@ -31,6 +32,9 @@ export function PredictionClubProvider({ userId, children }) {
 
     loadClubPredictions();
   }, [supabase, userId]);
+
+  
+
 
   return (
     <PredictionsClubContext.Provider value={{ clubPredictions, loading }}>
