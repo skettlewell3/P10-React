@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { usePredictionsUser } from "../../hooks/usePredictionsUser";
 import { classifyTeamName } from "../../utils/utils";
 
@@ -22,7 +22,7 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
   const [ expanded, setExpanded ] = useState(false);
 
   const handleToggle = (e) => {
-    if (e.target.classList.contains('team')) return;
+    if (e.target.classList.contains('team') || e.target.classList.contains('pred') ) return;
     setExpanded(prev => !prev);
   }
 
@@ -76,7 +76,7 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
 
       {expanded && toggledContent && (
         <div className="fieldsetToggledContainer">
-          {toggledContent}
+          {React.cloneElement(toggledContent, { fixture_id} )}
         </div>
       )}
 
