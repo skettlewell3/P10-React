@@ -2,6 +2,7 @@ import { useGameweek } from "../../hooks/useGameweeks"
 
 export default function GwNav( {activeWeek, setActiveWeek} ) {
     const { currentWeek, currentGwStatus } = useGameweek();
+    console.log(currentWeek, currentGwStatus)
 
     const handlePrevWeek = () => {
         setActiveWeek(activeWeek => activeWeek - 1);
