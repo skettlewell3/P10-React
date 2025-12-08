@@ -3,7 +3,7 @@ import { ScoringClubContext } from "../context/ScoringClubContext";
 import { useDatabase } from "../hooks/useDatabase";
 
 
-export function ScoringUserProvider({ userId, children }) {
+export function ScoringClubProvider({ userId, children }) {
     const { supabase } = useDatabase();
     const [clubScoring, setClubScoring] = useState([]);
     const [loading, setLoading] = useState(true);
