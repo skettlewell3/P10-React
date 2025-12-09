@@ -1,5 +1,6 @@
 import { useFixtures } from '../../hooks/useFixtures';
 import FixtureFieldsetDB from './FixtureFieldsetDB';
+import ScoringBreakdownContainer from './ScoringBreakdownContainer';
 
 export default function ReviewList({ gameweek }) {
     const { fixtures, loading } = useFixtures();
@@ -15,6 +16,7 @@ export default function ReviewList({ gameweek }) {
                     key={fixture.fixture_id}
                     fixture={fixture}
                     mode='result'
+                    toggledContent={<ScoringBreakdownContainer />}
                 />
             ))}
         </div>

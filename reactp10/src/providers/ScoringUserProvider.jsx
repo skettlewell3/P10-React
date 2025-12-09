@@ -26,7 +26,7 @@ export function ScoringUserProvider({ userId, children }) {
                 if (error) throw error;
 
                 setUserScoring(data || []);
-                //console.log('UserScoringProvider:', data);
+                console.log('UserScoringProvider:', data);
             } catch (err) {
                 console.error("USER SCORING PROVIDER ERROR:", err.message);
                 setUserScoring([]);

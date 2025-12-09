@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ScoringUserContext } from "../context/ScoringUserContext";
 
-export function useSCoringUser() {
+export function useScoringUser() {
     const ctx = useContext(ScoringUserContext);
     if (!ctx) throw new Error("useScoringUser must be used inside ScoringUserProvider");
 
