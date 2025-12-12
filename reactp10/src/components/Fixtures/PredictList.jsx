@@ -44,7 +44,7 @@ export default function PredictList({ gameweek, currentGwStatus }) {
 
     const { error } = await supabase
       .from('user_predictions')
-      .upsert(payload, { onConflict: ['user_id', 'fixture_id'] });
+      .upsert(payload, { onConflict: 'user_id,fixture_id' });
 
     if (error) console.error(error);
     else alert('Predictions saved!');
