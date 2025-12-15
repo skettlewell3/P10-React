@@ -16,6 +16,7 @@ export default function ReviewView( {activeWeek, setActiveWeek, subjectType, set
         />
         <ReviewList 
             gameweek={activeWeek}
+            subjectType={subjectType}
             mode="review"     
         />  
         </>

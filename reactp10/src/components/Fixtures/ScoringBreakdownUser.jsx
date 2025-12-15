@@ -1,7 +1,7 @@
 import { useScoringUser } from "../../hooks/useScoringUser";
 import ScoringBreakdownHeader from "./ScoringBreakdownHeader";
 
-export default function ScoringBreakdownUser({ fixture_id, club_id, activeTab }) {
+export default function ScoringBreakdownUser({ fixture_id, club_id, activeSubject }) {
     const { userScoring } = useScoringUser();
 
     const rows = userScoring.filter(r => 
@@ -11,7 +11,7 @@ export default function ScoringBreakdownUser({ fixture_id, club_id, activeTab })
     return (
         <>
         <ScoringBreakdownHeader
-            activeTab={activeTab}
+            activeSubject={activeSubject}
         />
 
         {rows.map(row => (

@@ -3,7 +3,7 @@ import FixturesCard from './FixturesCard';
 import { useUser } from '../../hooks/useUser.js';
 import { supabase } from '../../supbaseClient.js';
 
-export default function PredictList({ gameweek, currentGwStatus }) {
+export default function PredictList({ gameweek, currentGwStatus, subjectType }) {
   const { user } = useUser();
   const { fixtures, loading } = useFixtures();
 
@@ -63,6 +63,7 @@ export default function PredictList({ gameweek, currentGwStatus }) {
             ko={ko}
             fixtures={fixtures}
             mode={mode}
+            subjectType={subjectType}
           />
         );
       })}

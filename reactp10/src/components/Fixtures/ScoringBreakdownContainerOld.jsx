@@ -3,9 +3,17 @@ import { useScoringClub } from "../../hooks/useScoringClub";
 import ScoringBreakdownClub from "./ScoringBreakdownClub";
 import ScoringBreakdownUser from "./ScoringBreakdownUser";
 
-export default function ScoringBreakdownContainer({ fixture_id, subjectType }) {
+export default function ScoringBreakdownContainerOld({ fixture_id }) {
+    const [activeTab, setActiveTab] = useState("club");
     const [selectedClub, setSelectedClub] = useState(null);
+
     const { clubScoring } = useScoringClub();
+
+    useEffect(() => { 
+        if (clubScoring.length === 0) {
+            setActiveTab("users");
+        }
+    }, [clubScoring])
 
     useEffect(() => {
         if (!selectedClub && clubScoring.length > 0) {
@@ -15,20 +23,25 @@ export default function ScoringBreakdownContainer({ fixture_id, subjectType }) {
 
     return (
         <div className="scoringBreakdownContainer">
+            <div className="breakdownTabs">
+                <button onClick={() => setActiveTab("club")}>Clubs</button>
+                <button onClick={() => setActiveTab("users")}>Users</button>
+            </div>
             <div className="breakdownContent">
-                {subjectType === "club" && (
+                {activeTab === "club" && (
                     <ScoringBreakdownClub  
                         fixture_id={fixture_id}
+                        onSelectClub={setSelectedClub}
                         selectedClub={selectedClub}
-                        activeSubject={subjectType}
+                        activeTab={activeTab}
                     />
                 )}
 
-                {subjectType === "user" && selectedClub && (
+                {activeTab === "users" && selectedClub && (
                     <ScoringBreakdownUser
                         fixture_id={fixture_id}
                         club_id={selectedClub}
-                        activeSubject={subjectType}
+                        activeTab={activeTab}
                     />
                 )}
             </div>
