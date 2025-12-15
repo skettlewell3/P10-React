@@ -1,0 +1,46 @@
+import { useState, useEffect } from "react";
+import { ScoringClubContext } from "../context/ScoringClubContext";
+import { useDatabase } from "../hooks/useDatabase";
+
+
+export function ScoringClubProvider({ userId, children }) {
+    const { supabase } = useDatabase();
+    const [clubScoring, setClubScoring] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (!userId || !supabase){
+            setClubScoring([]);
+            setLoading(false);
+            return;
+        } 
+
+        async function loadClubScoring() {
+            setLoading(true);
+
+            try {
+                const { data, error } = await supabase.rpc("get_club_scoring_all", {
+                    p_user_id: userId,
+                });
+
+                if (error) throw error;
+
+                setClubScoring(data || []);
+                //console.log('ClubScoringProvider:', data);
+            } catch (err) {
+                console.error("CLUB SCORING PROVIDER ERROR:", err.message);
+                setClubScoring([]);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        loadClubScoring();
+    }, [supabase, userId]);
+
+    return (
+        <ScoringClubContext.Provider value={{ clubScoring, loading}}>
+            {children}
+        </ScoringClubContext.Provider>
+    );
+}

@@ -3,7 +3,7 @@ export default function BoardHeader( {subjectType} ) {
         <div className="boardHead boardAlign ">
             <div >#</div>
             <div id="nameTag">
-                {subjectType === "team" ? "Team ⓘ" : "Player"}
+                {subjectType === "club" ? "Club ⓘ" : "User"}
             </div>
             <div >10s</div>
             <div >R</div>

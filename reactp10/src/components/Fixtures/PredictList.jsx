@@ -3,7 +3,7 @@ import FixturesCard from './FixturesCard';
 import { useUser } from '../../hooks/useUser.js';
 import { supabase } from '../../supbaseClient.js';
 
-export default function PredictList({ gameweek, currentGwStatus }) {
+export default function PredictList({ gameweek, currentGwStatus, subjectType }) {
   const { user } = useUser();
   const { fixtures, loading } = useFixtures();
 
@@ -44,7 +44,7 @@ export default function PredictList({ gameweek, currentGwStatus }) {
 
     const { error } = await supabase
       .from('user_predictions')
-      .upsert(payload, { onConflict: ['user_id', 'fixture_id'] });
+      .upsert(payload, { onConflict: 'user_id,fixture_id' });
 
     if (error) console.error(error);
     else alert('Predictions saved!');
@@ -63,6 +63,7 @@ export default function PredictList({ gameweek, currentGwStatus }) {
             ko={ko}
             fixtures={fixtures}
             mode={mode}
+            subjectType={subjectType}
           />
         );
       })}

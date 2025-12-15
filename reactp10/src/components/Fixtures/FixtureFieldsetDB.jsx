@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { usePredictionsUser } from "../../hooks/usePredictionsUser";
 import { classifyTeamName } from "../../utils/utils";
+import { useUser } from "../../hooks/useUser";
 
 export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
   const { fixture_id, home_team, home_short, away_team, away_short, home_goals, away_goals } = fixture;
+  const { user } = useUser();
 
   const { userPredictions, loading } = usePredictionsUser();
 
@@ -11,13 +13,14 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
   const [awayValue, setAwayValue] = useState('');
 
   useEffect(() => {
-    if (loading) return;
+    if (loading || !user) return;
 
-    const prediction = userPredictions.find(p => p.fixture_id === fixture_id);
+    const prediction = userPredictions.find(
+      p => p.fixture_id === fixture_id && p.user_id === user.user_id);
 
     setHomeValue(prediction?.pred_home_goals ?? '');
     setAwayValue(prediction?.pred_away_goals ?? '');
-  }, [fixture_id, userPredictions, loading]);
+  }, [fixture_id, userPredictions, loading, user]);
 
   const [ expanded, setExpanded ] = useState(false);
 
@@ -44,6 +47,7 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
               required
               value={homeValue}
               onChange={(e) => setHomeValue(e.target.value)}
+              disabled={loading}
             />
           </div>
         ) : (
@@ -63,6 +67,7 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
               required
               value={awayValue}
               onChange={(e) => setAwayValue(e.target.value)}
+              disabled={loading}
             />
           </div>
         ) : (

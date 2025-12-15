@@ -8,7 +8,11 @@ export function PredictionUserProvider({ userId, children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!userId || !supabase) return;
+    if (!userId || !supabase) {
+      setUserPredictions([]);
+      setLoading(false);
+      return;
+    }
 
     async function loadUserPredictions() {
       setLoading(true);
