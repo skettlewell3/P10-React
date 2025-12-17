@@ -1,4 +1,4 @@
-import { getSupabaseAdmin } from '../supabaseServer'
+import { getSupabaseAdmin } from '../../src/supbaseServer'
 
 export async function handler(event) {
   const supabaseAdmin = getSupabaseAdmin() 
