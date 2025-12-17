@@ -1,6 +1,8 @@
 import FixtureFieldsetDB from "./FixtureFieldsetDB";
+import PredictPreviews from "./PredictPreviews";
+import ScoringBreakdownContainer from "./ScoringBreakdownContainer";
 
-export default function FixturesCard( { day, ko, fixtures, mode } ){
+export default function FixturesCard( { day, ko, fixtures, mode, subjectType } ){
 
     return (
         <div className="fixturesCard">
@@ -13,6 +15,13 @@ export default function FixturesCard( { day, ko, fixtures, mode } ){
                     key={fixture.fixture_id}
                     fixture={fixture}
                     mode={mode}
+                    toggledContent={
+                        mode === "form" 
+                        ? <PredictPreviews />
+                        : <ScoringBreakdownContainer 
+                            subjectType={subjectType}
+                        />
+                    }
                 />
             ))}
         </div>

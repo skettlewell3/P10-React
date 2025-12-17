@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
-import { useDatabase } from "../hooks/useDatabase"; 
 
 export function UserProvider({ children }) {
-  const { supabase: db } = useDatabase(); // get Supabase client from DatabaseProvider
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -14,19 +12,19 @@ export function UserProvider({ children }) {
   }, []);
 
   const handleLogin = async (loginData) => {
-    const { data, error } = await db
-      .from("beta_users")
-      .select("*")
-      .eq("name", loginData.name)
-      .eq("pin_code", loginData.pin)
-      .single();
+    const res = await fetch("/.netlify/functions/login", {
+      method: "POST",
+      body: JSON.stringify({ name: loginData.name, pin: loginData.pin }),
+    });
 
-    if (error || !data) {
-      throw new Error("Invalid login");
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error?.error || "Invalid login");
     }
 
-    setUser(data);
-    localStorage.setItem("user", JSON.stringify(data));
+    const { user } = await res.json();
+    setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
   };
 
   const handleLogout = () => {

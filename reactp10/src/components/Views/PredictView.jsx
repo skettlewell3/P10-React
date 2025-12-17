@@ -1,20 +1,22 @@
-import {CURRENT_WEEK} from '../../config';
 import PredictList from "../Fixtures/PredictList";
 import ViewTitleContainer from "../ViewTitleContainer";
+import { useGameweek } from '../../hooks/useGameweeks';
 
-export default function PredictView( {activeView, subjectType, setSubjectType} ) {
+export default function PredictView( {activeView, subjectType, setSubjectType, currentGwStatus} ) {
+    const { currentWeek } = useGameweek();
+
     return (
         <>
             <ViewTitleContainer
-                title={`Gameweek: ${CURRENT_WEEK}`}
+                title={`Gameweek: ${currentWeek}`}
                 subjectType={subjectType}
                 setSubjectType={setSubjectType}
                 activeView={activeView}
             />  
             <PredictList 
-                gameweek={CURRENT_WEEK} 
-                mode="form" 
+                gameweek={currentWeek} 
                 subjectType={subjectType}
+                currentGwStatus={currentGwStatus}
             />   
         </>
     )

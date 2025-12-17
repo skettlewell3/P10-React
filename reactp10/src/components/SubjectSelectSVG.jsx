@@ -1,6 +1,6 @@
 export default function SubjectSelectSVG({ subjectType, setSubjectType }) {
     const handleToggle = () => {
-        setSubjectType(subjectType === "user" ? "team" : "user");
+        setSubjectType(subjectType === "user" ? "club" : "user");
     }
         
   return (
@@ -18,7 +18,7 @@ export default function SubjectSelectSVG({ subjectType, setSubjectType }) {
       ) : (
         <img
           src="/assets/svg/team.svg"
-          alt="Team View"
+          alt="Club View"
           className="selectSVG"
         />
       )}

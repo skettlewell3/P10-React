@@ -10,19 +10,13 @@ export function GameweekProvider({children}) {
     const fetchGameweek = useCallback(async () => {
         setIsLoading(true);
 
-        const { data, error } = await supabase
-            .from("gameweeks")
-            .select("*")
-            .in("status", ["submissionsOpen", "live"])
-            .order("gameweek_number", {ascending: true})
-            .limit(1)
-            .single();
+        const { data, error } = await supabase.rpc("get_current_gameweek")
 
         if (error) {
             console.error("Failed to fetch current Gameweek", error);
-        } else {
-            setCurrentWeek(data.gameweek_number);
-            setCurrentGwStatus(data.status);
+        } else if (data && data.length > 0) {
+            setCurrentWeek(data[0].gameweek_number);
+            setCurrentGwStatus(data[0].status);
         }
 
         setIsLoading(false);

@@ -1,0 +1,7 @@
+[build]
+  publish = "src/public"       
+  functions = "netlify/functions"
+
+[dev]
+  functions = "netlify/functions"
+  envFiles = [".env", ".env.functions"]
