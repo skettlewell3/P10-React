@@ -16,12 +16,7 @@ export function LeaderboardsUserProvider({ children }) {
 
     try {
       // static weekly user leaderboards table
-      const { data: weeklyData, error: weeklyError } = await supabase
-        .from("weekly_user_leaderboard")
-        .select("*")
-        .order("gameweek_id", { ascending:true })
-        .order("rank_position", { ascending:true });
-
+      const { data: weeklyData, error: weeklyError } = await supabase.rpc("get_user_weekly_leaderboard");
 
       if (weeklyError) throw weeklyError;
 

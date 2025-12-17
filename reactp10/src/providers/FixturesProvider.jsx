@@ -9,11 +9,14 @@ export function FixturesProvider({ children }) {
 
     useEffect(() => {
         async function fetchFixtures() {
-            const { data, error } = await supabase
-                .from('fixture_provider')
-                .select('*');
-            if (error) console.error('Failed to load fixtures:', error);
-            else setFixtures(data || []);
+            setLoading(true);
+            const { data, error } = await supabase.rpc("get_fixtures")
+            if (error) {
+                console.error('Failed to load fixtures:', error);
+            } else {
+                setFixtures(data || []);
+            } 
+            
             setLoading(false);
         }
 
