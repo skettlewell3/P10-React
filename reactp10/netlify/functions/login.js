@@ -1,6 +1,8 @@
-import { supabaseAdmin } from '../supabaseServer'
+import { getSupabaseAdmin } from '../supabaseServer'
 
 export async function handler(event) {
+  const supabaseAdmin = getSupabaseAdmin() 
+
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" }
   }
@@ -11,10 +13,9 @@ export async function handler(event) {
       return { statusCode: 400, body: JSON.stringify({ error: "Missing credentials" }) }
     }
 
-    // Use supabaseAdmin for secure query
     const { data, error } = await supabaseAdmin
       .from("beta_users")
-      .select("user_id, name") // only necessary fields
+      .select("user_id, name")
       .eq("name", name)
       .eq("pin_code", pin)
       .single()
