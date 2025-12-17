@@ -1,6 +1,8 @@
 [build]
-  publish = "src/public"       
-  functions = "netlify/functions"
+  base = "reactp10"          
+  publish = "dist"           
+  command = "npm run build"
+  functions = "netlify/functions"  
 
 [dev]
   functions = "netlify/functions"
