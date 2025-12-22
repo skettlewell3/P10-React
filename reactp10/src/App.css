@@ -219,12 +219,41 @@
 }
 
 .fixturesCardHeader {
-  display: flex;
-  justify-content: center;
-  gap: 0.5em;
-  padding: 0 1em;
+  position: relative;
+  padding: 0.1em 1em;
   background-color: white;
 }
+
+.fcHeaderCenter {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;  
+}
+
+.fixtureStatus {
+  position: absolute;
+  left: 80%;
+  top: 40%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.fixtureStatus .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.fixtureStatus.green { color: green;}
+.fixtureStatus.amber { color: orange;}
+.fixtureStatus.red { color: blue;}
+
+.fixtureStatus.green .dot { background: green;}
+.fixtureStatus.amber .dot { background: orange;}
+.fixtureStatus.red .dot { background: blue;}
 
 .match {
   display: grid;
