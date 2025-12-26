@@ -25,7 +25,7 @@ export default function AppWithUser() {
 
   const handleSubmit = (e) => {
   e.preventDefault();
-  const form = document.getElementById('fixtures');
+  const form = document.getElementById('predictionForm');
   if (form) form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
   };
 
