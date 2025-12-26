@@ -25,7 +25,12 @@ export default function PredictList({ gameweek, currentGwStatus, subjectType }) 
     e.preventDefault();
     if (!user || loading) return;
 
-    const form = e.target;
+    const form = document.getElementById("predictionForm");
+    if (!form) {
+      console.log("Form not found");
+      return;
+    }
+
     const formData = new FormData(form);
 
     for (const fixture of filteredFixtures) {
@@ -38,8 +43,8 @@ export default function PredictList({ gameweek, currentGwStatus, subjectType }) 
     const payload = filteredFixtures.map(fixture => ({
       user_id: user.user_id,
       fixture_id: fixture.fixture_id,
-      pred_home_goals: parseInt(formData.get(fixture.home_team)),
-      pred_away_goals: parseInt(formData.get(fixture.away_team))
+      pred_home_goals: Number(formData.get(fixture.home_team)),
+      pred_away_goals: Number(formData.get(fixture.away_team))
     }));
 
     const { error } = await supabase
@@ -53,7 +58,7 @@ export default function PredictList({ gameweek, currentGwStatus, subjectType }) 
     
 
   return (
-    <form id="fixtures" onSubmit={handleSubmit}>
+    <form id="predictionForm" onSubmit={handleSubmit}>
       {Object.entries(groupedFixtures).map(([key, fixtures]) => {
         const [day, ko] = key.split("-");
         return (
