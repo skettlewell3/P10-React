@@ -40,19 +40,21 @@ export default function PredictList({ gameweek, currentGwStatus, subjectType }) 
       }
     }
 
-    const payload = filteredFixtures.map(fixture => ({
-      user_id: user.user_id,
-      fixture_id: fixture.fixture_id,
-      pred_home_goals: Number(formData.get(fixture.home_team)),
-      pred_away_goals: Number(formData.get(fixture.away_team))
-    }));
+    for (const fixture of filteredFixtures) {
+      const { error } = await supabase
+        .from('user_predictions')
+        .upsert({
+          user_id: user.user_id,
+          fixture_id: fixture.fixture_id,
+          pred_home_goals: Number(formData.get(fixture.home_team)),
+          pred_away_goals: Number(formData.get(fixture.away_team)),
+          updated_at: new Date().toISOString()
+        }, { onConflict: ['user_id', 'fixture_id'] });
 
-    const { error } = await supabase
-      .from('user_predictions')
-      .upsert(payload, { onConflict: 'user_id,fixture_id' });
+      if (error) console.error(error);
+    }
 
-    if (error) console.error(error);
-    else alert('Predictions saved!');
+    alert('Predictions saved!');
   };
 
     

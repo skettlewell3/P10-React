@@ -25,7 +25,7 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
   const [ expanded, setExpanded ] = useState(false);
 
   const handleToggle = (e) => {
-    if (e.target.classList.contains('team') || e.target.classList.contains('pred') ) return;
+    if (e.target.classList.contains('pred')) return;
     setExpanded(prev => !prev);
   }
 
