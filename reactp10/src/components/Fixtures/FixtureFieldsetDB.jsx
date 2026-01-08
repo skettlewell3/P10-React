@@ -4,7 +4,7 @@ import { classifyTeamName } from "../../utils/utils";
 import { useUser } from "../../hooks/useUser";
 
 export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
-  const { fixture_id, home_team, home_short, away_team, away_short, home_goals, away_goals, fixture_status } = fixture;
+  const { fixture_id, home_team, home_short, away_team, away_short, home_goals, away_goals } = fixture;
   const { user } = useUser();
 
   const { userPredictions, loading } = usePredictionsUser();
@@ -82,8 +82,7 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
       {expanded && toggledContent && (
         <div className="fieldsetToggledContainer">
           {React.cloneElement(toggledContent, { 
-            fixture_id, 
-            fixture_status,
+            fixture_id,
             userPredictions
           })}
         </div>

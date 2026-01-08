@@ -14,10 +14,6 @@ export default function FixturesCard( { day, ko, fixtures, mode, subjectType } )
 
     const statusMeta = statusMap[cardStatus]
 
-
-
-
-
     return (
         <div className="fixturesCard">
             <div className="fixturesCardHeader">
@@ -39,18 +35,18 @@ export default function FixturesCard( { day, ko, fixtures, mode, subjectType } )
 
                 const toggledContent = 
                     mode === 'form'
-                        ? <PredictPreviews /> 
+                        ? <PredictPreviews mode={mode} /> 
                         : isUpcoming 
-                            ? <PredictPreviews />
+                            ? <PredictPreviews mode={mode} />
                             : <ScoringBreakdownContainer subjectType={subjectType} />;
 
                 return (
                     <FixtureFieldsetDB 
-                         key={fixture.fixture_id}
-                         fixture={fixture}
-                         mode={mode}
-                         toggledContent={toggledContent}
-                     />
+                        key={fixture.fixture_id}
+                        fixture={fixture}
+                        mode={mode}
+                        toggledContent={toggledContent}
+                    />
                 )                
             })}
         </div>

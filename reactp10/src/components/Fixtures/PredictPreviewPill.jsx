@@ -16,7 +16,7 @@ export default function PredictPreviewPill({ filteredPredictions, subject }) {
                     name: pred.club_name,
                     homeGoals: pred.club_home_goals,
                     awayGoals: pred.club_away_goals,
-                    isPerfect10: pred.club_name === "Perfect10",
+                    isPerfect10: pred.club_name === "P10",
                     class: "clubPreviewPill"
                 };
 
