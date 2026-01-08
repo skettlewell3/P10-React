@@ -1,7 +1,7 @@
 import { usePredictionsClub } from "../../hooks/usePredictionsClub"
 import PredictPreviewPill from "./PredictPreviewPill";
 
-export default function PredictPreviews({ fixture_id, fixture_status, userPredictions }) {
+export default function PredictPreviews({ fixture_id, userPredictions, mode }) {
     const { clubPredictions, clubLoading } = usePredictionsClub();
 
     if (clubLoading) return <p>Loading</p>;
@@ -13,13 +13,12 @@ export default function PredictPreviews({ fixture_id, fixture_status, userPredic
     const filteredUserPredictions = userPredictions.filter(
         pred => pred.fixture_id === fixture_id
     );
-
-    const userPreviewsVisible = 
-        fixture_status !== "upcoming" && filteredUserPredictions.length > 0;
+    
+    const userPreviewsVisible = mode !== "form";
 
     return (
         <div className="predictPreviewsContainer">
-            <div className="clubPreviews">  
+            <div className="clubPreviews previewContent">  
                 {filteredClubPredictions.length > 0 && (
                     <PredictPreviewPill 
                         filteredPredictions={filteredClubPredictions}
@@ -28,7 +27,7 @@ export default function PredictPreviews({ fixture_id, fixture_status, userPredic
                 )}          
             </div>
             
-            <div className="previewInsights">
+            <div className="previewInsights previewContent">
                 {userPreviewsVisible && (
                     <PredictPreviewPill
                         filteredPredictions={filteredUserPredictions}
