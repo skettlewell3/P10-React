@@ -8,7 +8,7 @@ export async function handler(event) {
   }
 
   try {
-    const { name, pin } = JSON.parse(event.body)
+    const { name, pin } = JSON.parse(event.body || "{}")
     if (!name || !pin) {
       return { statusCode: 400, body: JSON.stringify({ error: "Missing credentials" }) }
     }

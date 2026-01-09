@@ -12,7 +12,8 @@ export default function BoardRow({ subject, businessData, isTeam }) {
         hCorrect, 
         aCorrect, 
         gCorrect, 
-        points
+        points,
+        id
     } = subject;
 
     const [isModalOpen, setIsModalOpen] = useState(false);

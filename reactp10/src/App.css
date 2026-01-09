@@ -244,7 +244,7 @@
 
 .fixtureStatus {
   position: absolute;
-  left: 80%;
+  left: 75%;
   top: 40%;
   transform: translateY(-50%);
   display: flex;
@@ -562,7 +562,6 @@ input[type=number] {
   color: white;
   border-radius: 3px;
   margin-bottom: 0.3em;
-
 }
 
 .boardRow div {
@@ -570,6 +569,8 @@ input[type=number] {
   padding: 0 0.125em;
   border: 1px solid white;
   box-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .hasP10s, .points {
@@ -801,6 +802,72 @@ input[type=number] {
   border-spacing: 1em 0.25em;
   margin-bottom: 1em;
 }
+
+/* STATS VIEW */
+/* predicted league table */
+.leagueTableContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;  /* horizontal scroll on narrow screens */
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  color: var(--blue);
+}
+
+.leagueTableHeader,
+.leagueTableRow {
+  display: flex;
+  align-items: center;
+  padding: 0.1rem 0.1rem;
+  font-size: 0.875rem; 
+  white-space: nowrap; 
+}
+
+.leagueTableHeader {
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.leagueTableRow:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.col {
+  flex-shrink: 0;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.1 0;
+}
+
+.col.pos { width: 10%; }
+.col.team { width: 30%; min-width: 20%; text-align: left; flex-shrink: 1;}
+.col.played,
+.col.wins,
+.col.draws,
+.col.losses,
+.col.gf,
+.col.ga,
+.col.gd {
+  width: 7%;
+}
+.col.pts { width: 10%;}
+
+@media (max-width: 400px) {
+  .col.gf,
+  .col.ga,
+  .col.gd {
+    display: none;
+  }
+}
+
 
 /* Colours */
 

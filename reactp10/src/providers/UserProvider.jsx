@@ -14,6 +14,7 @@ export function UserProvider({ children }) {
   const handleLogin = async (loginData) => {
     const res = await fetch("/.netlify/functions/login", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: loginData.name, pin: loginData.pin }),
     });
 
