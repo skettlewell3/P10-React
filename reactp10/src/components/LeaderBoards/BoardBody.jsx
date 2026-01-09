@@ -18,7 +18,9 @@ export default function BoardBody({ gameweek, activeLens, subjectType, businessD
       weeklyLeaderboards: teamBoards.weeklyTeamLeaderboards,
       overallLeaderboard: teamBoards.overallTeamLeaderboard,
       loading: teamBoards.loading,
-     };
+     }
+  ;
+
   const [boardData, setBoardData] = useState([]);
 
   useEffect(() => {
@@ -39,6 +41,7 @@ export default function BoardBody({ gameweek, activeLens, subjectType, businessD
         aCorrect: entry.correct_away_goals,
         gCorrect: entry.correct_total_goals,
         points: entry.total_points,
+        id: entry.user_id,
       }));
     } else {
       // weekly data (expect weeklyLeaderboards to be an object: { 1: [...], 2: [...] })
@@ -59,6 +62,7 @@ export default function BoardBody({ gameweek, activeLens, subjectType, businessD
         aCorrect: entry.correct_away_goals,
         gCorrect: entry.correct_total_goals,
         points: entry.total_points,
+        id: entry.club_id
       }));
     }
 

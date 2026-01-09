@@ -15,7 +15,6 @@ export default function FooterNav({ handleSubmit }) {
           label="Stats"
           icon="/assets/svg/tabletSVG.svg"
           to="/stats"
-          disabled
         />
         <FooterCenter
           label="Predict"
