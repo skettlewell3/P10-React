@@ -12,7 +12,7 @@ export function GameDataProvider({ userId, children }) {
             <FixturesProvider>
                 <PredictionRootProvider userId={userId}>
                     <ScoringRootProvider userId={userId}>
-                        <StatsRootProvider userId={userId}>
+                        <StatsRootProvider>
                             <LeaderboardsRootProvider>
                                 {children}
                             </LeaderboardsRootProvider>

@@ -514,7 +514,7 @@ input[type=number] {
 #boardContainer {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  /* flex: 1; */
   width: 100%;
   overflow-y: hidden;
   /* padding: 0.5em 0; */
@@ -556,12 +556,13 @@ input[type=number] {
 
 .boardRow {
   line-height: 1.6;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: center;
   border: none;
   color: white;
   border-radius: 3px;
   margin-bottom: 0.3em;
+  min-height: 1.5rem;
 }
 
 .boardRow div {
@@ -579,6 +580,12 @@ input[type=number] {
   font-weight: bold;
 }
 
+.snapshot div {
+  background-color: var(--green);
+  line-height: 1.8;
+  font-size: 0.9rem;
+}
+
 #boardData fieldset:nth-child(odd) div {
   background-color: rgba(28, 44, 91, 0.6);
 }
@@ -589,8 +596,8 @@ input[type=number] {
 }
 
 .first {
-  line-height: 2 !important;
-  font-size: 1rem !important;
+  line-height: 1.8 !important;
+  font-size: .9rem !important;
   font-weight: bold;    
 }
 
@@ -860,13 +867,13 @@ input[type=number] {
 }
 .col.pts { width: 10%;}
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
   .col.gf,
   .col.ga,
   .col.gd {
     display: none;
   }
-}
+} */
 
 
 /* Colours */

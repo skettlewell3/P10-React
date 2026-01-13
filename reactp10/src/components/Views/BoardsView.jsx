@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import GwNav from "../GwNav/GwNav"
 import BoardContainer from "../LeaderBoards/BoardContainer"
+import BoardHeader from "../LeaderBoards/BoardHeader"
+import BoardBody from "../LeaderBoards/BoardBody"
 import ViewTitleContainer from "../ViewTitleContainer"
 
 export default function BoardsView( {
@@ -47,14 +49,19 @@ export default function BoardsView( {
                     setActiveWeek={setActiveWeek}
                 />
             }
-            <BoardContainer 
-                activeWeek={activeWeek}
-                activeLens={activeLens}
-                subjectType={subjectType}
-                businessData={businessData}
-                businessError={businessError}
-            />        
+            <BoardContainer >
+                <BoardHeader 
+                    activeWeek={activeWeek}
+                    activeLens={activeLens}
+                />
+                <BoardBody 
+                    gameweek={activeWeek}
+                    activeLens={activeLens}
+                    subjectType={subjectType}
+                    businessData={businessData}
+                    businessError={businessError}
+                />
+            </BoardContainer>        
         </>
-
     )
 }
