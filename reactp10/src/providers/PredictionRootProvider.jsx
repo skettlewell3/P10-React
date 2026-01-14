@@ -1,11 +1,11 @@
 import { PredictionClubProvider } from "./PredictionClubProvider"
 import { PredictionUserProvider } from "./PredictionUserProvider"
 
-export function PredictionRootProvider({ userId, children }) {
+export function PredictionRootProvider({ children }) {
 
     return (
-        <PredictionUserProvider userId={userId}>
-            <PredictionClubProvider userId={userId}>
+        <PredictionUserProvider>
+            <PredictionClubProvider>
                 {children}
             </PredictionClubProvider>
         </PredictionUserProvider>

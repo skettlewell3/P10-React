@@ -1,46 +1,57 @@
 import { useState, useEffect } from "react";
 import { ScoringUserContext } from "../context/ScoringUserContext";
 import { useDatabase } from "../hooks/useDatabase";
+import { useUser } from "../hooks/useUser";
 
+export function ScoringUserProvider({ children }) {
+  const { supabase } = useDatabase();
+  const { user } = useUser();
 
-export function ScoringUserProvider({ userId, children }) {
-    const { supabase } = useDatabase();
-    const [userScoring, setUserScoring] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [userScoring, setUserScoring] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        if (!userId || !supabase){
-            setUserScoring([]);
-            setLoading(false);
-            return;
-        } 
+  useEffect(() => {
+    if (!user?.user_id || !supabase) {
+      setUserScoring([]);
+      setLoading(false);
+      return;
+    }
 
-        async function loadUserScoring() {
-            setLoading(true);
+    let cancelled = false;
 
-            try {
-                const { data, error } = await supabase.rpc("get_user_scoring_all", {
-                    p_user_id: userId,
-                });
+    async function loadUserScoring() {
+      setLoading(true);
 
-                if (error) throw error;
+      try {
+        const { data, error } = await supabase.rpc(
+          "get_user_scoring_all",
+          { p_user_id: user.user_id }
+        );
 
-                setUserScoring(data || []);
-                console.log('UserScoringProvider:', data);
-            } catch (err) {
-                console.error("USER SCORING PROVIDER ERROR:", err.message);
-                setUserScoring([]);
-            } finally {
-                setLoading(false);
-            }
+        if (error) throw error;
+        if (cancelled) return;
+
+        setUserScoring(data || []);
+      } catch (err) {
+        if (!cancelled) {
+          console.error("USER SCORING PROVIDER ERROR:", err.message);
+          setUserScoring([]);
         }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
 
-        loadUserScoring();
-    }, [supabase, userId]);
+    loadUserScoring();
 
-    return (
-        <ScoringUserContext.Provider value={{ userScoring, loading}}>
-            {children}
-        </ScoringUserContext.Provider>
-    );
+    return () => {
+      cancelled = true;
+    };
+  }, [supabase, user?.user_id]);
+
+  return (
+    <ScoringUserContext.Provider value={{ userScoring, loading }}>
+      {children}
+    </ScoringUserContext.Provider>
+  );
 }

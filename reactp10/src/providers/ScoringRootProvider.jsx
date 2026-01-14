@@ -1,11 +1,11 @@
 import { ScoringClubProvider } from "./ScoringClubProvider"
 import { ScoringUserProvider } from "./ScoringUserProvider";
 
-export function ScoringRootProvider({ userId, children }) {
+export function ScoringRootProvider({ children }) {
 
     return (
-        <ScoringUserProvider userId={userId}>
-            <ScoringClubProvider userId={userId}>
+        <ScoringUserProvider>
+            <ScoringClubProvider>
                 {children}
             </ScoringClubProvider>
         </ScoringUserProvider>

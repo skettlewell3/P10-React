@@ -30,7 +30,7 @@ export default function AppWithUser() {
   };
 
   return (
-    <GameDataProvider userId={user?.user_id}>
+    <GameDataProvider>
       <StateBootstrapper>
         {({ activeWeek, setActiveWeek, currentGwStatus }) => (
           <AppContainer>

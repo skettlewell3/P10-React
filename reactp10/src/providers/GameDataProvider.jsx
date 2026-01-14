@@ -7,13 +7,13 @@ import { StatsRootProvider } from './StatsRootProvider';
 import { UserClubsProvider } from './UserClubsProvider';
 
 
-export function GameDataProvider({ userId, children }) {
+export function GameDataProvider({ children }) {
     return (
         <GameweekProvider>
             <FixturesProvider>
                 <UserClubsProvider>
-                    <PredictionRootProvider userId={userId}>
-                        <ScoringRootProvider userId={userId}>
+                    <PredictionRootProvider>
+                        <ScoringRootProvider>
                             <StatsRootProvider>
                                 <LeaderboardsRootProvider>
                                     {children}
