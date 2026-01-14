@@ -1,46 +1,57 @@
 import { useState, useEffect } from "react";
 import { ScoringClubContext } from "../context/ScoringClubContext";
 import { useDatabase } from "../hooks/useDatabase";
+import { useUser } from "../hooks/useUser";
 
+export function ScoringClubProvider({ children }) {
+  const { supabase } = useDatabase();
+  const { user } = useUser();
 
-export function ScoringClubProvider({ userId, children }) {
-    const { supabase } = useDatabase();
-    const [clubScoring, setClubScoring] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [clubScoring, setClubScoring] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        if (!userId || !supabase){
-            setClubScoring([]);
-            setLoading(false);
-            return;
-        } 
+  useEffect(() => {
+    if (!user?.user_id || !supabase) {
+      setClubScoring([]);
+      setLoading(false);
+      return;
+    }
 
-        async function loadClubScoring() {
-            setLoading(true);
+    let cancelled = false;
 
-            try {
-                const { data, error } = await supabase.rpc("get_club_scoring_all", {
-                    p_user_id: userId,
-                });
+    async function loadClubScoring() {
+      setLoading(true);
 
-                if (error) throw error;
+      try {
+        const { data, error } = await supabase.rpc(
+          "get_club_scoring_all",
+          { p_user_id: user.user_id }
+        );
 
-                setClubScoring(data || []);
-                //console.log('ClubScoringProvider:', data);
-            } catch (err) {
-                console.error("CLUB SCORING PROVIDER ERROR:", err.message);
-                setClubScoring([]);
-            } finally {
-                setLoading(false);
-            }
+        if (error) throw error;
+        if (cancelled) return;
+
+        setClubScoring(data || []);
+      } catch (err) {
+        if (!cancelled) {
+          console.error("CLUB SCORING PROVIDER ERROR:", err.message);
+          setClubScoring([]);
         }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
 
-        loadClubScoring();
-    }, [supabase, userId]);
+    loadClubScoring();
 
-    return (
-        <ScoringClubContext.Provider value={{ clubScoring, loading}}>
-            {children}
-        </ScoringClubContext.Provider>
-    );
+    return () => {
+      cancelled = true;
+    };
+  }, [supabase, user?.user_id]);
+
+  return (
+    <ScoringClubContext.Provider value={{ clubScoring, loading }}>
+      {children}
+    </ScoringClubContext.Provider>
+  );
 }
