@@ -3,7 +3,7 @@ import { usePredictionsUser } from "../../hooks/usePredictionsUser";
 import { classifyTeamName } from "../../utils/utils";
 import { useUser } from "../../hooks/useUser";
 
-export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
+export default function FixtureFieldsetDB({ fixture, mode, toggledContent, canToggle }) {
   const { fixture_id, home_team, home_short, away_team, away_short, home_goals, away_goals } = fixture;
   const { user } = useUser();
 
@@ -25,6 +25,7 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent }) {
   const [ expanded, setExpanded ] = useState(false);
 
   const handleToggle = (e) => {
+    if (!canToggle) return;
     if (e.target.classList.contains('pred')) return;
     setExpanded(prev => !prev);
   }

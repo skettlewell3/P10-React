@@ -2,10 +2,12 @@ import { useFixtures } from '../../hooks/useFixtures.js';
 import FixturesCard from './FixturesCard';
 import { useUser } from '../../hooks/useUser.js';
 import { supabase } from '../../supbaseClient.js';
+import { usePredictionsClub } from '../../hooks/usePredictionsClub.js';
 
 export default function PredictList({ gameweek, currentGwStatus, subjectType }) {
   const { user } = useUser();
   const { fixtures, loading } = useFixtures();
+  const { clubPredictions } = usePredictionsClub();
 
   if (loading) return <p>Loading Fixtures...</p>;
 
@@ -71,6 +73,9 @@ export default function PredictList({ gameweek, currentGwStatus, subjectType }) 
             fixtures={fixtures}
             mode={mode}
             subjectType={subjectType}
+            canToggle={clubPredictions.some(p =>
+              fixtures.some(f => f.fixture_id === p.fixture_id)
+            )}
           />
         );
       })}
