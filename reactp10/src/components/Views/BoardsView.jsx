@@ -47,6 +47,7 @@ export default function BoardsView( {
                 <GwNav
                     activeWeek={activeWeek}
                     setActiveWeek={setActiveWeek}
+                    allowCurrentWeek={false}
                 />
             }
             <BoardContainer >
