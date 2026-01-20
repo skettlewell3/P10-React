@@ -2,7 +2,7 @@ import FixtureFieldsetDB from "./FixtureFieldsetDB";
 import PredictPreviews from "./PredictPreviews";
 import ScoringBreakdownContainer from "./ScoringBreakdownContainer";
 
-export default function FixturesCard( { day, ko, fixtures, mode, subjectType } ){
+export default function FixturesCard( { day, ko, fixtures, mode, subjectType, canToggle } ){
 
     const cardStatus = fixtures[0]?.fixture_status;
 
@@ -46,6 +46,7 @@ export default function FixturesCard( { day, ko, fixtures, mode, subjectType } )
                         fixture={fixture}
                         mode={mode}
                         toggledContent={toggledContent}
+                        canToggle={canToggle}
                     />
                 )                
             })}

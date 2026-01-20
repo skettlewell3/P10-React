@@ -20,6 +20,7 @@ export default function ReviewList({ gameweek, subjectType}) {
                         <ScoringBreakdownContainer 
                             subjectType={subjectType}
                         />}
+                    canToggle={true}
                 />
             ))}
         </div>
