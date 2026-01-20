@@ -18,6 +18,7 @@ export default function ReviewView( {activeWeek, setActiveWeek, subjectType, set
         <BoardSnapshot
             gameweek={activeWeek}
             subjectType={subjectType}
+            allowCurrentWeek={false}
         />
         <ReviewList 
             gameweek={activeWeek}
