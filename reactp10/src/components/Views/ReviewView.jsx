@@ -3,7 +3,7 @@ import GwNav from "../GwNav/GwNav"
 import ReviewList from "../Fixtures/ReviewList"
 import BoardSnapshot from "../LeaderBoards/BoardSnapshot"
 
-export default function ReviewView( {activeWeek, setActiveWeek, subjectType, setSubjectType} ) {
+export default function ReviewView({ activeWeek, setActiveWeek, subjectType, setSubjectType }) {
     return (
         <>
         <ViewTitleContainer 

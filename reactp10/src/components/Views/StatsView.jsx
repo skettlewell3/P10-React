@@ -1,14 +1,18 @@
-import ContentContainer from "../ContentContainer"
-import ViewTitle from "../ViewTitle"
+import ViewTitleContainer from "../ViewTitleContainer"
 import LeagueTableContainer from "../LeagueTable/LeagueTableContainer"
 
-export default function NewsView() {
+export default function StatsView({ subjectType, setSubjectType }) {
     return (
         <>
-        <ViewTitle title="Stats" />        
-        <ContentContainer>
-            <LeagueTableContainer />
-        </ContentContainer>
+        <ViewTitleContainer
+            title="Stats" 
+            subjectType={subjectType}
+            setSubjectType={setSubjectType}
+        />        
+        
+        <LeagueTableContainer 
+            subjectType={subjectType}
+        />        
         </>
     )
 }

@@ -44,7 +44,13 @@ export default function AppWithUser() {
                 <Route path="/" element={<Navigate to="/predict" replace />} /> 
                 <Route path="*" element={<Navigate to="/predict" replace />} />
                 <Route path='/news' element={<NewsView />} />
-                <Route path='/stats' element={<StatsView />} />
+                <Route 
+                  path='/stats' 
+                  element={
+                    <StatsView 
+                      subjectType={subjectType}
+                      setSubjectType={setSubjectType}
+                    />} />
                 <Route 
                   path='/predict' 
                   element={

@@ -1,9 +1,12 @@
+import { StatsClubProvider } from "./StatsClubProvider";
 import { StatsUserProvider } from "./StatsUserProvider";
 
 export function StatsRootProvider({ children }) {
     return (
         <StatsUserProvider>
-            {children}
+            <StatsClubProvider>
+             {children}
+            </StatsClubProvider>
         </StatsUserProvider>
     )
 }

@@ -1,0 +1,1 @@
+export const GLOBAL_CLUB_ID = 'd7aa64d0-b8cd-4b92-b571-e2376ea7e793';

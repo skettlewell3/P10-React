@@ -25,9 +25,9 @@ export function StatsUserLeagueTableProvider({ children }) {
                 if (error) throw error;
 
                 setUserStatsLeagueTable(data || []);
-                console.log("useStatsProvider", data);
+                console.log("userLeagueTableProvider", data);
             } catch (err) {
-                console.log("USER STATS PROVIDER ERROR", err.message);
+                console.log("USER LEAGUE TABLE PROVIDER ERROR", err.message);
                 setUserStatsLeagueTable([]);
             } finally {
                 setLoading(false);
