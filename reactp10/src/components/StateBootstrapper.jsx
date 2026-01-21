@@ -1,28 +1,43 @@
 import { useGameweek } from "../hooks/useGameweeks";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { useUserClubs } from "../hooks/useUserClubs";
 
-export default function StateBootstrapper({children}) {
-    const { currentWeek, currentGwStatus, isLoading } = useGameweek();
-    const [ activeWeek, setActiveWeek] = useState(null)
+export default function StateBootstrapper({ children }) {
+  const { currentWeek, currentGwStatus, isLoading } = useGameweek();
+  const { clubs, loading: clubsLoading, getDefaultClub } = useUserClubs();
 
-    useEffect(() => {
-        if (isLoading) return;
+  const [activeWeek, setActiveWeek] = useState(null);
+  const [highlightedClub, setHighlightedClub] = useState(null);
 
-        if (activeWeek !== null) return;
+  useEffect(() => {
+    if (isLoading) return;
+    if (activeWeek !== null) return;
+    if (currentWeek === null) return;
 
-        if (currentWeek === null) return;
+    const initial = currentGwStatus === "submissionsOpen"
+      ? currentWeek - 1
+      : currentWeek;
 
-        const initial = 
-            currentGwStatus === 'submissionsOpen'
-                ? currentWeek -1
-                : currentWeek;
-                setActiveWeek(initial);
+    setActiveWeek(initial);
+  }, [isLoading, currentWeek, activeWeek, currentGwStatus]);
 
-    }, [isLoading, currentWeek, activeWeek, currentGwStatus]);
+  useEffect(() => {
+    if (clubsLoading) return;
+    if (!clubs?.length) return;
 
-    if (isLoading || activeWeek === null ) {
-        return <div className="loader">loading app...</div>
-    }
+    setHighlightedClub(getDefaultClub()?.club_id);
+  }, [clubsLoading, clubs, getDefaultClub]);
 
-    return children({activeWeek, setActiveWeek, currentGwStatus});
+  if (isLoading || activeWeek === null || clubsLoading) {
+    return <div className="loader">loading app...</div>;
+  }
+
+  return children({
+    activeWeek,
+    setActiveWeek,
+    currentGwStatus,
+    clubs,
+    highlightedClub,
+    setHighlightedClub,
+  });
 }

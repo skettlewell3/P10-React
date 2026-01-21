@@ -1,9 +1,8 @@
 import { useStatsUserLeagueTable } from '../../hooks/useStatsUserLeagueTable';
 import { useStatsClubLeagueTable } from '../../hooks/useStatsClubLeagueTable';
-import { GLOBAL_CLUB_ID } from '../../constants/clubs';
 import LeagueTableRow from './LeagueTableRow';
 
-export default function LeagueTableBody({ subjectType }) {
+export default function LeagueTableBody({ subjectType, highlightedClub }) {
     const { 
         userStatsLeagueTable, 
         loading: userLoading, 
@@ -24,9 +23,9 @@ export default function LeagueTableBody({ subjectType }) {
         subjectType === "user"
         ? userStatsLeagueTable
         : clubStatsLeagueTable.filter(
-            row => row.club_id !== GLOBAL_CLUB_ID
+            row => row.club_id !== highlightedClub
         )
-
+    ;
 
     if (!tableData.length) {
         return <div className="leagueTableSatus">No data</div>;
@@ -36,7 +35,9 @@ export default function LeagueTableBody({ subjectType }) {
         <div className="leagueTableBody">
             {tableData.map(row => (
                 <LeagueTableRow
-                    key={row.team_name}
+                    key={subjectType ==="user"
+                        ? `${row.team_name}`
+                        : `${row.club_id}-${row.team_name}`}
                     data={row}
                 />
             ))}

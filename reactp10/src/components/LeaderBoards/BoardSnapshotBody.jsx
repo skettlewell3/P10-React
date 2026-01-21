@@ -1,20 +1,16 @@
 import { useLeaderboardsUser } from "../../hooks/useLeaderboardsUser";
 import { useLeaderboardsTeam } from "../../hooks/useLeaderboardsTeam";
 import { useUser } from "../../hooks/useUser";
-import { useUserClubs } from "../../hooks/useUserClubs";
 import BoardSnapshotRow from "./BoardSnapshotRow";
 
-export default function BoardSnapshotBody({ gameweek, subjectType }) {
+export default function BoardSnapshotBody({ gameweek, subjectType, highlightedClub }) {
   const { user } = useUser();
-  const { clubs, loading: clubsLoading, getDefaultClub } = useUserClubs();
-
-  const activeClub = getDefaultClub();
 
   const userBoards = useLeaderboardsUser();
   const clubBoards = useLeaderboardsTeam();
 
-  // Guard: wait for user & clubs
-  if (!user || (subjectType === "club" && (clubsLoading || !activeClub))) return null;
+  // Guard: wait for user & club selection
+  if (!user || (subjectType === "club" && !highlightedClub)) return null;
 
   const weekly =
     subjectType === "user"
@@ -26,7 +22,7 @@ export default function BoardSnapshotBody({ gameweek, subjectType }) {
   const row =
     subjectType === "user"
       ? weekly.find((e) => e.user_id === user.user_id)
-      : weekly.find((e) => e.club_id === activeClub.club_id);
+      : weekly.find((e) => e.club_id === highlightedClub);
 
   if (!row) return null;
 
