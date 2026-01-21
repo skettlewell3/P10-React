@@ -862,8 +862,8 @@ input[type=number] {
   padding: 0.1 0;
 }
 
-.col.pos { width: 10%; }
-.col.team { width: 30%; min-width: 20%; text-align: left; flex-shrink: 1;}
+.col.pos { width: 8%; }
+.col.team { width: 26%; min-width: 20%; text-align: left; flex-shrink: 1;}
 .col.played,
 .col.wins,
 .col.draws,
@@ -871,7 +871,7 @@ input[type=number] {
 .col.gf,
 .col.ga,
 .col.gd {
-  width: 7%;
+  width: 8%;
 }
 .col.pts { width: 10%;}
 

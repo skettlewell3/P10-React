@@ -37,13 +37,9 @@ export function UserClubsProvider({ children }) {
   const getClubById = (id) => clubs.find((c) => c.club_id === id);
 
   const getDefaultClub = () => {
-    if (!clubs || clubs.length === 0) return null;
-
-    const owned = clubs.find((c) => c.role === "owner");
-    if (owned) return owned;
-
-    return clubs[0];
+    return clubs?.[0] ?? null;
   };
+
 
   return (
     <UserClubsContext.Provider value={{ clubs, loading, error, getClubById, getDefaultClub }}>
