@@ -3,7 +3,7 @@ import ViewTitleContainer from "../ViewTitleContainer";
 import { useGameweek } from '../../hooks/useGameweeks';
 import BoardSnapshot from "../LeaderBoards/BoardSnapshot";
 
-export default function PredictView( {activeView, subjectType, setSubjectType, currentGwStatus} ) {
+export default function PredictView({ activeView, subjectType, setSubjectType, currentGwStatus, highlightedClub, setHighlightedClub, clubs }) {
     const { currentWeek } = useGameweek();
 
     return (
@@ -13,11 +13,15 @@ export default function PredictView( {activeView, subjectType, setSubjectType, c
                 subjectType={subjectType}
                 setSubjectType={setSubjectType}
                 activeView={activeView}
+                highlightedClub={highlightedClub}
+                setHighlightedClub={setHighlightedClub}
+                clubs={clubs}
             />  
             {currentGwStatus === "live" && (
               <BoardSnapshot
                 gameweek={currentWeek}
                 subjectType={subjectType}
+                highlightedClub={highlightedClub}
               />
             )}
             <PredictList 
