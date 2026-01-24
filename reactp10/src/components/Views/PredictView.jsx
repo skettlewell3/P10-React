@@ -28,6 +28,7 @@ export default function PredictView({ activeView, subjectType, setSubjectType, c
                 gameweek={currentWeek} 
                 subjectType={subjectType}
                 currentGwStatus={currentGwStatus}
+                highlightedClub={highlightedClub}
             />   
         </>
     )
