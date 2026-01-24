@@ -4,7 +4,7 @@ import { useUser } from '../../hooks/useUser.js';
 import { supabase } from '../../supbaseClient.js';
 import { usePredictionsClub } from '../../hooks/usePredictionsClub.js';
 
-export default function PredictList({ gameweek, currentGwStatus, subjectType }) {
+export default function PredictList({ gameweek, currentGwStatus, subjectType, highlightedClub }) {
   const { user } = useUser();
   const { fixtures, loading } = useFixtures();
   const { clubPredictions } = usePredictionsClub();
@@ -73,6 +73,7 @@ export default function PredictList({ gameweek, currentGwStatus, subjectType }) 
             fixtures={fixtures}
             mode={mode}
             subjectType={subjectType}
+            highlightedClub={highlightedClub}
             canToggle={clubPredictions.some(p =>
               fixtures.some(f => f.fixture_id === p.fixture_id)
             )}

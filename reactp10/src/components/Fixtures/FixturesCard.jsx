@@ -2,7 +2,7 @@ import FixtureFieldsetDB from "./FixtureFieldsetDB";
 import PredictPreviews from "./PredictPreviews";
 import ScoringBreakdownContainer from "./ScoringBreakdownContainer";
 
-export default function FixturesCard( { day, ko, fixtures, mode, subjectType, canToggle } ){
+export default function FixturesCard( { day, ko, fixtures, mode, subjectType, canToggle, highlightedClub } ){
 
     const cardStatus = fixtures[0]?.fixture_status;
 
@@ -38,7 +38,10 @@ export default function FixturesCard( { day, ko, fixtures, mode, subjectType, ca
                         ? <PredictPreviews mode={mode} /> 
                         : isUpcoming 
                             ? <PredictPreviews mode={mode} />
-                            : <ScoringBreakdownContainer subjectType={subjectType} />;
+                            : <ScoringBreakdownContainer 
+                                subjectType={subjectType} 
+                                highlightedClub={highlightedClub}
+                            />;
 
                 return (
                     <FixtureFieldsetDB 

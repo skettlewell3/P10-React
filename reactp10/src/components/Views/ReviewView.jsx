@@ -28,6 +28,7 @@ export default function ReviewView({ activeWeek, setActiveWeek, subjectType, set
             gameweek={activeWeek}
             subjectType={subjectType}
             mode="review"     
+            highlightedClub={highlightedClub}
         />  
         </>
     )
