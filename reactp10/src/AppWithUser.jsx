@@ -63,6 +63,9 @@ export default function AppWithUser() {
                       subjectType={subjectType}
                       setSubjectType={setSubjectType}
                       currentGwStatus={currentGwStatus}
+                      highlightedClub={highlightedClub}
+                      setHighlightedClub={setHighlightedClub}
+                      clubs={clubs}
                     />
                   }
                 />

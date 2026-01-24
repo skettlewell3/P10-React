@@ -19,7 +19,7 @@ export default function ViewTitleContainer({
   
   const TitleComponent = location.pathname.includes("boards")
     ? ViewTitleBoards 
-    : location.pathname.includes("stats") || location.pathname.includes("review")
+    : location.pathname.includes("stats") || location.pathname.includes("review") || location.pathname.includes("predict")
       ? subjectType === "user"
         ? ViewTitle
         : ViewTitleClubs
