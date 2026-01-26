@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useGameweek } from '../../hooks/useGameweeks';
 import ViewTitleContainer from "../ViewTitleContainer";
 import GwNav from "../GwNav/GwNav";
@@ -9,14 +8,10 @@ export default function ReviewView({ activeWeek, setActiveWeek, subjectType, set
 
     const { currentWeek, currentGwStatus } = useGameweek();
 
-    useEffect(() => {
-        if (
-            currentGwStatus !== "finished" && 
-            activeWeek === currentWeek
-        ) {
-            setActiveWeek(currentWeek - 1);
-        }
-    }, [activeWeek, currentWeek, currentGwStatus, setActiveWeek])
+    const renderWeek = (currentGwStatus !== "finished" && activeWeek === currentWeek)
+        ? currentWeek - 1
+        : activeWeek
+    ;
 
     return (
         <>
@@ -29,17 +24,17 @@ export default function ReviewView({ activeWeek, setActiveWeek, subjectType, set
             setHighlightedClub={setHighlightedClub}
         />
         <GwNav
-            activeWeek={activeWeek}
+            activeWeek={renderWeek}
             setActiveWeek={setActiveWeek}
             allowCurrentWeek={false}
         />
         <BoardSnapshot
-            gameweek={activeWeek}
+            gameweek={renderWeek}
             subjectType={subjectType}
             highlightedClub={highlightedClub}
         />
         <ReviewList 
-            gameweek={activeWeek}
+            gameweek={renderWeek}
             subjectType={subjectType}
             mode="review"     
             highlightedClub={highlightedClub}
