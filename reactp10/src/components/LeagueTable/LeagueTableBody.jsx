@@ -1,5 +1,6 @@
 import { useStatsUserLeagueTable } from '../../hooks/useStatsUserLeagueTable';
 import { useStatsClubLeagueTable } from '../../hooks/useStatsClubLeagueTable';
+import { GLOBAL_CLUB_ID } from "../../constants/clubs.js"
 import LeagueTableRow from './LeagueTableRow';
 
 export default function LeagueTableBody({ subjectType, highlightedClub }) {
@@ -19,12 +20,20 @@ export default function LeagueTableBody({ subjectType, highlightedClub }) {
         return <div className="leagueTableSatus">Loading…</div>;
     }
 
-    const tableData = 
-        subjectType === "user"
-        ? userStatsLeagueTable
-        : clubStatsLeagueTable.filter(
-            row => row.club_id !== highlightedClub
-        )
+    let tableData;
+    
+    if (subjectType === "user") {
+        tableData = userStatsLeagueTable;
+    } else {
+        tableData = 
+            highlightedClub === GLOBAL_CLUB_ID
+                ? clubStatsLeagueTable
+                : clubStatsLeagueTable.filter(
+                    row => row.club_id !== highlightedClub
+                )
+        ;
+
+    }
     ;
 
     if (!tableData.length) {
