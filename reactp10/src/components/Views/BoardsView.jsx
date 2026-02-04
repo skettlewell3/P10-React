@@ -37,6 +37,7 @@ export default function BoardsView( {
         <>
             <ViewTitleContainer 
                 title="Leaderboards :"
+                variant="boards"
                 subjectType={subjectType}
                 setSubjectType={setSubjectType}
                 activeLens={activeLens}

@@ -5,6 +5,7 @@ import ViewTitleBoards from "./ViewTitleBoards";
 import ViewTitleClubs from "./ViewTitleClubs";
 
 export default function ViewTitleContainer({ 
+    variant = "default",
     subjectType, 
     setSubjectType, 
     title, 
@@ -15,17 +16,21 @@ export default function ViewTitleContainer({
     clubs
 }) {
 
-  const location = useLocation();
-  
-  const TitleComponent = location.pathname.includes("boards")
-    ? ViewTitleBoards 
-    : location.pathname.includes("stats") || location.pathname.includes("review") || location.pathname.includes("predict")
-      ? subjectType === "user"
-        ? ViewTitle
-        : ViewTitleClubs
-      : ViewTitle
-  ;
+  let TitleComponent;
 
+  switch (variant) {
+    case "boards":
+      TitleComponent = ViewTitleBoards;
+    break;
+
+    case "clubs": 
+      TitleComponent = ViewTitleClubs;
+    break;
+    
+    default:
+      TitleComponent = ViewTitle;    
+  }
+ 
   return (
     <div id="titleContainer">
       <TitleComponent 

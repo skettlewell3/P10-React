@@ -7,6 +7,7 @@ export default function StatsView({ subjectType, setSubjectType, highlightedClub
         <>
         <ViewTitleContainer
             title="Stats" 
+            variant={subjectType === "user" ? "default" : "clubs"}
             subjectType={subjectType}
             setSubjectType={setSubjectType}
             highlightedClub={highlightedClub}
