@@ -8,12 +8,15 @@ export default function PlayerCard({ overallRanking, user, overallScore, onLogou
 
     return (
         <div id="playerCard">
-            <img 
+            {/* <img 
                 src="https://placehold.co/48" 
                 alt="player pic" 
                 id="playerImg" 
                 onClick={handleLogoutClick}
-            />
+            /> */}
+            <div id="logOut">
+                Log Out
+            </div>
             <div id="playerCardText">
                 <div id="playerCardScore">⭐:{overallScore}</div>
                 <div id="playerCardName">{user?.name}</div>
