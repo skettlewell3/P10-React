@@ -17,6 +17,7 @@ export default function ReviewView({ activeWeek, setActiveWeek, subjectType, set
         <>
         <ViewTitleContainer 
             title="Review" 
+            variant="clubs"
             subjectType={subjectType}
             setSubjectType={setSubjectType}
             clubs={clubs}

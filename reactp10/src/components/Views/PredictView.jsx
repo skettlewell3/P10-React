@@ -10,6 +10,7 @@ export default function PredictView({ activeView, subjectType, setSubjectType, c
         <>
             <ViewTitleContainer
                 title={`Gameweek: ${currentWeek}`}
+                variant="clubs"
                 subjectType={subjectType}
                 setSubjectType={setSubjectType}
                 activeView={activeView}
