@@ -161,6 +161,11 @@ button:focus-visible {
   position: relative;
 }
 
+#refreshControl {
+  padding: 0.25em;
+  position: relative;
+}
+
 #dropdownToggle {
   display: flex; 
   align-items: center;
@@ -173,6 +178,24 @@ button:focus-visible {
   border: 4px solid white;
   border-radius: 4px;
   cursor: pointer;
+}
+
+#refreshButton {
+  display: flex; 
+  align-items: center;
+  gap: 0.5em; 
+  height: 3.5rem;
+  width: 100%;
+  background-color: var(--blue);
+  box-shadow: 0 1px 3px rgba(0,0,0,1);
+  color: white;
+  border: 4px solid white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#lastUpdated {
+  font-size: 0.8rem;
 }
 
 #appName {

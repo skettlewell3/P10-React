@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 export default function RefreshControl({ refreshAll }) {
     const [loading, setLoading] = useState(false);
@@ -16,16 +16,25 @@ export default function RefreshControl({ refreshAll }) {
         }
     }, [refreshAll]);
 
+    useEffect(() => {
+        setLastUpdated(new Date());
+    }, []);
+
+
     return (
-        <div className="refreshControl">
-            <button onClick={handleRefresh} disabled={loading}>
-                {loading ? "Refreshing..." : "🔄 Refresh"}
+        <div id="refreshControl">
+            <button 
+                id="refreshButton"
+                onClick={handleRefresh} 
+                disabled={loading}
+            >
+                {loading ? "Refreshing..." : "🔄"}
+                {lastUpdated && !loading && (
+                    <span id="lastUpdated">
+                        Last Updated: {lastUpdated.toLocaleTimeString()}
+                    </span>
+                )}
             </button>
-            {lastUpdated && (
-                <span className="lastUpdated">
-                    Last Updated: {lastUpdated.toLocaleTimeString()}
-                </span>
-            )}
         </div>
     );
 }

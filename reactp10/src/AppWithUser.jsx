@@ -31,82 +31,84 @@ export default function AppWithUser() {
 
   return (
     <GameDataProvider>
-      <StateBootstrapper>
-        {({ activeWeek, setActiveWeek, currentGwStatus, highlightedClub, setHighlightedClub, clubs }) => (
-          <AppContainer>
-            <HeaderProfile user={user} onLogout={handleLogout} />
+      {({ refreshAll }) => ( 
+        <StateBootstrapper>
+          {({ activeWeek, setActiveWeek, currentGwStatus, highlightedClub, setHighlightedClub, clubs }) => (
+            <AppContainer>
+              <HeaderProfile user={user} onLogout={handleLogout} refreshAll={refreshAll} />
 
-            <ContentContainer>
-              <Routes>
-                <Route path="/" element={<Navigate to="/predict" replace />} />
-                <Route path="*" element={<Navigate to="/predict" replace />} />
+              <ContentContainer>
+                <Routes>
+                  <Route path="/" element={<Navigate to="/predict" replace />} />
+                  <Route path="*" element={<Navigate to="/predict" replace />} />
 
-                <Route path="/news" element={<NewsView />} />
+                  <Route path="/news" element={<NewsView />} />
 
-                <Route
-                  path="/stats"
-                  element={
-                    <StatsView
-                      subjectType={subjectType}
-                      setSubjectType={setSubjectType}
-                      highlightedClub={highlightedClub}
-                      setHighlightedClub={setHighlightedClub}
-                      clubs={clubs}
-                    />
-                  }
-                />
+                  <Route
+                    path="/stats"
+                    element={
+                      <StatsView
+                        subjectType={subjectType}
+                        setSubjectType={setSubjectType}
+                        highlightedClub={highlightedClub}
+                        setHighlightedClub={setHighlightedClub}
+                        clubs={clubs}
+                      />
+                    }
+                  />
 
-                <Route
-                  path="/predict"
-                  element={
-                    <PredictView
-                      subjectType={subjectType}
-                      setSubjectType={setSubjectType}
-                      currentGwStatus={currentGwStatus}
-                      highlightedClub={highlightedClub}
-                      setHighlightedClub={setHighlightedClub}
-                      clubs={clubs}
-                    />
-                  }
-                />
+                  <Route
+                    path="/predict"
+                    element={
+                      <PredictView
+                        subjectType={subjectType}
+                        setSubjectType={setSubjectType}
+                        currentGwStatus={currentGwStatus}
+                        highlightedClub={highlightedClub}
+                        setHighlightedClub={setHighlightedClub}
+                        clubs={clubs}
+                      />
+                    }
+                  />
 
-                <Route
-                  path="/review"
-                  element={
-                    <ReviewView
-                      activeWeek={activeWeek}
-                      setActiveWeek={setActiveWeek}
-                      subjectType={subjectType}
-                      setSubjectType={setSubjectType}
-                      currentGwStatus={currentGwStatus}
-                      highlightedClub={highlightedClub}
-                      setHighlightedClub={setHighlightedClub}
-                      clubs={clubs}
-                    />
-                  }
-                />
+                  <Route
+                    path="/review"
+                    element={
+                      <ReviewView
+                        activeWeek={activeWeek}
+                        setActiveWeek={setActiveWeek}
+                        subjectType={subjectType}
+                        setSubjectType={setSubjectType}
+                        currentGwStatus={currentGwStatus}
+                        highlightedClub={highlightedClub}
+                        setHighlightedClub={setHighlightedClub}
+                        clubs={clubs}
+                      />
+                    }
+                  />
 
-                <Route
-                  path="/boards"
-                  element={
-                    <BoardsView
-                      activeWeek={activeWeek}
-                      setActiveWeek={setActiveWeek}
-                      activeLens={activeLens}
-                      setActiveLens={setActiveLens}
-                      subjectType={subjectType}
-                      setSubjectType={setSubjectType}
-                      currentGwStatus={currentGwStatus}
-                    />
-                  }
-                />
-              </Routes>
-            </ContentContainer>
+                  <Route
+                    path="/boards"
+                    element={
+                      <BoardsView
+                        activeWeek={activeWeek}
+                        setActiveWeek={setActiveWeek}
+                        activeLens={activeLens}
+                        setActiveLens={setActiveLens}
+                        subjectType={subjectType}
+                        setSubjectType={setSubjectType}
+                        currentGwStatus={currentGwStatus}
+                      />
+                    }
+                  />
+                </Routes>
+              </ContentContainer>
 
-            <FooterNav handleSubmit={handleSubmit} />
-          </AppContainer>
-        )}
-      </StateBootstrapper>
+              <FooterNav handleSubmit={handleSubmit} />
+            </AppContainer>
+          )}
+        </StateBootstrapper>
+      )}
     </GameDataProvider>
   );
 }
