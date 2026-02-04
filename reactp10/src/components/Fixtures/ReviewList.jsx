@@ -19,6 +19,7 @@ export default function ReviewList({ gameweek, subjectType, highlightedClub }) {
                     toggledContent={
                         <ScoringBreakdownContainer 
                             subjectType={subjectType}
+                            highlightedClub={highlightedClub}
                         />}
                     canToggle={true}
                     highlightedClub={highlightedClub}
