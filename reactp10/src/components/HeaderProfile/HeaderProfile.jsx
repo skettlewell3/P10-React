@@ -1,8 +1,8 @@
 import PlayerCard from "./PlayerCard";
-import AppDropdown from "./AppDropdown";
 import { useLeaderboardsUser } from "../../hooks/useLeaderboardsUser";
+import RefreshControl from "./RefreshControl";
 
-export default function HeaderProfile({ user, onLogout }) {
+export default function HeaderProfile({ user, onLogout, refreshAll }) {
     const { overallUserLeaderboard, loading } = useLeaderboardsUser();
 
     const userStats = overallUserLeaderboard.find((row) => row.user_id === user?.user_id);
@@ -19,7 +19,7 @@ export default function HeaderProfile({ user, onLogout }) {
                 overallScore={overallScore} 
                 onLogout={onLogout}
             />
-            <AppDropdown />
+            <RefreshControl refreshAll={refreshAll} />
         </header>
     );
 }

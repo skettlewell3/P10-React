@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ScoringUserContext } from "../context/ScoringUserContext";
 import { useDatabase } from "../hooks/useDatabase";
 import { useUser } from "../hooks/useUser";
@@ -10,47 +10,31 @@ export function ScoringUserProvider({ children }) {
   const [userScoring, setUserScoring] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!user?.user_id || !supabase) {
+  const loadUserScoring = useCallback(async () => {
+    if (!user?.user_id || !supabase) return;
+
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.rpc(
+        "get_user_scoring_all",
+        { p_user_id: user.user_id }
+      );
+      if (error) throw error;
+      setUserScoring(data || []);
+    } catch (err) {
+      console.error("USER SCORING PROVIDER ERROR:", err.message);
       setUserScoring([]);
+    } finally {
       setLoading(false);
-      return;
     }
-
-    let cancelled = false;
-
-    async function loadUserScoring() {
-      setLoading(true);
-
-      try {
-        const { data, error } = await supabase.rpc(
-          "get_user_scoring_all",
-          { p_user_id: user.user_id }
-        );
-
-        if (error) throw error;
-        if (cancelled) return;
-
-        setUserScoring(data || []);
-      } catch (err) {
-        if (!cancelled) {
-          console.error("USER SCORING PROVIDER ERROR:", err.message);
-          setUserScoring([]);
-        }
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    }
-
-    loadUserScoring();
-
-    return () => {
-      cancelled = true;
-    };
   }, [supabase, user?.user_id]);
 
+  useEffect(() => {
+    loadUserScoring();
+  }, [loadUserScoring]);
+
   return (
-    <ScoringUserContext.Provider value={{ userScoring, loading }}>
+    <ScoringUserContext.Provider value={{ userScoring, loading, loadUserScoring }}>
       {children}
     </ScoringUserContext.Provider>
   );

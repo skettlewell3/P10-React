@@ -7,6 +7,7 @@ export function useScoringClub() {
 
     return {
         clubScoring: ctx.clubScoring, 
-        loading: ctx.loading
+        loading: ctx.loading,
+        refresh: ctx.loadClubScoring
     }
 }

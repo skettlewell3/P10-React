@@ -7,6 +7,7 @@ export function usePredictionsClub() {
 
   return {
     clubPredictions: ctx.clubPredictions,
-    loading: ctx.loading
+    loading: ctx.loading,
+    refresh: ctx.fetchClubPredictions
   };
 }

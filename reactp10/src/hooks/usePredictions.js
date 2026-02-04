@@ -6,6 +6,6 @@ export function usePredictions(subjectType) {
   const club = usePredictionsClub();
 
   return subjectType === "user"
-    ? { data: user.userPredictions, loading: user.loading }
-    : { data: club.clubPredictions, loading: club.loading };
+    ? { data: user.userPredictions, loading: user.loading, refresh: user.refresh }
+    : { data: club.clubPredictions, loading: club.loading, refresh: club.refresh};
 }

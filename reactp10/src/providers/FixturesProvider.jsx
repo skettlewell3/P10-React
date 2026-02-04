@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { FixtureContext } from '../context/FixturesContext';
 import { useDatabase } from '../hooks/useDatabase';
 
@@ -7,27 +7,20 @@ export function FixturesProvider({ children }) {
     const [fixtures, setFixtures] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const fetchFixtures = useCallback(async () => {
+        setLoading(true);
+        const { data, error } = await supabase.rpc("get_fixtures");
+        if (error) console.error('Failed to load fixtures:', error);
+        else setFixtures(data || []);
+        setLoading(false);
+    }, [supabase]);   
+
     useEffect(() => {
-        async function fetchFixtures() {
-            setLoading(true);
-            const { data, error } = await supabase.rpc("get_fixtures")
-            if (error) {
-                console.error('Failed to load fixtures:', error);
-            } else {
-                setFixtures(data || []);
-            } 
-            
-            setLoading(false);
-        }
-
         fetchFixtures();
-
-        const interval = setInterval(fetchFixtures, 1000 * 60 * 60 * 24);
-        return () => clearInterval(interval);
-    }, [supabase]);
+    }, [fetchFixtures]);
 
     return (
-        <FixtureContext.Provider value={{ fixtures, loading }}>
+        <FixtureContext.Provider value={{ fixtures, loading, fetchFixtures }}>
             {children}
         </FixtureContext.Provider>
     );

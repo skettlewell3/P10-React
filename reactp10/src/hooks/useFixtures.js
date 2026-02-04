@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { FixtureContext } from '../context/FixturesContext.jsx'
+import { FixtureContext } from '../context/FixturesContext.jsx';
 
 export function useFixtures() {
-    return useContext(FixtureContext);
+    const { fixtures, loading, fetchFixtures } = useContext(FixtureContext);
+    return { fixtures, loading, fetchFixtures };
 }

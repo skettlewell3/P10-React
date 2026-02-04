@@ -7,6 +7,7 @@ export function useScoringUser() {
 
     return {
         userScoring: ctx.userScoring, 
-        loading: ctx.loading
+        loading: ctx.loading,
+        refresh: ctx.loadUserScoring
     }
 }

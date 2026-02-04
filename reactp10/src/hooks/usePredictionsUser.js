@@ -7,6 +7,7 @@ export function usePredictionsUser() {
 
   return {
     userPredictions: ctx.userPredictions,
-    loading: ctx.loading
+    loading: ctx.loading,
+    refresh: ctx.fetchUserPredictions
   };
 }
