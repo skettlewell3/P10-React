@@ -1,51 +1,49 @@
-import { useState, useEffect } from 'react';
-import { StatsClubLeagueTableContext } from "../context/StatsClubLeagueTableContext"
+import { useState, useEffect, useCallback } from 'react';
+import { StatsClubLeagueTableContext } from "../context/StatsClubLeagueTableContext";
 import { useDatabase } from '../hooks/useDatabase';
 import { useUser } from '../hooks/useUser';
 
 export function StatsClubLeagueTableProvider({ children }) {
-    const { supabase } = useDatabase();
-    const { user } = useUser();
-    const userId = user?.user_id;
-    const [ clubStatsLeagueTable, setClubStatsLeagueTable] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const { supabase } = useDatabase();
+  const { user } = useUser();
+  const userId = user?.user_id;
 
-    useEffect(() => {
-        if (!userId || !supabase) {
-            setLoading(false);
-            return;
-        } 
-        
+  const [clubStatsLeagueTable, setClubStatsLeagueTable] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-        async function loadClubLeagueTable() {
-            setLoading(true);
+  const fetchClubLeagueTable = useCallback(async () => {
+    if (!userId || !supabase) return;
 
-            try {
-                const { data, error } = await supabase.rpc("get_club_predicted_league_tables", {
-                    p_user_id: userId,
-                });
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.rpc("get_club_predicted_league_tables", {
+        p_user_id: userId,
+      });
 
-                if (error) throw error;
+      if (error) throw error;
 
-                setClubStatsLeagueTable(data || []);
-                console.log("useClubLeagueTableProvider", data);
-            } catch (err) {
-                console.log("CLUB LEAGUE TABLE PROVIDER ERROR", err.message);
-                setClubStatsLeagueTable([]);
-            } finally {
-                setLoading(false);
-            }
-        }
+      setClubStatsLeagueTable(data || []);
+    } catch (err) {
+      setClubStatsLeagueTable([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [supabase, userId]);
 
-        loadClubLeagueTable();
-    }, [supabase, userId]);
+  // Fetch on mount / userId change
+  useEffect(() => {
+    fetchClubLeagueTable();
+  }, [fetchClubLeagueTable]);
 
-    return (
-        <StatsClubLeagueTableContext.Provider 
-            value={{ 
-                clubStatsLeagueTable, loading 
-            }}>
-            {children}
-        </StatsClubLeagueTableContext.Provider>
-    );
+  return (
+    <StatsClubLeagueTableContext.Provider
+      value={{
+        clubStatsLeagueTable,
+        loading,
+        fetchClubLeagueTable, 
+      }}
+    >
+      {children}
+    </StatsClubLeagueTableContext.Provider>
+  );
 }

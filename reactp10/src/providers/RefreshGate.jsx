@@ -5,6 +5,8 @@ import { useScoringUser } from '../hooks/useScoringUser';
 import { useScoringClub } from '../hooks/useScoringClub';
 import { useLeaderboardsUser } from '../hooks/useLeaderboardsUser';
 import { useLeaderboardsTeam } from '../hooks/useLeaderboardsTeam';
+import { useStatsUserLeagueTable } from '../hooks/useStatsUserLeagueTable';
+import { useStatsClubLeagueTable } from '../hooks/useStatsClubLeagueTable';
 
 export function RefreshGate({ children }) {
     const fixtures = useFixtures();
@@ -14,6 +16,8 @@ export function RefreshGate({ children }) {
     const scoringClub = useScoringClub();
     const leaderboardsUser = useLeaderboardsUser();
     const leaderboardsClub = useLeaderboardsTeam();
+    const leagueTableUser = useStatsUserLeagueTable();
+    const leagueTableClub = useStatsClubLeagueTable();
 
     const refreshAll = async () => {
         await Promise.all([
@@ -24,6 +28,8 @@ export function RefreshGate({ children }) {
             scoringClub.refresh?.(),
             leaderboardsUser.refresh?.(),
             leaderboardsClub.refresh?.(),
+            leagueTableUser.fetchUserLeagueTable?.(),
+            leagueTableClub.fetchClubLeagueTable?.(),
         ]);
     }
 

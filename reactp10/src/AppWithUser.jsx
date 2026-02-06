@@ -67,6 +67,7 @@ export default function AppWithUser() {
                         highlightedClub={highlightedClub}
                         setHighlightedClub={setHighlightedClub}
                         clubs={clubs}
+                        refreshAll={refreshAll}
                       />
                     }
                   />
