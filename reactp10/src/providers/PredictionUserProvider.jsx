@@ -18,7 +18,7 @@ export function PredictionUserProvider({ children }) {
       const { data, error } = await supabase.rpc(
         "get_user_previews_all",
         { p_user_id: user.user_id }
-      );
+      );      
       if (error) throw error;
       setUserPredictions(data ?? []);
     } catch (err) {

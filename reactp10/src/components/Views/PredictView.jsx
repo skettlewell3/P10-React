@@ -3,7 +3,16 @@ import ViewTitleContainer from "../ViewTitleContainer";
 import { useGameweek } from '../../hooks/useGameweeks';
 import BoardSnapshot from "../LeaderBoards/BoardSnapshot";
 
-export default function PredictView({ activeView, subjectType, setSubjectType, currentGwStatus, highlightedClub, setHighlightedClub, clubs }) {
+export default function PredictView({ 
+    activeView, 
+    subjectType, 
+    setSubjectType, 
+    currentGwStatus, 
+    highlightedClub, 
+    setHighlightedClub, 
+    clubs, 
+    refreshAll
+}) {
     const { currentWeek } = useGameweek();
 
     return (
@@ -30,6 +39,7 @@ export default function PredictView({ activeView, subjectType, setSubjectType, c
                 subjectType={subjectType}
                 currentGwStatus={currentGwStatus}
                 highlightedClub={highlightedClub}
+                refreshAll={refreshAll}
             />   
         </>
     )

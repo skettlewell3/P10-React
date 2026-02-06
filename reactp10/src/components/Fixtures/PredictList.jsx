@@ -4,7 +4,7 @@ import { useUser } from '../../hooks/useUser.js';
 import { supabase } from '../../supbaseClient.js';
 import { usePredictionsClub } from '../../hooks/usePredictionsClub.js';
 
-export default function PredictList({ gameweek, currentGwStatus, subjectType, highlightedClub }) {
+export default function PredictList({ gameweek, currentGwStatus, subjectType, highlightedClub, refreshAll }) {
   const { user } = useUser();
   const { fixtures, loading } = useFixtures();
   const { clubPredictions } = usePredictionsClub();
@@ -55,6 +55,8 @@ export default function PredictList({ gameweek, currentGwStatus, subjectType, hi
 
       if (error) console.error(error);
     }
+
+    await refreshAll();
 
     alert('Predictions saved!');
   };
