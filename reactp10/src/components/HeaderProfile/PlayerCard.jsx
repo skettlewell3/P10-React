@@ -14,7 +14,10 @@ export default function PlayerCard({ overallRanking, user, overallScore, onLogou
                 id="playerImg" 
                 onClick={handleLogoutClick}
             /> */}
-            <div id="logOut">
+            <div 
+                id="logOut"
+                onClick={handleLogoutClick}
+            >
                 Log Out
             </div>
             <div id="playerCardText">
