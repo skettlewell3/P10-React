@@ -1,5 +1,5 @@
 import { useGameweek } from "../hooks/useGameweeks";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { useUserClubs } from "../hooks/useUserClubs";
 
 export default function StateBootstrapper({ children }) {
@@ -10,34 +10,33 @@ export default function StateBootstrapper({ children }) {
   const [highlightedClub, setHighlightedClub] = useState(null);
 
   useEffect(() => {
-    if (isLoading) return;
-    if (activeWeek !== null) return;
-    if (currentWeek === null) return;
+    if (isLoading || currentWeek == null) return;
 
-    const initial = currentGwStatus === "submissionsOpen"
-      ? currentWeek - 1
-      : currentWeek;
+    const derivedWeek =
+      currentGwStatus === "submissionsOpen"
+        ? currentWeek - 1
+        : currentWeek;
 
-    setActiveWeek(initial);
-  }, [isLoading, currentWeek, activeWeek, currentGwStatus]);
+    setActiveWeek(derivedWeek);
+  }, [isLoading, currentWeek, currentGwStatus]);
 
   useEffect(() => {
-    if (clubsLoading) return;
-    if (!clubs?.length) return;
+    if (clubsLoading || !clubs?.length) return;
 
-    setHighlightedClub(getDefaultClub()?.club_id);
+    const defaultClub = getDefaultClub()?.club_id ?? null;
+    setHighlightedClub(defaultClub);
   }, [clubsLoading, clubs, getDefaultClub]);
 
-  if (isLoading || activeWeek === null || clubsLoading) {
+  if (isLoading || clubsLoading || activeWeek == null) {
     return <div className="loader">loading app...</div>;
   }
 
   return children({
     activeWeek,
-    setActiveWeek,
+    setActiveWeek,           
     currentGwStatus,
     clubs,
     highlightedClub,
-    setHighlightedClub,
+    setHighlightedClub,     
   });
 }
