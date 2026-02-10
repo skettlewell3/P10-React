@@ -10,7 +10,7 @@ export function ScoringUserProvider({ children }) {
   const [userScoring, setUserScoring] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const loadUserScoring = useCallback(async () => {
+  const refreshUserScoring = useCallback(async () => {
     if (!user?.user_id || !supabase) return;
 
     setLoading(true);
@@ -30,11 +30,11 @@ export function ScoringUserProvider({ children }) {
   }, [supabase, user?.user_id]);
 
   useEffect(() => {
-    loadUserScoring();
-  }, [loadUserScoring]);
+    refreshUserScoring();
+  }, [refreshUserScoring]);
 
   return (
-    <ScoringUserContext.Provider value={{ userScoring, loading, loadUserScoring }}>
+    <ScoringUserContext.Provider value={{ userScoring, loading, refreshUserScoring }}>
       {children}
     </ScoringUserContext.Provider>
   );

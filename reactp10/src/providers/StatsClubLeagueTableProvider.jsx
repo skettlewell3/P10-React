@@ -11,7 +11,7 @@ export function StatsClubLeagueTableProvider({ children }) {
   const [clubStatsLeagueTable, setClubStatsLeagueTable] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchClubLeagueTable = useCallback(async () => {
+  const refreshClubLeagueTable = useCallback(async () => {
     if (!userId || !supabase) return;
 
     setLoading(true);
@@ -32,15 +32,15 @@ export function StatsClubLeagueTableProvider({ children }) {
 
   // Fetch on mount / userId change
   useEffect(() => {
-    fetchClubLeagueTable();
-  }, [fetchClubLeagueTable]);
+    refreshClubLeagueTable();
+  }, [refreshClubLeagueTable]);
 
   return (
     <StatsClubLeagueTableContext.Provider
       value={{
         clubStatsLeagueTable,
         loading,
-        fetchClubLeagueTable, 
+        refreshClubLeagueTable, 
       }}
     >
       {children}

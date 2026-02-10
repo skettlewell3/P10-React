@@ -10,8 +10,12 @@ export function PredictionClubProvider({ children }) {
   const [clubPredictions, setClubPredictions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchClubPredictions = useCallback(async () => {
-    if (!user?.user_id || !supabase) return;
+  const refreshClubPredictions = useCallback(async () => {
+    if (!user?.user_id || !supabase) {
+      setClubPredictions([]);
+      setLoading(false);
+      return;
+    };
 
     setLoading(true);
     try {
@@ -30,11 +34,11 @@ export function PredictionClubProvider({ children }) {
   }, [supabase, user?.user_id]);
 
   useEffect(() => {
-    fetchClubPredictions();
-  }, [fetchClubPredictions]);
+    refreshClubPredictions();
+  }, [refreshClubPredictions]);
 
   return (
-    <PredictionsClubContext.Provider value={{ clubPredictions, loading, fetchClubPredictions }}>
+    <PredictionsClubContext.Provider value={{ clubPredictions, loading, refreshClubPredictions }}>
       {children}
     </PredictionsClubContext.Provider>
   );

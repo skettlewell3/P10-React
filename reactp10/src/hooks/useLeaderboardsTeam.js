@@ -2,13 +2,20 @@ import { useContext } from "react";
 import { LeaderboardsTeamContext } from "../context/LeaderboardsTeamContext";
 
 export function useLeaderboardsTeam() {
-  const ctx = useContext(LeaderboardsTeamContext);
-  if (!ctx) throw new Error("useLeaderboardsTeam must be used within LeaderboardsTeamProvider");
+  const context = useContext(LeaderboardsTeamContext);
+  if (!context) throw new Error("useLeaderboardsTeam must be used within LeaderboardsTeamProvider");
+
+  const {
+    weeklyTeamLeaderboards,
+    overallTeamLeaderboard,
+    loading: teamLoading,
+    refreshTeamLeaderboards
+  } = context;
 
   return {
-    weeklyTeamLeaderboards: ctx.weeklyTeamLeaderboards,
-    overallTeamLeaderboard: ctx.overallTeamLeaderboard,
-    loading: ctx.teamLoading,
-    refresh: ctx.refreshTeamLeaderboards, 
-  };
+    weeklyTeamLeaderboards,
+    overallTeamLeaderboard,
+    loading: teamLoading,
+    refreshTeamLeaderboards
+  }
 }

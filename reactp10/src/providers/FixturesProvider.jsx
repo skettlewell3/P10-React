@@ -7,7 +7,7 @@ export function FixturesProvider({ children }) {
     const [fixtures, setFixtures] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const fetchFixtures = useCallback(async () => {
+    const refreshFixtures = useCallback(async () => {
         setLoading(true);
         const { data, error } = await supabase.rpc("get_fixtures");
         if (error) console.error('Failed to load fixtures:', error);
@@ -16,11 +16,11 @@ export function FixturesProvider({ children }) {
     }, [supabase]);   
 
     useEffect(() => {
-        fetchFixtures();
-    }, [fetchFixtures]);
+        refreshFixtures();
+    }, [refreshFixtures]);
 
     return (
-        <FixtureContext.Provider value={{ fixtures, loading, fetchFixtures }}>
+        <FixtureContext.Provider value={{ fixtures, loading, refreshFixtures }}>
             {children}
         </FixtureContext.Provider>
     );
