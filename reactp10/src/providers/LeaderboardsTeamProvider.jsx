@@ -8,7 +8,7 @@ export function LeaderboardsTeamProvider({ children }) {
   const [overallTeamLeaderboard, setOverallTeamLeaderboard] = useState([]);
   const [teamLoading, setTeamLoading] = useState(true);
 
-  const loadTeamLeaderboards = useCallback(async () => {
+  const refreshTeamLeaderboards = useCallback(async () => {
     setTeamLoading(true);
 
     try {
@@ -36,8 +36,8 @@ export function LeaderboardsTeamProvider({ children }) {
 
   // Initial load on mount
   useEffect(() => {
-    loadTeamLeaderboards();
-  }, [loadTeamLeaderboards]);
+    refreshTeamLeaderboards();
+  }, [refreshTeamLeaderboards]);
 
   return (
     <LeaderboardsTeamContext.Provider
@@ -45,7 +45,7 @@ export function LeaderboardsTeamProvider({ children }) {
         weeklyTeamLeaderboards,
         overallTeamLeaderboard,
         teamLoading,
-        refreshTeamLeaderboards: loadTeamLeaderboards,
+        refreshTeamLeaderboards,
       }}
     >
       {children}

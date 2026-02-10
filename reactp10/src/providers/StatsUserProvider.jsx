@@ -1,9 +1,12 @@
+import { StatsUserSeasonCoreProvider } from "./StatsUserSeasonCoreProvider";
 import { StatsUserLeagueTableProvider } from "./StatsUserLeagueTableProvider";
 
 export function StatsUserProvider({ children }) {
     return (
-        <StatsUserLeagueTableProvider>
-            {children}
-        </StatsUserLeagueTableProvider>
+        <StatsUserSeasonCoreProvider>
+            <StatsUserLeagueTableProvider>
+                {children}
+            </StatsUserLeagueTableProvider>
+        </StatsUserSeasonCoreProvider>
     )
 }

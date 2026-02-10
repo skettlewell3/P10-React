@@ -7,7 +7,7 @@ export function GameweekProvider({children}) {
     const [currentGwStatus, setCurrentGwStatus] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const fetchGameweek = useCallback(async () => {
+    const refreshGameweek = useCallback(async () => {
         setIsLoading(true);
 
         const { data, error } = await supabase.rpc("get_current_gameweek")
@@ -23,8 +23,8 @@ export function GameweekProvider({children}) {
     }, []);
 
     useEffect(() => {
-        fetchGameweek();
-    }, [fetchGameweek]);
+        refreshGameweek();
+    }, [refreshGameweek]);
 
     return (
         <GameweekContext.Provider
@@ -32,7 +32,7 @@ export function GameweekProvider({children}) {
                 currentWeek,
                 currentGwStatus,
                 isLoading,
-                refresh: fetchGameweek,
+                refreshGameweek,
             }}
         >
             {children}

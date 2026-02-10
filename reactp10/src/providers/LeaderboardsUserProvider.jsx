@@ -8,7 +8,7 @@ export function LeaderboardsUserProvider({ children }) {
   const [overallUserLeaderboard, setOverallUserLeaderboard] = useState([]);
   const [userLoading, setUserLoading] = useState(true);
 
-  const loadUserLeaderboards = useCallback(async () => {
+  const refreshUserLeaderboards = useCallback(async () => {
     setUserLoading(true);
 
     try {
@@ -34,10 +34,9 @@ export function LeaderboardsUserProvider({ children }) {
     }
   }, [supabase]);
 
-  // Initial load on mount
   useEffect(() => {
-    loadUserLeaderboards();
-  }, [loadUserLeaderboards]);
+    refreshUserLeaderboards();
+  }, [refreshUserLeaderboards]);
 
   return (
     <LeaderboardsUserContext.Provider
@@ -45,7 +44,7 @@ export function LeaderboardsUserProvider({ children }) {
         weeklyUserLeaderboards,
         overallUserLeaderboard,
         userLoading,
-        refreshUserLeaderboards: loadUserLeaderboards,
+        refreshUserLeaderboards,
       }}
     >
       {children}

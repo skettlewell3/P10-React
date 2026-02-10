@@ -11,7 +11,7 @@ export function UserClubsProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchClubs = useCallback(async () => {
+  const refreshUserMemberships = useCallback(async () => {
     if (!user?.user_id || !supabase) return;
 
     setLoading(true);
@@ -31,8 +31,8 @@ export function UserClubsProvider({ children }) {
   }, [supabase, user?.user_id]);
 
   useEffect(() => {
-    fetchClubs();
-  }, [fetchClubs]);
+    refreshUserMemberships();
+  }, [refreshUserMemberships]);
 
   const getClubById = (id) => clubs.find((c) => c.club_id === id);
 
@@ -42,7 +42,7 @@ export function UserClubsProvider({ children }) {
 
 
   return (
-    <UserClubsContext.Provider value={{ clubs, loading, error, getClubById, getDefaultClub }}>
+    <UserClubsContext.Provider value={{ clubs, loading, error, getClubById, getDefaultClub, refreshUserMemberships }}>
       {children}
     </UserClubsContext.Provider>
   );

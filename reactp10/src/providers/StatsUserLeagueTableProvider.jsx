@@ -11,8 +11,7 @@ export function StatsUserLeagueTableProvider({ children }) {
   const [userStatsLeagueTable, setUserStatsLeagueTable] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch function wrapped in useCallback
-  const fetchUserLeagueTable = useCallback(async () => {
+  const refreshUserLeagueTable = useCallback(async () => {
     if (!userId || !supabase) return;
 
     setLoading(true);
@@ -33,17 +32,16 @@ export function StatsUserLeagueTableProvider({ children }) {
     }
   }, [supabase, userId]);
 
-  // Fetch on mount / userId change
   useEffect(() => {
-    fetchUserLeagueTable();
-  }, [fetchUserLeagueTable]);
+    refreshUserLeagueTable();
+  }, [refreshUserLeagueTable]);
 
   return (
     <StatsUserLeagueTableContext.Provider 
       value={{ 
         userStatsLeagueTable, 
         loading, 
-        fetchUserLeagueTable  // expose the fetch function for refreshAll
+        refreshUserLeagueTable  
       }}
     >
       {children}

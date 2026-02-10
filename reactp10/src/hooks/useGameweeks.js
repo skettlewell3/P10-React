@@ -2,5 +2,17 @@ import { useContext } from "react";
 import { GameweekContext } from "../context/GameweekContext";
 
 export function useGameweek() {
-  return useContext(GameweekContext);
+  const {
+    currentWeek,
+    currentGwStatus,
+    isLoading,
+    refreshGameweek
+  } = useContext(GameweekContext);
+
+  return {
+    currentWeek,
+    currentGwStatus,
+    isLoading,
+    refreshGameweek
+  };
 }

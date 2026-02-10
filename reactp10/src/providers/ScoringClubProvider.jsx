@@ -10,7 +10,7 @@ export function ScoringClubProvider({ children }) {
   const [clubScoring, setClubScoring] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const loadClubScoring = useCallback(async () => {
+  const refreshClubScoring = useCallback(async () => {
     if (!user?.user_id || !supabase) return;
 
     setLoading(true);
@@ -30,11 +30,11 @@ export function ScoringClubProvider({ children }) {
   }, [supabase, user?.user_id]);
 
   useEffect(() => {
-    loadClubScoring();
-  }, [loadClubScoring]);
+    refreshClubScoring();
+  }, [refreshClubScoring]);
 
   return (
-    <ScoringClubContext.Provider value={{ clubScoring, loading, loadClubScoring }}>
+    <ScoringClubContext.Provider value={{ clubScoring, loading, refreshClubScoring }}>
       {children}
     </ScoringClubContext.Provider>
   );

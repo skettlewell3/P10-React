@@ -10,8 +10,12 @@ export function PredictionUserProvider({ children }) {
   const [userPredictions, setUserPredictions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchUserPredictions = useCallback(async () => {
-    if (!user?.user_id || !supabase) return;
+  const refreshUserPredictions = useCallback(async () => {
+    if (!user?.user_id || !supabase) {
+      setUserPredictions([]);
+      setLoading(false);
+      return;
+    }
 
     setLoading(true);
     try {
@@ -30,11 +34,11 @@ export function PredictionUserProvider({ children }) {
   }, [supabase, user?.user_id]);
 
   useEffect(() => {
-    fetchUserPredictions();
-  }, [fetchUserPredictions]);
+    refreshUserPredictions();
+  }, [refreshUserPredictions]);
 
   return (
-    <PredictionsUserContext.Provider value={{ userPredictions, loading, fetchUserPredictions }}>
+    <PredictionsUserContext.Provider value={{ userPredictions, loading, refreshUserPredictions }}>
       {children}
     </PredictionsUserContext.Provider>
   );

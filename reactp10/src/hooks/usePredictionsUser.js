@@ -2,12 +2,18 @@ import { useContext } from "react";
 import { PredictionsUserContext } from "../context/PredictionsUserContext";
 
 export function usePredictionsUser() {
-  const ctx = useContext(PredictionsUserContext);
-  if (!ctx) throw new Error("usePredictionsUser must be used inside PredictionUserProvider");
+  const context = useContext(PredictionsUserContext);
+  if (!context) throw new Error("usePredictionsUser must be used inside PredictionUserProvider");
+
+  const {
+    userPredictions,
+    loading,
+    refreshUserPredictions
+  } = context;
 
   return {
-    userPredictions: ctx.userPredictions,
-    loading: ctx.loading,
-    refresh: ctx.fetchUserPredictions
-  };
+    userPredictions,
+    loading,
+    refreshUserPredictions
+  }
 }

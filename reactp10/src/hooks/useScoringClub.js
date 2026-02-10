@@ -2,12 +2,18 @@ import { useContext } from "react";
 import { ScoringClubContext } from "../context/ScoringClubContext";
 
 export function useScoringClub() {
-    const ctx = useContext(ScoringClubContext);
-    if (!ctx) throw new Error("useScoringClub must be used inside ScoringUserProvider");
+    const context = useContext(ScoringClubContext);
+    if (!context) throw new Error("useScoringClub must be used inside ScoringClubProvider");
+
+    const {
+        clubScoring, 
+        loading,
+        refreshClubScoring
+    } = context;
 
     return {
-        clubScoring: ctx.clubScoring, 
-        loading: ctx.loading,
-        refresh: ctx.loadClubScoring
-    }
+        clubScoring, 
+        loading,
+        refreshClubScoring
+    } 
 }
