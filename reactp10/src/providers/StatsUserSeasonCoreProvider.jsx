@@ -23,7 +23,8 @@ export function StatsUserSeasonCoreProvider({ children }) {
 
       if (error) throw error;
 
-      setUserSeasonCoreStats(data?.[0] ?? null);
+      console.log("user core stats,", data)
+      setUserSeasonCoreStats(data ?? []);
     } catch (err) {
       console.error("USER SEASON CORE STATS PROVIDER ERROR:", err.message);
       setUserSeasonCoreStats(null);

@@ -2,6 +2,7 @@
 :root {
   --blue: rgb(28, 44, 91);
   --green: rgb(32, 100, 60);
+  --tpgreen: rgb(32, 100, 60, 0.9);
   --bkgrey: #555;
   --gtable: rgba(50, 153, 91, .3);
   --gold: #ccaa39;
@@ -819,8 +820,119 @@ input[type=number] {
 }
 
 /* STATS VIEW */
+#statsContainer {
+  width: 100%;
+  overflow-y: auto;
+  display: block;
+}
+
+.statsSection {
+  width: 100%;
+  padding: 0rem 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Season Core Stats */
+/* .seasonCoreContainer {
+
+} */
+
+.statsSectionTitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: white;
+  text-align: center;
+}
+
+.statsGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  gap: clamp(1rem, 2vw, 0.5rem);
+  align-items: start;
+}
+
+.statBox {
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 0.25rem .25rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+.statBoxRow {
+  display: grid;
+  grid-template-columns: 1fr 10px 1fr; /* value | divider | value/percent */
+  align-items: center;
+}
+
+.statBoxValue {
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  background-color: var(--tpblue);
+  border-radius: 4px;
+}
+
+.StatBoxDivider {
+  width: 10px;
+  border-left: 1px solid var(--tpblue);  /* or use background-color for colored divider */
+  height: 100%;
+  margin: 0 5px;
+}
+
+.StatBoxDividerB {
+  width: 10px;
+  border-left: 1px solid var(--tpblue);  /* or use background-color for colored divider */
+  height: 100%;
+  transform: scaleY(1.8);
+  transform-origin: bottom;
+  margin: 0 5px;
+}
+
+.StatBoxA .statBoxLabel.labelA {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.15rem;
+}
+
+.StatBoxA .statBoxPercent {
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--tpgreen);
+  color: white;
+  border-radius: 4px;
+}
+
+.StatBoxB .statBoxLabel.LabelB {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: clamp(0.9rem, 0.875rem, 0.7rem);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  text-align: center;
+}
+
+.StatBoxB .statBoxRow {
+  display: grid;
+  grid-template-columns: 1fr 10px 1fr; /* left value | divider | right value */
+  align-items: center;
+}
+
+
+
+
 /* predicted league table */
-.leagueTableContainer {
+.leagueTableItem {
   display: flex;
   flex-direction: column;
   overflow-x: auto;  /* horizontal scroll on narrow screens */

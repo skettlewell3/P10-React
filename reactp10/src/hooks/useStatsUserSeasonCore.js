@@ -12,7 +12,7 @@ export function useStatsUserSeasonCore() {
     } = context;
 
     return { 
-      userSeasonCoreStats, 
+      stats: userSeasonCoreStats, 
       loading, 
       refreshUserSeasonCoreStats 
     };

@@ -25,16 +25,12 @@ export default function LeagueTableBody({ subjectType, highlightedClub }) {
     if (subjectType === "user") {
         tableData = userStatsLeagueTable;
     } else {
-        tableData = 
+        tableData = clubStatsLeagueTable.filter(row => 
             highlightedClub === GLOBAL_CLUB_ID
-                ? clubStatsLeagueTable
-                : clubStatsLeagueTable.filter(
-                    row => row.club_id !== highlightedClub
-                )
-        ;
-
+            ? row.club_id === GLOBAL_CLUB_ID
+            : row.club_id === highlightedClub
+        );
     }
-    ;
 
     if (!tableData.length) {
         return <div className="leagueTableSatus">No data</div>;

@@ -12,7 +12,7 @@ export function useStatsClubSeasonCore() {
     } = context;
 
   return { 
-        clubSeasonCoreStats, 
+        stats: clubSeasonCoreStats, 
         loading, 
         refreshClubSeasonCoreStats 
     };
