@@ -22,8 +22,8 @@ export function StatsClubSeasonCoreProvider({ children }) {
       );
 
       if (error) throw error;
-
-      setClubSeasonCoreStats(data?.[0] ?? null);
+      console.log("club core stats,", data)
+      setClubSeasonCoreStats(data ?? []);
     } catch (err) {
       console.error("CLUB SEASON CORE STATS PROVIDER ERROR:", err.message);
       setClubSeasonCoreStats(null);

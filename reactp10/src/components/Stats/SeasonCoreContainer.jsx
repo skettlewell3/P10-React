@@ -16,13 +16,13 @@ export function SeasonCoreContainer({ subjectType, highlightedClub }) {
     const selectedStats =
         subjectType === "club"
             ? stats?.find(c => c.club_id === highlightedClub)
-            : stats;
+            : stats?.[0];
 
     if (!selectedStats) return <p>No club stats found..</p>;
 
     return (
         <div className="seasonCoreContainer statsSection">
-            <h2 className="statsSectionTitle">Season Performance</h2>
+            <div className="statsSectionTitle">SEASON STATISTICS</div>
             <SeasonCoreGrid stats={selectedStats} />
         </div>
     );

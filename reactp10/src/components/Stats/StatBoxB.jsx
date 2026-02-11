@@ -16,7 +16,7 @@ export function StatBoxB({
                     {leftValue}
                 </div>
 
-                <div className="StatBoxDivider"/>
+                <div className="StatBoxDividerB"/>
 
                 <div className="statBoxValue">
                     {rightValue}

@@ -25,7 +25,7 @@ export function SeasonCoreGrid({ stats }) {
             />
 
             <StatBoxA
-                title="10s"
+                title="Perfect10s"
                 value={stats.perfect10s}
                 percent={stats.perfect10_accuracy}
             />
@@ -37,7 +37,7 @@ export function SeasonCoreGrid({ stats }) {
             />
 
             <StatBoxA
-                title="GD"
+                title="Goal Difference"
                 value={stats.correct_gd}
                 percent={stats.gd_accuracy}
             />
