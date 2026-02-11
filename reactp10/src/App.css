@@ -916,7 +916,7 @@ input[type=number] {
 .StatBoxB .statBoxLabel.LabelB {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  font-size: 0.875rem;
+  font-size: clamp(0.9rem, 0.875rem, 0.7rem);
   font-weight: 600;
   margin-bottom: 0.15rem;
   text-align: center;

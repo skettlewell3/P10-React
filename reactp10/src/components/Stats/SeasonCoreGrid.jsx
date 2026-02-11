@@ -11,9 +11,9 @@ export function SeasonCoreGrid({ stats }) {
         <div className="statsGrid">
 
             <StatBoxB 
-                leftLabel="GW's Played"
+                leftLabel="Played"
                 leftValue={stats.gws_played}
-                rightLabel="GW's Won"
+                rightLabel="Won"
                 rightValue={stats.gws_won}
             />
 
