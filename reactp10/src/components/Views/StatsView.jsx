@@ -2,6 +2,7 @@ import ViewTitleContainer from "../ViewTitleContainer"
 import LeagueTableContainer from "../LeagueTable/LeagueTableContainer"
 import { SeasonCoreContainer } from "../Stats/SeasonCoreContainer"
 import StatsContainer from "../Stats/StatsContainer"
+import { SeasonHighsContainer } from "../Stats/SeasonHighsContainer"
 
 export default function StatsView({ subjectType, setSubjectType, highlightedClub, setHighlightedClub, clubs }) {
 
@@ -22,6 +23,11 @@ export default function StatsView({ subjectType, setSubjectType, highlightedClub
                 subjectType={subjectType}
                 highlightedClub={highlightedClub}
             /> 
+
+            <SeasonHighsContainer 
+                subjectType={subjectType}
+                highlightedClub={highlightedClub}
+            />
             
             <LeagueTableContainer 
                 subjectType={subjectType}

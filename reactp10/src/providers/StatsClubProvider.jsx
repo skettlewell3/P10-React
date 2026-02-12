@@ -1,12 +1,15 @@
 import { StatsClubLeagueTableProvider } from "../providers/StatsClubLeagueTableProvider";
 import { StatsClubSeasonCoreProvider } from "../providers/StatsClubSeasonCoreProvider";
+import { StatsClubSeasonHighsProvider } from "./StatsClubSeasonHighsProvider";
 
 export function StatsClubProvider({ children }) {
     return (
         <StatsClubSeasonCoreProvider>
-            <StatsClubLeagueTableProvider>
-                {children}
-            </StatsClubLeagueTableProvider>
+            <StatsClubSeasonHighsProvider>
+                <StatsClubLeagueTableProvider>
+                    {children}
+                </StatsClubLeagueTableProvider>
+            </StatsClubSeasonHighsProvider>
         </StatsClubSeasonCoreProvider>        
     )
 }

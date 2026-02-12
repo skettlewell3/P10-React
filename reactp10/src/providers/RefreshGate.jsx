@@ -11,6 +11,8 @@ import { useStatsUserLeagueTable } from '../hooks/useStatsUserLeagueTable';
 import { useStatsClubLeagueTable } from '../hooks/useStatsClubLeagueTable';
 import { useStatsUserSeasonCore } from '../hooks/useStatsUserSeasonCore';
 import { useStatsClubSeasonCore } from '../hooks/useStatsClubSeasonCore';
+import { useStatsUserSeasonHighs } from '../hooks/useStatsUserSeasonHighs';
+import { useStatsClubSeasonHighs } from '../hooks/useStatsClubSeasonHighs';
 
 
 export function RefreshGate({ children }) {
@@ -27,6 +29,8 @@ export function RefreshGate({ children }) {
     const leagueTableClub = useStatsClubLeagueTable();
     const seasonCoreUser = useStatsUserSeasonCore();
     const seasonCoreClub = useStatsClubSeasonCore();
+    const seasonHighsUser = useStatsUserSeasonHighs();
+    const seasonHighsClubs = useStatsClubSeasonHighs();
 
     const refreshAll = async () => {
         await Promise.all([
@@ -42,7 +46,9 @@ export function RefreshGate({ children }) {
             leagueTableUser.refreshUserLeagueTable?.(),
             leagueTableClub.refreshClubLeagueTable?.(),
             seasonCoreUser.refreshUserSeasonCoreStats?.(),
-            seasonCoreClub.refreshClubSeasonCoreStats?.()
+            seasonCoreClub.refreshClubSeasonCoreStats?.(),
+            seasonHighsUser.refreshUserSeasonHighs?.(),
+            seasonHighsClubs.refreshClubSeasonHighs?.(),
         ]);
     }
 

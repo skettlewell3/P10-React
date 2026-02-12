@@ -1,8 +1,14 @@
-export function StatBoxA({ title, value, percent }) {
+export function StatBoxA({ title, value, percent, gw }) {
 
-    const formattedPercent =
-        percent != null ? `${Number(percent).toFixed(1)}%` : "0%"
-    ;
+    let display;
+
+    if (gw != null) {
+        display = `GW${gw}`;
+    } else if (percent != null) {
+        display = `${Number(percent).toFixed(1)}%`
+    } else {
+        display = "-";
+    }
 
     return (
         <div className="statBox StatBoxA">
@@ -18,7 +24,7 @@ export function StatBoxA({ title, value, percent }) {
                 <div className="StatBoxDivider"/>
 
                 <div className="statBoxPercent">
-                    {formattedPercent}
+                    {display}
                 </div>                
             </div>
         </div>
