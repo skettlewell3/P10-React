@@ -37,30 +37,28 @@ export function SeasonCoreGrid({ stats }) {
             />
 
             <StatBoxA
+                title="Home Goals"
+                value={stats.correct_home}
+                percent={stats.home_accuracy}
+            />
+
+            <StatBoxA
+                title="Away Goals"
+                value={stats.correct_away}
+                percent={stats.away_accuracy}
+            />
+
+            <StatBoxA
                 title="Goal Difference"
                 value={stats.correct_gd}
                 percent={stats.gd_accuracy}
             />
 
             <StatBoxA
-                title="Goals"
+                title="Total Goals"
                 value={stats.correct_total_goals}
                 percent={stats.total_goals_accuracy}
-            />
-
-            <StatBoxA
-                title="Home"
-                value={stats.correct_home}
-                percent={stats.home_accuracy}
-            />
-
-            <StatBoxA
-                title="Away"
-                value={stats.correct_away}
-                percent={stats.away_accuracy}
-            />
-
-            
+            />            
         </div>
     )
 }
