@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLeaderboardsTeam } from "../../hooks/useLeaderboardsTeam"
 import { useLeaderboardsUser } from "../../hooks/useLeaderboardsUser";
-import BoardRow from "./BoardRow";
+import BoardRowNew from "./BoardRowNew";
 
 export default function BoardBody({ gameweek, activeLens, subjectType, businessData }) {
   const userBoards = useLeaderboardsUser();
@@ -41,7 +41,7 @@ export default function BoardBody({ gameweek, activeLens, subjectType, businessD
         aCorrect: entry.correct_away_goals,
         gCorrect: entry.correct_total_goals,
         points: entry.total_points,
-        id: entry.user_id,
+        id: entry.user_id ?? entry.club_id
       }));
     } else {
       // weekly data (expect weeklyLeaderboards to be an object: { 1: [...], 2: [...] })
@@ -62,7 +62,7 @@ export default function BoardBody({ gameweek, activeLens, subjectType, businessD
         aCorrect: entry.correct_away_goals,
         gCorrect: entry.correct_total_goals,
         points: entry.total_points,
-        id: entry.club_id
+        id: entry.user_id ?? entry.club_id
       }));
     }
 
@@ -78,10 +78,10 @@ export default function BoardBody({ gameweek, activeLens, subjectType, businessD
       {boardData.length === 0 ? (
         <p id="boardErr">Leaderboards are not currently available</p>
       ) : subjectType === "user" ? (
-        boardData.map((subject) => <BoardRow key={subject.key} subject={subject} />)
+        boardData.map((subject) => <BoardRowNew key={subject.key} subject={subject} />)
       ) : (
         boardData.map((subject) => (
-          <BoardRow
+          <BoardRowNew
             key={subject.key}
             subject={subject}
             businessData={businessData}

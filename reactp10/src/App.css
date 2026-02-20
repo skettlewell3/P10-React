@@ -693,6 +693,48 @@ input[type=number] {
   z-index: 40;
 }
 
+.modalToggle {
+  width: 98%;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 0.125em;
+  color: white;
+  background-color: #646874;
+  padding: .125em 0;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 0.25em;
+}
+
+.modalToggleHighlight {
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; /* assumes max 2 options */
+  height: 100%;
+  background-color: rgb(28, 44, 91);
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.modalToggleBtn {
+  flex: 1;
+  font-size: 1em;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.modalToggleBtn.active {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
 #teamModalCard {
   display: flex;
   flex-direction: column;

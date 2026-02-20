@@ -18,7 +18,7 @@ export default function BusinessModal({ Business, handleCloseModal }) {
 
     return (
         <div id="teamModalCard">
-            <div class="modalCardBody">
+            <div className="modalCardBody">
                 <ModalCardHeader
                     closeModal={handleCloseModal}
                 />

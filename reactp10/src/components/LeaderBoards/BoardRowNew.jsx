@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import ModalShell from '../BusinessModal/ModalShell';
-import StatsContent from '../BusinessModal/StatsContent';
-import BusinessContent from '../BusinessModal/BusinessContent';
+import { createPortal } from 'react-dom';
+import LeaderboardModal from '../BusinessModal/LeaderboardModal'
 
-export default function BoardRow({ subject, businessData, isTeam }) {
+export default function BoardRowNew({ subject, businessData, isTeam }) {
     const {
         pos, 
         name, 
         p10s, 
         rCorrect, 
-        gdCorrect, 
+        gdCorrect,
         hCorrect, 
         aCorrect, 
         gCorrect, 
@@ -22,35 +21,26 @@ export default function BoardRow({ subject, businessData, isTeam }) {
     const businessKey = name.trim().toUpperCase();
     const hasBusiness = isTeam && businessData?.[businessKey] !== undefined;
 
-    const handleOpenModal = () => setIsModalOpen(true);  
+    const handleOpenModal = () => setIsModalOpen(true);
 
     const handleCloseModal = () => setIsModalOpen(false);
-
 
     return (
         <>
         <fieldset 
             className={`boardAlign boardRow ${
-                pos === 1 ? "first" : 
-                pos === 2 ? "second" : 
-                pos === 3 ? "third" : "" 
+            pos === 1 ? "first" : pos === 2 ? "second" : pos === 3 ? "third" : "" 
         }`}        
         >
             <div className="pos">{pos}</div>
-
             <div 
                 className="userName clickable"
                 onClick={handleOpenModal}
             >
                 {name}
-                {hasBusiness && (
-                    <span className="infoIcon">ⓘ</span>
-                )}
+                {hasBusiness && <span className="infoIcon">ⓘ</span>}
             </div>
-
-            <div className={`p10s ${p10s > 0 ? "hasP10s" : ""}`}>
-                {p10s}
-            </div>
+            <div className={`p10s ${p10s > 0 ? "hasP10s" : ""}`}>{p10s}</div>
             <div className="rCorrect">{rCorrect}</div>
             <div className="gdCorrect">{gdCorrect}</div>
             <div className="hCorrect">{hCorrect}</div>
@@ -58,8 +48,22 @@ export default function BoardRow({ subject, businessData, isTeam }) {
             <div className="gCorrect">{gCorrect}</div>
             <div className="points">{points}</div>
         </fieldset>
-        
-        
+        {isModalOpen && 
+            createPortal (
+                <>
+                    <div id="modalOverlay" onClick={handleCloseModal}></div>
+                    <div id="teamModal" >                
+                        <LeaderboardModal 
+                            businessData={hasBusiness ? businessData[businessKey] : null}
+                            handleCloseModal={handleCloseModal}
+                            subject={subject}
+                            isTeam={isTeam}
+                        />       
+                    </div>,
+                </>,
+                document.getElementById("modal-root")
+            )
+        }
         </>
     )
 }
