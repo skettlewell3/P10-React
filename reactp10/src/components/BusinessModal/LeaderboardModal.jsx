@@ -25,6 +25,7 @@ export default function LeaderboardModal({
                 <ModalCardHeader
                     closeModal={handleCloseModal}
                     subject={subject}
+                    isTeam={isTeam}
                 />
 
                 {showToggle && (
@@ -45,7 +46,6 @@ export default function LeaderboardModal({
                 ) : (
                     <StatsContent
                         subjectId={subject.id}
-                        subjectName={subject.name}
                         isTeam={isTeam}
                     />
                 )}
