@@ -53,7 +53,7 @@ export function ModalCoreContainer({ subjectType, subjectId }) {
   console.log("clubstats by id", clubStatsById)
 
   return (
-    <div className="seasonCoreContainer statsSection">
+    <div className="seasonCoreContainer statsSection modalSection">
       <div className="statsSectionTitle">SEASON STATISTICS</div>
       <SeasonCoreGrid stats={stats} />
     </div>

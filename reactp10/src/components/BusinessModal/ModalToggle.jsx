@@ -2,17 +2,20 @@ export default function ModalToggle({ options, activeModal, setActiveModal }) {
     if (!options || options.length <= 1) return null;
 
     const activeIndex = options.indexOf(activeModal);
-    const translateX = `${activeIndex * 100%}`;
+
+    const highlightWidth = 60; // match CSS
+
+    const translateLeft = activeIndex === 1 ? 100 - highlightWidth : 0;
 
     return (
         <div className="modalToggle">
             <div 
                 className="modalToggleHighlight"
-                style={{ transform: `translateX(${translateX})` }}
+                style={{ left: `${translateLeft}%` }}
             />
 
             {options.map(option => (
-                <button 
+                <div 
                     key={option}
                     className={`modalToggleBtn ${
                         activeModal === option ? "active" : ""
@@ -20,7 +23,7 @@ export default function ModalToggle({ options, activeModal, setActiveModal }) {
                     onClick={() => setActiveModal(option)}
                 >
                     {option}
-                </button>
+                </div>
             ))}
         </div>
     );

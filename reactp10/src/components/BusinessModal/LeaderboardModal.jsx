@@ -21,9 +21,10 @@ export default function LeaderboardModal({
     return (
         <div className="teamModalCard">
 
-            <div className="modalCardHeader">
+            <div className="modalCardHeaderContainer">
                 <ModalCardHeader
                     closeModal={handleCloseModal}
+                    subject={subject}
                 />
 
                 {showToggle && (
