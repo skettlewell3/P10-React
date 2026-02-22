@@ -53,8 +53,9 @@ export default function BoardsView( {
             }
             <BoardContainer >
                 <BoardHeader 
-                    activeWeek={activeWeek}
-                    activeLens={activeLens}
+                    // activeWeek={activeWeek}
+                    // activeLens={activeLens}
+                    subjectType={subjectType}
                 />
                 <BoardBody 
                     gameweek={activeWeek}

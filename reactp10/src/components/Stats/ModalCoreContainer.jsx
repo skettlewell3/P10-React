@@ -45,7 +45,7 @@ export function ModalCoreContainer({ subjectType, subjectId }) {
   const stats = statsArray?.[0];
 
   if (loading) return <p>Loading Stats...</p>;
-  if (!statsArray || statsArray.length === 0) {
+  if (!statsArray) {
     return <p>Stats Unavailable</p>;
   }
   
@@ -55,7 +55,7 @@ export function ModalCoreContainer({ subjectType, subjectId }) {
   return (
     <div className="seasonCoreContainer statsSection modalSection">
       <div className="statsSectionTitle">SEASON STATISTICS</div>
-      <SeasonCoreGrid stats={stats} />
+        <SeasonCoreGrid stats={stats} />
     </div>
   );
 }

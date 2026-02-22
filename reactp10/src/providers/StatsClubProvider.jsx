@@ -1,6 +1,7 @@
 import { StatsClubLeagueTableProvider } from "../providers/StatsClubLeagueTableProvider";
 import { StatsClubSeasonCoreProvider } from "../providers/StatsClubSeasonCoreProvider";
 import { SearchClubStatsCoreProvider } from "./SearchClubStatsCoreProvider";
+import { SearchClubStatsHighsProvider } from "./SearchClubStatsHighsProvider";
 import { StatsClubSeasonHighsProvider } from "./StatsClubSeasonHighsProvider";
 
 export function StatsClubProvider({ children }) {
@@ -8,9 +9,11 @@ export function StatsClubProvider({ children }) {
         <StatsClubSeasonCoreProvider>
             <SearchClubStatsCoreProvider>
                 <StatsClubSeasonHighsProvider>
-                    <StatsClubLeagueTableProvider>
-                        {children}
-                    </StatsClubLeagueTableProvider>
+                    <SearchClubStatsHighsProvider>
+                        <StatsClubLeagueTableProvider>
+                            {children}
+                        </StatsClubLeagueTableProvider>
+                    </SearchClubStatsHighsProvider>
                 </StatsClubSeasonHighsProvider>
             </SearchClubStatsCoreProvider>
         </StatsClubSeasonCoreProvider>        
