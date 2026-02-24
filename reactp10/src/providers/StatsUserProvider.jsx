@@ -3,6 +3,7 @@ import { StatsUserLeagueTableProvider } from "./StatsUserLeagueTableProvider";
 import { StatsUserSeasonHighsProvider } from "./StatsUserSeasonHighProvider";
 import { SearchUserStatsCoreProvider } from "./SearchUserStatsCoreProvider";
 import { SearchUserStatsHighsProvider } from "./SearchUserStatsHighsProvider";
+import { SearchUserStatsPLTProvider } from "./SearchUserStatsPLTProvider";
 
 export function StatsUserProvider({ children }) {
     return (
@@ -11,7 +12,9 @@ export function StatsUserProvider({ children }) {
                 <StatsUserSeasonHighsProvider>
                     <SearchUserStatsHighsProvider>
                         <StatsUserLeagueTableProvider>
-                            {children}
+                            <SearchUserStatsPLTProvider>
+                                {children}
+                            </SearchUserStatsPLTProvider>
                         </StatsUserLeagueTableProvider>
                     </SearchUserStatsHighsProvider>
                 </StatsUserSeasonHighsProvider>

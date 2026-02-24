@@ -48,9 +48,6 @@ export function ModalCoreContainer({ subjectType, subjectId }) {
   if (!statsArray) {
     return <p>Loading Stats...</p>;
   }
-  
-  console.log("userstats by id", userStatsById)
-  console.log("clubstats by id", clubStatsById)
 
   return (
     <div className="seasonCoreContainer statsSection modalSection">
