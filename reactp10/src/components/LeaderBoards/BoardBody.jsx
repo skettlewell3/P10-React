@@ -78,7 +78,14 @@ export default function BoardBody({ gameweek, activeLens, subjectType, businessD
       {boardData.length === 0 ? (
         <p id="boardErr">Leaderboards are not currently available</p>
       ) : subjectType === "user" ? (
-        boardData.map((subject) => <BoardRowNew key={subject.key} subject={subject} />)
+        boardData.map((subject) => (
+          <BoardRowNew 
+            key={subject.key} 
+            subject={subject}
+            gameweek={gameweek}
+            activeLens={activeLens}
+          />
+        ))
       ) : (
         boardData.map((subject) => (
           <BoardRowNew
@@ -86,6 +93,8 @@ export default function BoardBody({ gameweek, activeLens, subjectType, businessD
             subject={subject}
             businessData={businessData}
             isTeam={true}
+            gameweek={gameweek}
+            activeLens={activeLens}
           />
         ))
       )}

@@ -27,6 +27,10 @@
   padding-right: 1rem;
 }
 
+.text-center {
+  text-align: center !important; 
+}
+
 #loginContainer {
   display: flex;
   flex-direction: column;
@@ -680,6 +684,7 @@ input[type=number] {
   border: 3px solid white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   z-index: 50;
+  padding-bottom: 2em;
   /* background: rgb(153, 153, 153, 0.8); */
 }
 
@@ -829,6 +834,18 @@ input[type=number] {
   flex-direction: column;
   gap: 0.5em;
   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#modalFixtures {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow-y: scroll;
+  gap: 0.3em;
+  width: 96%;
+  /* margin: 0 0.5em; */
+  /* outline: 1px solid white; */
+  /* padding: 0.5em 0.25em;  */
 }
 
 

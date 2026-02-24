@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { createPortal } from 'react-dom';
 import LeaderboardModal from '../BusinessModal/LeaderboardModal'
 
-export default function BoardRowNew({ subject, businessData, isTeam }) {
+export default function BoardRowNew({ subject, businessData, isTeam, gameweek, activeLens }) {
     const {
         pos, 
         name, 
@@ -58,6 +58,8 @@ export default function BoardRowNew({ subject, businessData, isTeam }) {
                             handleCloseModal={handleCloseModal}
                             subject={subject}
                             isTeam={isTeam}
+                            gameweek={activeLens === 'week' ? gameweek : null}
+                            activeLens={activeLens}
                         />       
                     </div>,
                 </>,

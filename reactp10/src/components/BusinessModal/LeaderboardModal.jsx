@@ -3,20 +3,28 @@ import ModalCardHeader from '../BusinessModal/ModalCardHeader'
 import ModalToggle from '../BusinessModal/ModalToggle'
 import StatsContent from './StatsContent'
 import BusinessContent from './BusinessContent'
+import PredictionContent from './PredictionContent'
 
 export default function LeaderboardModal({
     subject,
     businessData,
     isTeam,
+    gameweek,
+    activeLens,
     handleCloseModal
 }) {
-    const [activeModal, setActiveModal] = useState("Stats")
+    const [activeModal, setActiveModal] = useState(
+        activeLens === "week" ? "Predictions" : "Stats"
+    );
 
-    const toggleOptions = businessData
-        ? ["Stats", "Business"]
-        : ["Stats"]
+    const toggleOptions = [
+        activeLens === "week" ? "Predictions" : "Stats",
+        ...(businessData ? ["Business"] : [])
+    ];
 
     const showToggle = toggleOptions.length > 1
+
+    console.log({subjectName: subject.name, activeLens, gameweek})
 
     return (
         <div className="teamModalCard">
@@ -38,18 +46,22 @@ export default function LeaderboardModal({
             </div>
 
             <div className="modalCardBody">
-
                 {activeModal === "Business" && businessData ? (
-                    <BusinessContent
-                        Business={businessData}
+                    <BusinessContent 
+                        Business={businessData} 
+                    />
+                ) : activeModal === "Predictions" && activeLens === "week" ? (
+                    <PredictionContent 
+                        subjectId={subject.id}
+                        subjectType={isTeam ? "club" : "user"}
+                        gameweek={gameweek}
                     />
                 ) : (
-                    <StatsContent
-                        subjectId={subject.id}
-                        isTeam={isTeam}
+                    <StatsContent 
+                        subjectId={subject.id} 
+                        isTeam={isTeam} 
                     />
                 )}
-
             </div>
 
         </div>
