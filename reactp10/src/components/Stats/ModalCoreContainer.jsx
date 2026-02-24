@@ -46,7 +46,7 @@ export function ModalCoreContainer({ subjectType, subjectId }) {
 
   if (loading) return <p>Loading Stats...</p>;
   if (!statsArray) {
-    return <p>Stats Unavailable</p>;
+    return <p>Loading Stats...</p>;
   }
   
   console.log("userstats by id", userStatsById)
