@@ -381,17 +381,17 @@ input[type=number] {
 }
 
 .posName {
-  width: 75%;
+  width: 70%;
   padding: 4px 0;
 }
 
 .teamPos {
-  width: 25%;
+  width: 30%;
   height: 100%;
   font-size: 1em;
   font-weight: normal;
-  background-color: var(--silver);
-  color: white;
+  background-color: inherit;
+  color: inherit;
   text-shadow: none;
 }
 
