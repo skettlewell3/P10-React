@@ -1061,9 +1061,10 @@ input[type=number] {
 .leagueTableToggle {
   display: flex;
   margin-bottom: 8px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
   gap: 12px;
-  justify-content: end;
+  justify-content: center;
+  /* font-size: 0.8em; */
 }
 
 .leagueTableToggle span {

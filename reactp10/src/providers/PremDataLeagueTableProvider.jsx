@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { PremDataLeagueTableContext } from "../context/PremDataLeagueTableContext";
 import { useDatabase } from "../hooks/useDatabase";
 
@@ -41,6 +41,10 @@ export function PremDataLeagueTableProvider({ children }) {
       setLoading(false);
     }
   }, [supabase]);
+
+  useEffect(() => {
+    refreshPremLeagueTables();
+  }, [refreshPremLeagueTables]);
 
   return (
     <PremDataLeagueTableContext.Provider
