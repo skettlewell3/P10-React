@@ -1054,8 +1054,28 @@ input[type=number] {
   align-items: center;
 }
 
+/* LEAGUE TABLES */
 
+/* prem league tables */
 
+.leagueTableToggle {
+  display: flex;
+  margin-bottom: 8px;
+  margin-right: 10px;
+  gap: 12px;
+  justify-content: end;
+}
+
+.leagueTableToggle span {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.leagueTableToggle span.active {
+  opacity: 1;
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
 
 /* predicted league table */
 .leagueTableItem {
