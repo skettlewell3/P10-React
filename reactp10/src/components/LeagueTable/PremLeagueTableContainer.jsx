@@ -29,11 +29,11 @@ export default function PremLeagueTableContainer() {
             <div className="statsSectionTitle">
                 PREMIER LEAGUE TABLE
             </div>
-
             <PremLeagueTableToggle
                 mode={mode}
                 setMode={setMode}
             />
+
 
             <div className="leagueTableItem">
                 <LeagueTableHeader />
