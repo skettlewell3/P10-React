@@ -368,10 +368,36 @@ input[type=number] {
 }
 
 .team {
-  padding: 4px;
+  /* padding: 4px 0; */
   text-align: center;
   border-radius: 5px;
   font-weight: bold;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.team.pos {
+  display: flex;
+}
+
+.posName {
+  width: 75%;
+  padding: 4px 0;
+}
+
+.teamPos {
+  width: 25%;
+  height: 100%;
+  font-size: 1em;
+  font-weight: normal;
+  background-color: var(--silver);
+  color: white;
+  text-shadow: none;
+}
+
+.teamPos sup {
+  font-size: 0.7em;
+  vertical-align: super;
 }
 
 .pred {
@@ -1151,43 +1177,49 @@ input[type=number] {
 .liverpool {
   background-color: #dd0000;
   color: #fff;
+  outline: 2px solid #dd0000;
 }
 
 .bournemouth {
   background-color: #ed1c24;
   color: black;
-  /* font-size: 0.8rem; */
-    
+  outline: 2px solid #ed1c24;  
 }
 
 .astonvilla {
   background-color: #95bfe5;
   color: #670e36;
+  outline: 2px solid #95bfe5;
 }
 
 .arsenal {
   background-color: #ef0107;
   color: #fff;
+  outline: 2px solid #ef0107;
 }
 
 .brighton {
   background-color: #005daa;
   color: #fff;
+  outline: 2px solid #005daa;
 }
 
 .burnley {
 background-color: #800000;
 color: #80bfff;
+outline: 2px solid #800000;
 }
 
 .chelsea {
   background-color: #034694;
   color: #d1d3d4;
+  outline: 2px solid #034694;
 }
 
 .crystalpalace {
   background-color: #1b458f;
   color: #fff;
+  outline: 2px solid #1b458f;
   text-shadow: 
     -.5px -.5px 0 #c4122e,
     .5px -.5px 0 #c4122e,
@@ -1198,59 +1230,179 @@ color: #80bfff;
 .everton {
   background-color: #274488;
   color: #fff;
+  outline: 2px solid #274488;
 }
 
 .mancity {
   background-color: #6cabdd;
   color: #1c2c5b;
+  outline: 2px solid #6cabdd;
 }
 
 .manunited {
   background-color: #da291c;
   color: #fbe122;
+  outline: 2px solid #da291c;
 }
 
 .newcastle {
   background-color: #241f20;
   color: #fff;
+  outline: 2px solid #241f20;
 }
 
 .leeds {
   background-color: #ffcd00;
   color: #1d428a;
+  outline: 2px solid #ffcd00;
 }
 
 .fulham {
   background-color: #000;
   color: #cc0000;
+  outline: 2px solid #000;
 }
 
 .tottenham {
   background-color: #fff;
   color: #132257;
+  outline: 2px solid #fff;
 }
 
 .westham {
   background-color: #7c2c3b;
   color: #7bcce6;
+  outline: 2px solid #7c2c3b;
 }
 
 .sunderland {
   background-color: #eb1726;
   color: #211e1e;
+  outline: 2px solid #eb1726;
 }
 
 .wolverhamptonwanderers {
   background-color: #fdb913;
   color: #231f20;
+  outline: 2px solid #fdb913;
 }
 
 .brentford {
   background-color: #e30613;
   color: #fff;
+  outline: 2px solid #e30613;
 }
 
 .nottinghamforest {
   background-color: #fff;
   color: #e53233;
+  outline: 2px solid #fff;
+}
+
+/* team pos version */
+
+.liverpool.teamPos {
+  background-color: #fff;
+  color: #dd0000;
+}
+
+.bournemouth.teamPos {
+  background-color: black;
+  color: #ed1c24;
+}
+
+.astonvilla.teamPos {
+  background-color: #670e36;
+  color: #95bfe5;
+}
+
+.arsenal.teamPos {
+  background-color: #fff;
+  color: #ef0107;
+}
+
+.brighton.teamPos {
+  background-color: #fff;
+  color: #005daa;
+}
+
+.burnley.teamPos {
+  background-color: #80bfff;
+  color: #800000;
+}
+
+.chelsea.teamPos {
+  background-color: #d1d3d4;
+  color: #034694;
+}
+
+.crystalpalace.teamPos {
+  background-color: #fff;
+  /* color: #1b458f; */
+  text-shadow: none;
+  color: #c4122e;
+
+}
+
+.everton.teamPos {
+  background-color: #fff;
+  color: #274488;
+}
+
+.mancity.teamPos {
+  background-color: #1c2c5b;
+  color: #6cabdd;
+}
+
+.manunited.teamPos {
+  /* background-color: #fbe122; */
+  color: #da291c;
+  background-color: #000;
+}
+
+.newcastle.teamPos {
+  background-color: #fff;
+  color: #241f20;
+}
+
+.leeds.teamPos {
+  color: #1d428a;
+  /* color: #ffcd00; */
+  background-color: #fff;
+}
+
+.fulham.teamPos {
+  /* background-color: #cc0000; */
+  color: #000;
+  background-color: #fff;
+}
+
+.tottenham.teamPos {
+  background-color: #132257;
+  color: #fff;
+}
+
+.westham.teamPos {
+  background-color: #7bcce6;
+  color: #7c2c3b;
+}
+
+.sunderland.teamPos {
+  background-color: #211e1e;
+  color: #eb1726;
+}
+
+.wolverhamptonwanderers.teamPos {
+  background-color: #231f20;
+  color: #fdb913;
+}
+
+.brentford.teamPos {
+  background-color: #fff;
+  color: #e30613;
+}
+
+.nottinghamforest.teamPos {
+  background-color: #e53233;
+  color: #fff;
 }
