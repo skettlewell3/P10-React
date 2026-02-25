@@ -9,7 +9,6 @@ export default function FooterNav({ handleSubmit }) {
           label="News"
           icon="/assets/svg/newsSVG.svg"
           to="/news"
-          disabled
         />
         <FooterLink
           label="Stats"

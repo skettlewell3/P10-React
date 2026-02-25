@@ -9,7 +9,7 @@ export default function LeagueTableBodyDumb({ tableData, subjectId }) {
         <div className="leagueTableBody">
             {tableData.map((row) => (
                 <LeagueTableRow
-                    key={`${subjectId}-${row.team_name}`}
+                    key={subjectId ? `${subjectId}-${row.team_name}` : row.team_name}
                     data={row}
                 />
             ))}
