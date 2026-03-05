@@ -1,10 +1,13 @@
 import { PremDataLeagueTableProvider } from "./PremDataLeagueTableProvider";
+import { SearchTeamComparisonProvider } from "./SearchTeamComparisonProvider";
 
 
 export function PremDataRootProvider({ children }) {
     return (
         <PremDataLeagueTableProvider>
-            {children}
+            <SearchTeamComparisonProvider>
+                {children}
+            </SearchTeamComparisonProvider>
         </PremDataLeagueTableProvider>      
     )
 }
