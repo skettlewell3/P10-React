@@ -5,7 +5,7 @@ import { useGameweek } from "../../hooks/useGameweeks";
 export default function PredictionStatus() {
     const { user } = useUser();
     const { currentWeek } = useGameweek();
-    const { usePredictions, loading } =usePredictionsUser();
+    const { userPredictions, loading } =usePredictionsUser();
 
     if (loading || !user) return null;
 
@@ -16,13 +16,17 @@ export default function PredictionStatus() {
     const hasPredictions = gwPredictions.length > 0;
 
     return (
-        <div className="predictionStatus">
-            <p>
+        <div >
+            <div className="predictionStatus">
+                <span 
+                    className="dot" 
+                    style={{ backgroundColor: hasPredictions ? "green" : "red"}}
+                />
                 GW{currentWeek} Prediction Status: {" "}
                 <span style={{ color: hasPredictions ? "green" : "red"}}>
-                    {hasPredictions ? "Submitted" : "Not Submitted"}
+                    {hasPredictions ? "Submitted" : "Not Submitted"}                    
                 </span>
-            </p>
+            </div>
 
             {hasPredictions && (
                 <p>Thanks for Playing!</p>
