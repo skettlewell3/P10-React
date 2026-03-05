@@ -2,6 +2,7 @@ import PredictList from "../Fixtures/PredictList";
 import ViewTitleContainer from "../ViewTitleContainer";
 import { useGameweek } from '../../hooks/useGameweeks';
 import BoardSnapshot from "../LeaderBoards/BoardSnapshot";
+import PredictionStatus from "../Fixtures/PredictionStatus";
 
 export default function PredictView({ 
     activeView, 
@@ -26,7 +27,8 @@ export default function PredictView({
                 highlightedClub={highlightedClub}
                 setHighlightedClub={setHighlightedClub}
                 clubs={clubs}
-            />  
+            /> 
+
             {currentGwStatus === "live" && (
               <BoardSnapshot
                 gameweek={currentWeek}
@@ -34,6 +36,10 @@ export default function PredictView({
                 highlightedClub={highlightedClub}
               />
             )}
+            {currentGwStatus === "submissionsOpen" && (
+            <PredictionStatus />
+            )}
+            
             <PredictList 
                 gameweek={currentWeek} 
                 subjectType={subjectType}

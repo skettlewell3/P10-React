@@ -270,6 +270,14 @@
   border-radius: 50%;
 }
 
+.predictionStatus .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
 .fixtureStatus.green { color: green;}
 .fixtureStatus.amber { color: orange;}
 .fixtureStatus.red { color: blue;}
