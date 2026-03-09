@@ -278,6 +278,15 @@
   margin-right: 8px;
 }
 
+.predictionStatus {
+  margin-bottom: 0;
+}
+
+.thanks {
+  text-align: center;
+  margin: 0 0;
+}
+
 .fixtureStatus.green { color: green;}
 .fixtureStatus.amber { color: orange;}
 .fixtureStatus.red { color: blue;}
