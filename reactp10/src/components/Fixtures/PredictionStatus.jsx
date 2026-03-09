@@ -9,11 +9,17 @@ export default function PredictionStatus() {
 
     if (loading || !user) return null;
 
-    const gwPredictions = userPredictions.filter(
-        p => p.gameweek === currentWeek && p.user_id === user.user_id
+    const minFixtureId = currentWeek * 10 - 9;
+    const maxFixtureId = currentWeek * 10;
+
+    const gwPredictions = userPredictions.filter(p =>
+      p.user_id === user.user_id &&
+      p.fixture_id >= minFixtureId &&
+      p.fixture_id <= maxFixtureId
     );
 
     const hasPredictions = gwPredictions.length > 0;
+    console.log("predictions:", gwPredictions);
 
     return (
         <div >
@@ -29,7 +35,7 @@ export default function PredictionStatus() {
             </div>
 
             {hasPredictions && (
-                <p>Thanks for Playing!</p>
+                <p className="thanks">Thanks for Playing!</p>
             )}
 
         </div>
