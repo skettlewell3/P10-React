@@ -1,0 +1,22 @@
+export const TEAMS = [
+  { id: 1, name: "Arsenal", short: "ARS" },
+  { id: 2, name: "Aston Villa", short: "AVL" },
+  { id: 3, name: "Bournemouth", short: "BOU" },
+  { id: 4, name: "Brentford", short: "BRE" },
+  { id: 5, name: "Brighton", short: "BRI" },
+  { id: 6, name: "Burnley", short: "BRN" },
+  { id: 7, name: "Chelsea", short: "CHE" },
+  { id: 8, name: "Crystal Palace", short: "CRY" },
+  { id: 9, name: "Everton", short: "EVE" },
+  { id: 10, name: "Fulham", short: "FUL" },
+  { id: 11, name: "Leeds", short: "LEE" },
+  { id: 12, name: "Liverpool", short: "LIV" },
+  { id: 13, name: "Man City", short: "MCI" },
+  { id: 14, name: "Man United", short: "MUN" },
+  { id: 15, name: "Newcastle", short: "NEW" },
+  { id: 16, name: "Nottingham Forest", short: "NFO" },
+  { id: 17, name: "Sunderland", short: "SUN" },
+  { id: 18, name: "Tottenham", short: "TOT" },
+  { id: 19, name: "West Ham", short: "WHU" },
+  { id: 20, name: "Wolverhampton Wanderers", short: "WOL" }
+];
