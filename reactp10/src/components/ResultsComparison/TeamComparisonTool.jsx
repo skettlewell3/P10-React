@@ -29,7 +29,7 @@ export default function TeamComparisonTool({ teamsFromFixture }) {
         <div className="statsSectionTitle text-right">COMPARE RESULTS...</div>
       {!teamsFromFixture && <TeamComparisonSelector onSelect={handleCompareTeams} />}
       {loading && <p>Loading...</p>}
-      {currentData && <TeamComparisonCore data={currentData} />}
+      {currentData && <TeamComparisonCore data={currentData} teams={teams}/>}
     </div>
   );
 }

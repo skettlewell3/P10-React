@@ -1097,6 +1097,96 @@ input[type=number] {
   align-items: center;
 }
 
+/* TEAM COMPARISON TOOL */
+
+.teamComparisonSelector {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 3px solid white;
+  padding: 0.5em 0;
+  margin-bottom: 0.5em;
+}
+
+.teamComparisonSelector select {
+  text-align: center;
+  cursor: pointer;
+}
+
+.compareButton {
+  padding: 0.25em;
+}
+
+.teamComparisonRow {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 3fr) 3fr repeat(2, 3fr) 1fr;
+  grid-template-rows: 1.5em;
+  text-align: center;
+  margin: 0 0.15em 0.3em 0.15em;
+  /* outline: 1px solid red; */
+  padding: 0.15em 0;
+}
+
+.comparisonRowTotal {
+  font-weight: bold;
+  font-size: 1.1em;
+  align-self: center;
+  color: #fff;
+  /* border: 2px solid black; */
+}
+
+.comparisonRowOppo {
+  /* border: 1px solid black */
+}
+
+.comparisonRowTotal.t1 {
+  grid-column: 1 /2;
+}
+
+.t1Home {
+  grid-column: 2 / 3;
+  margin-left: 0.5em;
+}
+
+.t1Away {
+  grid-column: 3 / 4;
+  margin-right: 0.5em;
+}
+
+.t2Home {
+  grid-column: 5 / 6;
+  margin-left: 0.5em;
+}
+
+.t2Away {
+  grid-column: 6 / 7;
+  margin-right: 0.5em;
+}
+
+.comparisonRowTotal.t2 {
+  grid-column: 7 / 8;
+}
+
+.fixtureCell {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* outline: 1px solid white; */
+  align-self: center;
+  /* margin: 0 0.5em; */
+}
+
+.resultCell {
+  grid-column: 1 / 2;
+  /* outline: 1px solid purple; */
+}
+
+.metaCell {
+  grid-column: 2 / 3;
+  background-color: #fff;
+  color: var(--blue);
+}
+
+
+
 /* LEAGUE TABLES */
 
 /* prem league tables */
