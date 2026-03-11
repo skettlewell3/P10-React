@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import TeamComparisonRow from "./TeamComparisonRow";
 import TeamComparisonToggle from './TeamComparisonToggle';
+import TeamComparisonHeader from './TeamComparisonHeader';
 
 export default function TeamComparisonCore({ data, teams }) {
   const [comparisonMode, setComparisonMode] = useState("generic");
@@ -27,6 +28,10 @@ export default function TeamComparisonCore({ data, teams }) {
         setComparisonMode={setComparisonMode}
       />
       <div className="comparisonGrid">
+        <TeamComparisonHeader 
+          comparisonMode={comparisonMode}
+          teams={teams}
+        />
         {comparisonData.map((row) => (
           <TeamComparisonRow 
             key={row.opponent_id} 

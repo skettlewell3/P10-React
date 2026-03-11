@@ -42,7 +42,7 @@ export default function TeamComparisonRow({ rowData, viewMode }) {
                 metaData={t1_homeMeta}
                 className="t1Home"
             />
-             <FixtureCell 
+            <FixtureCell 
                 hGoals={t1_away_gf} 
                 aGoals={t1_away_ga} 
                 metaData={t1_awayMeta}
@@ -57,12 +57,11 @@ export default function TeamComparisonRow({ rowData, viewMode }) {
                 metaData={t2_homeMeta}
                 className="t2Home"
             />
-             <FixtureCell 
+            <FixtureCell 
                 hGoals={t2_away_gf} 
                 aGoals={t2_away_ga} 
                 metaData={t2_awayMeta}
                 className="t2Away"
-
             />   
             <div className="comparisonRowTotal" style={t2Style}>{t2_total}</div>
         </div>
