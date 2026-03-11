@@ -1,1 +1,28 @@
-export default function TeamComparisonSummary({ comparisonData, comparisonMode})
+import { useMemo } from "react"; 
+import { summariseGenericComparison, summariseDirectComparison } from "../../utils/utils";
+import ComparisonSummaryRow from "./ComparisonSummaryRow";
+
+export default function TeamComparisonSummary({ data, comparisonMode }) {
+
+  const summary = useMemo(() => {
+    return comparisonMode === "generic"
+      ? summariseGenericComparison(data)
+      : summariseDirectComparison(data);
+  }, [data, comparisonMode]);
+
+  return (
+    <div className="comparisonSummary">
+
+      {/* Rows always consistent */}
+      <ComparisonSummaryRow label="MP" stat="played" summary={summary} />
+      <ComparisonSummaryRow label="GF" stat="gf" summary={summary} />
+      <ComparisonSummaryRow label="GA" stat="ga" summary={summary} />
+      <ComparisonSummaryRow
+        label={comparisonMode === "direct" ? "+/-" : "Pts"}
+        stat={comparisonMode === "direct" ? "swing" : "pts"}
+        summary={summary}
+      />
+
+    </div>
+  );
+}

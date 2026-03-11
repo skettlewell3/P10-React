@@ -1116,6 +1116,18 @@ input[type=number] {
   padding: 0.25em;
 }
 
+.comparisonSummary {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+}
+
+.comparisonSummaryRow {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr) 2fr repeat(3, 2fr);
+  text-align: center;
+}
+
 .teamComparisonHeader {
   display: grid;
   grid-template-columns: 1fr repeat(2, 3fr) 2fr repeat(2, 3fr) 1fr;
