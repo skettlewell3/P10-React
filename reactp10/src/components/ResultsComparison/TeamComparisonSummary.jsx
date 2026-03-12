@@ -1,6 +1,7 @@
 import { useMemo } from "react"; 
 import { summariseGenericComparison, summariseDirectComparison } from "../../utils/utils";
 import ComparisonSummaryRow from "./ComparisonSummaryRow";
+import ComparisonSummaryHeader from "./ComparisonSummaryHeader";
 
 export default function TeamComparisonSummary({ data, comparisonMode }) {
 
@@ -12,6 +13,7 @@ export default function TeamComparisonSummary({ data, comparisonMode }) {
 
   return (
     <div className="comparisonSummary">
+      <ComparisonSummaryHeader />
 
       {/* Rows always consistent */}
       <ComparisonSummaryRow label="MP" stat="played" summary={summary} />

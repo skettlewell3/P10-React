@@ -1122,6 +1122,17 @@ input[type=number] {
   margin-bottom: 0.5em;
 }
 
+.SummaryHeader {
+  background-color: #fff;
+  color: var(--blue);
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.summaryLabelHeader {
+  font-size: 0.8em;
+}
+
 .comparisonSummaryRow {
   display: grid;
   grid-template-columns: repeat(3, 2fr) 2fr repeat(3, 2fr);
@@ -1208,10 +1219,6 @@ input[type=number] {
   grid-template-columns: 2fr 1fr;
 }
 
-.resultHeader {
-  /* align-self: center; */
-}
-
 .metaHeader {
   font-size: 0.7em;
   font-weight: normal;
@@ -1275,6 +1282,10 @@ input[type=number] {
   align-self: center;
   /* outline: 1px solid white; */
   /* margin: 0 0.5em; */
+}
+
+.opaqueFixture {
+  opacity: 0.45;
 }
 
 .resultCell {

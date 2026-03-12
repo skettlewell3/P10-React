@@ -49,44 +49,44 @@ export function summariseGenericComparison(data) {
 }
 
 export function summariseDirectComparison(data) {
-  const safe = v => v ?? 0;
 
   const summary = {
-    t1: { home: { gf: 0, ga: 0, swing: 0, played: 0 }, away: { gf: 0, ga: 0, swing: 0, played: 0 }, total: {} },
-    t2: { home: { gf: 0, ga: 0, swing: 0, played: 0 }, away: { gf: 0, ga: 0, swing: 0, played: 0 }, total: {} }
+    t1: { home:{gf:0,ga:0,swing:0,played:0}, away:{gf:0,ga:0,swing:0,played:0}, total:{} },
+    t2: { home:{gf:0,ga:0,swing:0,played:0}, away:{gf:0,ga:0,swing:0,played:0}, total:{} }
   };
 
   data.forEach(row => {
 
-    // T1 home vs T2 away pair
+    // HOME vs HOME
     if (row.t1_home_swing != null) {
-      summary.t1.home.gf += safe(row.t1_home_gf);
-      summary.t1.home.ga += safe(row.t1_home_ga);
-      summary.t1.home.swing += safe(row.t1_home_swing);
+
+      summary.t1.home.gf += row.t1_home_gf ?? 0;
+      summary.t1.home.ga += row.t1_home_ga ?? 0;
+      summary.t1.home.swing += row.t1_home_swing ?? 0;
       summary.t1.home.played++;
 
-      summary.t2.away.gf += safe(row.t2_away_gf);
-      summary.t2.away.ga += safe(row.t2_away_ga);
-      summary.t2.away.swing += safe(row.t2_away_swing);
-      summary.t2.away.played++;
+      summary.t2.home.gf += row.t2_home_gf ?? 0;
+      summary.t2.home.ga += row.t2_home_ga ?? 0;
+      summary.t2.home.swing += row.t2_home_swing ?? 0;
+      summary.t2.home.played++;
     }
 
-    // T1 away vs T2 home pair
+    // AWAY vs AWAY
     if (row.t1_away_swing != null) {
-      summary.t1.away.gf += safe(row.t1_away_gf);
-      summary.t1.away.ga += safe(row.t1_away_ga);
-      summary.t1.away.swing += safe(row.t1_away_swing);
+
+      summary.t1.away.gf += row.t1_away_gf ?? 0;
+      summary.t1.away.ga += row.t1_away_ga ?? 0;
+      summary.t1.away.swing += row.t1_away_swing ?? 0;
       summary.t1.away.played++;
 
-      summary.t2.home.gf += safe(row.t2_home_gf);
-      summary.t2.home.ga += safe(row.t2_home_ga);
-      summary.t2.home.swing += safe(row.t2_home_swing);
-      summary.t2.home.played++;
+      summary.t2.away.gf += row.t2_away_gf ?? 0;
+      summary.t2.away.ga += row.t2_away_ga ?? 0;
+      summary.t2.away.swing += row.t2_away_swing ?? 0;
+      summary.t2.away.played++;
     }
 
   });
 
-  // totals
   ["t1","t2"].forEach(team => {
     summary[team].total = {
       gf: summary[team].home.gf + summary[team].away.gf,
