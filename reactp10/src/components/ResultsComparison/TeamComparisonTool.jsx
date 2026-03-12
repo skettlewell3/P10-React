@@ -25,7 +25,7 @@ export default function TeamComparisonTool({ teamsFromFixture }) {
   };
 
   return (
-    <div className="teamComparisonContainer">
+    <div className="teamComparisonContainer statsSection">
         <div className="statsSectionTitle text-right">COMPARE RESULTS...</div>
       {!teamsFromFixture && <TeamComparisonSelector onSelect={handleCompareTeams} />}
       {loading && <p>Loading...</p>}

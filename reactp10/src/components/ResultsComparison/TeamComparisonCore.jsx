@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react';
 import TeamComparisonRow from "./TeamComparisonRow";
 import TeamComparisonToggle from './TeamComparisonToggle';
+import TeamComparisonHeader from './TeamComparisonHeader';
+import TeamComparisonSummary from './TeamComparisonSummary';
 
 export default function TeamComparisonCore({ data, teams }) {
   const [comparisonMode, setComparisonMode] = useState("generic");
@@ -18,6 +20,8 @@ export default function TeamComparisonCore({ data, teams }) {
       return swings.some(s => s !== null && s !== undefined);
     })    
   }, [data, comparisonMode]);
+
+  console.log("comparisonData:", data )
   
   if (!data || !data.length) return <p>No data available</p>;
   return (
@@ -27,6 +31,14 @@ export default function TeamComparisonCore({ data, teams }) {
         setComparisonMode={setComparisonMode}
       />
       <div className="comparisonGrid">
+        <TeamComparisonSummary 
+          data={comparisonData}
+          comparisonMode={comparisonMode}
+        />
+        <TeamComparisonHeader 
+          comparisonMode={comparisonMode}
+          teams={teams}
+        />
         {comparisonData.map((row) => (
           <TeamComparisonRow 
             key={row.opponent_id} 
@@ -35,6 +47,7 @@ export default function TeamComparisonCore({ data, teams }) {
             teams={teams}
           />
         ))}
+        
       </div>
     </div>
   );
