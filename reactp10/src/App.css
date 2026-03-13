@@ -1137,6 +1137,8 @@ input[type=number] {
   display: grid;
   grid-template-columns: repeat(3, 2fr) 2fr repeat(3, 2fr);
   text-align: center;
+  font-size: 0.8em;
+  border-bottom: 1px dotted white;
 }
 
 .teamComparisonHeader {
@@ -1220,7 +1222,7 @@ input[type=number] {
 }
 
 .metaHeader {
-  font-size: 0.7em;
+  font-size: clamp(0.6em, 0.7em, 0.75em);
   font-weight: normal;
   align-self: center;
 }
@@ -1229,7 +1231,7 @@ input[type=number] {
 .teamComparisonRow {
   display: grid;
   grid-template-columns: 1fr repeat(2, 3fr) 2fr repeat(2, 3fr) 1fr;
-  grid-template-rows: 1.5em;
+  grid-template-rows: 1.3em;
   text-align: center;
   margin: 0 0.15em 0.3em 0.15em;
   /* outline: 1px solid red; */
@@ -1240,8 +1242,9 @@ input[type=number] {
   font-weight: bold;
   font-size: 1.1em;
   align-self: center;
-  color: #fff;
+  /* color: #fff; */
   /* border: 2px solid black; */
+  border-radius: 4px;
 }
 
 /* .comparisonRowOppo {

@@ -17,6 +17,9 @@ export default function TeamComparisonSummary({ data, comparisonMode }) {
 
       {/* Rows always consistent */}
       <ComparisonSummaryRow label="MP" stat="played" summary={summary} />
+      <ComparisonSummaryRow label="W" stat="w" summary={summary} />
+      <ComparisonSummaryRow label="D" stat="d" summary={summary} />
+      <ComparisonSummaryRow label="L" stat="l" summary={summary} />
       <ComparisonSummaryRow label="GF" stat="gf" summary={summary} />
       <ComparisonSummaryRow label="GA" stat="ga" summary={summary} />
       <ComparisonSummaryRow
