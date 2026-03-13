@@ -12,7 +12,7 @@ export default function TeamComparisonHeader({ comparisonMode, teams }) {
     const team2Name = TEAMS.find(t => t.id === team2)?.name;
 
     const totalHeader = comparisonMode === "generic" ? "Pts" : "+/-";
-    const metaHeader = comparisonMode === "generic" ? "(Pts)" : "(+/-)";
+    const metaHeader = comparisonMode === "generic" ? "(Pts)" : "+/-";
 
     return (
         <div className="teamComparisonHeader">
