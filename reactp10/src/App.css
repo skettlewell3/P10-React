@@ -296,11 +296,19 @@
 .fixtureStatus.red .dot { background: blue;}
 
 .match {
-  display: grid;
-  grid-template-columns: 2fr 1fr .3fr 1fr 2fr;
   padding: 0.2em;
   border: none;
   cursor: pointer;
+}
+
+.withModal {
+  display: grid;
+  grid-template-columns: 2fr 1fr .3fr 1fr 2fr 0.4fr;
+}
+
+.noModal{
+  display: grid;
+  grid-template-columns: 2fr 1fr .3fr 1fr 2fr;
 }
 
 .match div {
@@ -324,6 +332,11 @@
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+.matchModalButton {
+  margin-left: 0.2em;
+
 }
 
 /* Chrome, Safari, Edge, Opera- no spinner*/

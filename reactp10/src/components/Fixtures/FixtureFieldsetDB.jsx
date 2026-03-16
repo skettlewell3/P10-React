@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { usePredictionsUser } from "../../hooks/usePredictionsUser";
 import { classifyTeamName } from "../../utils/utils";
 import { useUser } from "../../hooks/useUser";
 import { usePremLeagueTables } from "../../hooks/usePremLeagueTables";
 
-export default function FixtureFieldsetDB({ fixture, mode, toggledContent, canToggle }) {
+export default function FixtureFieldsetDB({ 
+  fixture, 
+  mode, 
+  toggledContent, 
+  canToggle,
+  openMatchModal
+}) {
   const { fixture_id, home_team, home_short, away_team, away_short, home_goals, away_goals } = fixture;
   const { user } = useUser();
   const { overallTable } = usePremLeagueTables();
@@ -13,6 +20,10 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent, canTo
 
   const [homeValue, setHomeValue] = useState('');
   const [awayValue, setAwayValue] = useState('');
+
+  const location = useLocation();
+  const allowedPaths = ["/predict", "/review"]
+  const showModalButton = allowedPaths.includes(location.pathname) && typeof openMatchModal === "function"
   
 
   useEffect(() => {
@@ -61,7 +72,7 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent, canTo
 
   return (
     <div className="fixtureFieldsetWrapper">
-      <fieldset className="match" onClick={handleToggle}>
+      <fieldset className={`match ${showModalButton ? "withModal" : "noModal"}`} onClick={handleToggle}>
         {mode === "form" ? (
           <div className={`team pos home ${classifyTeamName(home_team)}`} title={home_team}>
             <div className={`teamPos ${classifyTeamName(home_team)}`}>
@@ -130,9 +141,18 @@ export default function FixtureFieldsetDB({ fixture, mode, toggledContent, canTo
           </div>
         )}
 
-        {/* <div className={`team away ${classifyTeamName(away_team)}`} title={away_team}>
-          {away_short}
-        </div> */}
+        {showModalButton && 
+          <div
+            type="button"
+            className="matchModalButton"
+            onClick={(e) => {
+              e.stopPropagation();
+              openMatchModal(fixture);
+            }}
+          >
+            ⓘ
+          </div>
+        }
       </fieldset>
 
       {expanded && toggledContent && (

@@ -1,18 +1,27 @@
+import { useState } from 'react';
 import { useFixtures } from '../../hooks/useFixtures.js';
 import FixturesCard from './FixturesCard';
 import { useUser } from '../../hooks/useUser.js';
 import { supabase } from '../../supbaseClient.js';
 import { usePredictionsClub } from '../../hooks/usePredictionsClub.js';
+import MatchModal from '../MatchModal/MatchModal.jsx';
 
-export default function PredictList({ gameweek, currentGwStatus, subjectType, highlightedClub, refreshAll }) {
+export default function PredictList({ 
+  gameweek, 
+  currentGwStatus, 
+  subjectType, 
+  highlightedClub, 
+  refreshAll
+}) {
   const { user } = useUser();
   const { fixtures, loading } = useFixtures();
   const { clubPredictions } = usePredictionsClub();
 
+  const [modalFixture, setModalFixture] = useState(null);
+
   if (loading) return <p>Loading Fixtures...</p>;
 
   const filteredFixtures = fixtures.filter(f => f.gameweek_id === gameweek);
-
   const mode = currentGwStatus === "submissionsOpen" ? "form" : "result";
 
   const groupedFixtures = filteredFixtures.reduce((acc, fixture) => {
@@ -64,24 +73,35 @@ export default function PredictList({ gameweek, currentGwStatus, subjectType, hi
     
 
   return (
-    <form id="predictionForm" onSubmit={handleSubmit}>
-      {Object.entries(groupedFixtures).map(([key, fixtures]) => {
-        const [day, ko] = key.split("-");
-        return (
-          <FixturesCard
-            key={key}
-            day={day}
-            ko={ko}
-            fixtures={fixtures}
-            mode={mode}
-            subjectType={subjectType}
-            highlightedClub={highlightedClub}
-            canToggle={clubPredictions.some(p =>
-              fixtures.some(f => f.fixture_id === p.fixture_id)
-            )}
-          />
-        );
-      })}
-    </form>
+    <>
+      <form id="predictionForm" onSubmit={handleSubmit}>
+        {Object.entries(groupedFixtures).map(([key, fixtures]) => {
+          const [day, ko] = key.split("-");
+          return (
+            <FixturesCard
+              key={key}
+              day={day}
+              ko={ko}
+              fixtures={fixtures}
+              mode={mode}
+              subjectType={subjectType}
+              highlightedClub={highlightedClub}
+              canToggle={clubPredictions.some(p =>
+                fixtures.some(f => f.fixture_id === p.fixture_id)
+              )}
+              openMatchModal={setModalFixture}
+            />
+          );
+        })}
+      </form>
+
+      {modalFixture && (
+        <MatchModal
+          fixture={modalFixture}
+          fixtures={filteredFixtures} 
+          onClose={() => setModalFixture(null)}
+        />
+      )}
+    </>
   );
 }
