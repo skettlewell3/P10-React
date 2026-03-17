@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TeamComparisonTool from "../ResultsComparison/TeamComparisonTool";
 import { TEAMS } from "../../constants/teams";
 
-export default function MatchModal({ fixture, fixtures = [], onClose }) {
+export default function MatchModal({ fixture, fixtures, filteredFixtures, onClose }) {
     const [currentFixture, setCurrentFixture] = useState(fixture);
 
     useEffect(() => {
@@ -11,12 +11,12 @@ export default function MatchModal({ fixture, fixtures = [], onClose }) {
 
     if (!currentFixture) return null;
 
-    const index = fixtures.findIndex(
+    const index = filteredFixtures.findIndex(
       (f) => f.fixture_id === currentFixture.fixture_id
     );
 
-    const prevFixture = index > 0 ? fixtures[index - 1] : null;
-    const nextFixture = index < fixtures.length - 1 ? fixtures[index + 1] : null;
+    const prevFixture = index > 0 ? filteredFixtures[index - 1] : null;
+    const nextFixture = index < filteredFixtures.length - 1 ? filteredFixtures[index + 1] : null;
 
     const goPrev = () => {
       if (prevFixture) setCurrentFixture(prevFixture);

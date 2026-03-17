@@ -98,7 +98,8 @@ export default function PredictList({
       {modalFixture && (
         <MatchModal
           fixture={modalFixture}
-          fixtures={filteredFixtures} 
+          filteredFixtures={filteredFixtures} 
+          fixtures={fixtures}
           onClose={() => setModalFixture(null)}
         />
       )}
