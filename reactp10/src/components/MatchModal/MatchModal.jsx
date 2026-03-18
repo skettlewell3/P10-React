@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import TeamComparisonTool from "../ResultsComparison/TeamComparisonTool";
 import { TEAMS } from "../../constants/teams";
+import FormContainer from "../FormGuide/FormContainer";
 
 export default function MatchModal({ fixture, fixtures, filteredFixtures, onClose }) {
     const [currentFixture, setCurrentFixture] = useState(fixture);
@@ -68,7 +69,16 @@ export default function MatchModal({ fixture, fixtures, filteredFixtures, onClos
                 {/* BODY */}
                 <div className="modalCardBody">
 
-                  <div className="modalSection">
+                  <div className="">
+                    <FormContainer 
+                      fixtures={fixtures}
+                      team1Id={team1Id}
+                      team2Id={team2Id}
+                      currentFixture={currentFixture}
+                    />
+                  </div>
+
+                  <div className="">
 
                     <TeamComparisonTool
                       teamsFromFixture={{

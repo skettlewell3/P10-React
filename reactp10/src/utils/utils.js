@@ -129,3 +129,49 @@ export function summariseDirectComparison(data) {
 
   return summary;
 }
+
+
+export function getTeamFormFixtures({
+  fixtures,
+  teamName,
+  anchorDate,
+  pastCount = 5,
+  futureCount = 2
+}) {
+  // 1. filter fixtures involving team
+  const teamFixtures = fixtures.filter(f =>
+    f.home_team === teamName || f.away_team === teamName
+  );
+
+  // 2. sort by fixture_date
+  const sorted = [...teamFixtures].sort(
+    (a, b) => new Date(a.fixture_date) - new Date(b.fixture_date)
+  );
+
+  // 3. split past / future
+  const past = [];
+  const future = [];
+
+  for (const f of sorted) {
+    const date = new Date(f.fixture_date);
+    if (date < anchorDate) past.push(f);
+    else if (date > anchorDate) future.push(f);
+  }
+
+  // 4. slice what you need
+  const last = past.slice(-pastCount).reverse(); // most recent first
+  const next = future.slice(0, futureCount);
+
+  return {
+    past: last,
+    future: next,
+    all: [...last, ...next]
+  };
+}
+
+export function formatDayMonth(dateStr) {
+  const date = new Date(dateStr);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  return `${day}/${month}`;
+}

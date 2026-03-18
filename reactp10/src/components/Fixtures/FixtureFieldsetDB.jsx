@@ -73,6 +73,18 @@ export default function FixtureFieldsetDB({
   return (
     <div className="fixtureFieldsetWrapper">
       <fieldset className={`match ${showModalButton ? "withModal" : "noModal"}`} onClick={handleToggle}>
+        {showModalButton && 
+          <div
+            type="button"
+            className="matchModalButton"
+            onClick={(e) => {
+              e.stopPropagation();
+              openMatchModal(fixture);
+            }}
+          >
+            ⓘ
+          </div>
+        }
         {mode === "form" ? (
           <div className={`team pos home ${classifyTeamName(home_team)}`} title={home_team}>
             <div className={`teamPos ${classifyTeamName(home_team)}`}>
@@ -141,18 +153,7 @@ export default function FixtureFieldsetDB({
           </div>
         )}
 
-        {showModalButton && 
-          <div
-            type="button"
-            className="matchModalButton"
-            onClick={(e) => {
-              e.stopPropagation();
-              openMatchModal(fixture);
-            }}
-          >
-            ⓘ
-          </div>
-        }
+        
       </fieldset>
 
       {expanded && toggledContent && (
