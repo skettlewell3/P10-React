@@ -4,7 +4,15 @@ import GwNav from "../GwNav/GwNav";
 import ReviewList from "../Fixtures/ReviewList";
 import BoardSnapshot from "../LeaderBoards/BoardSnapshot";
 
-export default function ReviewView({ activeWeek, setActiveWeek, subjectType, setSubjectType, highlightedClub, clubs, setHighlightedClub }) {
+export default function ReviewView({ 
+    activeWeek, 
+    setActiveWeek, 
+    subjectType, 
+    setSubjectType, 
+    highlightedClub, 
+    clubs, 
+    setHighlightedClub,
+}) {
 
     const { currentWeek, currentGwStatus } = useGameweek();
 
@@ -38,7 +46,7 @@ export default function ReviewView({ activeWeek, setActiveWeek, subjectType, set
             gameweek={renderWeek}
             subjectType={subjectType}
             mode="review"     
-            highlightedClub={highlightedClub}
+            highlightedClub={highlightedClub}            
         />  
         </>
     )

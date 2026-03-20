@@ -2,7 +2,16 @@ import FixtureFieldsetDB from "./FixtureFieldsetDB";
 import PredictPreviews from "./PredictPreviews";
 import ScoringBreakdownContainer from "./ScoringBreakdownContainer";
 
-export default function FixturesCard( { day, ko, fixtures, mode, subjectType, canToggle, highlightedClub } ){
+export default function FixturesCard({ 
+    day, 
+    ko, 
+    fixtures, 
+    mode, 
+    subjectType, 
+    canToggle, 
+    highlightedClub,
+    openMatchModal
+}){
 
     const cardStatus = fixtures[0]?.fixture_status;
 
@@ -50,6 +59,7 @@ export default function FixturesCard( { day, ko, fixtures, mode, subjectType, ca
                         mode={mode}
                         toggledContent={toggledContent}
                         canToggle={canToggle}
+                        openMatchModal={openMatchModal}
                     />
                 )                
             })}

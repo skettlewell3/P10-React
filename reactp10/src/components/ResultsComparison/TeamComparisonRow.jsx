@@ -21,16 +21,16 @@ export default function TeamComparisonRow({ rowData, viewMode }) {
 
     const t1Style = {
         backgroundColor: t1_total > t2_total 
-        ? "green" 
+        ? "rgb(32, 100, 60)" 
         : t1_total < t2_total 
-        ? "red" : "orange",
+        ? "#e70f0f" : "#dbbc0f",
     };
 
     const t2Style = {
         backgroundColor: t2_total > t1_total 
-        ? "green" 
+        ? "rgb(32, 100, 60)" 
         : t2_total < t1_total 
-        ? "red" : "orange",        
+        ? "#e70f0f" : "#dbbc0f",      
     };
 
     return (

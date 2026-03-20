@@ -12,7 +12,7 @@ export default function PredictView({
     highlightedClub, 
     setHighlightedClub, 
     clubs, 
-    refreshAll
+    refreshAll,
 }) {
     const { currentWeek } = useGameweek();
 
@@ -46,7 +46,7 @@ export default function PredictView({
                 currentGwStatus={currentGwStatus}
                 highlightedClub={highlightedClub}
                 refreshAll={refreshAll}
-            />   
+            />               
         </>
     )
 }
