@@ -1,4 +1,5 @@
 export default function BoardHeader( {subjectType} ) {
+
     return (
         <div className="boardHead boardAlign ">
             <div >#</div>

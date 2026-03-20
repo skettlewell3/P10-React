@@ -9,6 +9,8 @@
   --silver: #B0B8C0;
   --bronze: #8C5A2C;
   --tpblue: rgb(28, 44, 91, 0.9);
+  --red: #e70f0f;
+  --amber: #dbbc0f;
 }
 
 /* #root {
@@ -197,6 +199,33 @@
   color: black;
 }
 
+/* Match Nav */
+
+.matchNav {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.matchNavFixture {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: 0.75em;
+  text-align: center;
+  line-height: 1;
+}
+
+.navArrow {
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 15%;
+  background-color: var(--blue);
+  text-align: center;
+  align-self: center;
+}
+
 
 
 /* FixtureFieldset */
@@ -238,6 +267,15 @@
   padding: 0;
   padding-bottom: 0.1rem;
   background-image: linear-gradient(to top, #1c2c5b, #203c6a, #264c78, #2f5d86, #3a6e93, #3a6e93, #3a6e93, #3a6e93, #2f5d86, #264c78, #203c6a, #1c2c5b);
+}
+
+.matchCard {
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+
+.modalFieldset {
+  min-height: 2.5em;
 }
 
 .fixturesCardHeader {
@@ -1328,14 +1366,17 @@ input[type=number] {
   display: grid;
   grid-template-columns: 4fr 4fr;
   width: 100%;
-  gap: 2em;
+  gap: 1.5em;
+  
 }
 
 .formBlock {
   display: grid;
-  grid-template-columns: 1fr 0.8fr 1fr 1fr 0.5fr;
-  gap: 0.2em;
+  grid-template-columns: 1fr 0.5fr 1.2fr 1fr 0.8fr;
+  gap: 0.5em;
   align-items: center;
+  border-bottom: 1px dotted white;
+  padding: 0.1em 0;
 }
 
 .formBlock.right {
@@ -1353,6 +1394,26 @@ input[type=number] {
 .oppoFG {
   border-radius: 4px;
 }
+
+.resultIconFG {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  font-weight: bold;
+}
+
+.resultIconFG.W {
+  background-color: var(--green);
+}
+
+.resultIconFG.D {
+  background-color: var(--amber);
+}
+
+.resultIconFG.L {
+  background-color: var(--red);
+}
+
+
 
 
 
@@ -1380,6 +1441,18 @@ input[type=number] {
   border-bottom: 2px solid white;
 }
 
+.modalPremSnapshot {
+  width: 100%;
+  margin-bottom: 1em;
+  color: var(--blue);
+  background-color: rgb(255, 255, 255, 0) !important;
+}
+
+.noOutline {
+  outline: none !important;
+  margin-top: 0.3em;
+}
+
 /* predicted league table */
 .leagueTableItem {
   display: flex;
@@ -1387,7 +1460,8 @@ input[type=number] {
   overflow-x: auto;  /* horizontal scroll on narrow screens */
   width: 100%;
   background-color: #fff;
-  border-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   color: var(--blue);
 }
@@ -1411,9 +1485,9 @@ input[type=number] {
   z-index: 2;
 }
 
-.leagueTableRow:nth-child(even) {
+/* .leagueTableRow:nth-child(even) {
   background-color: #fafafa;
-}
+} */
 
 .col {
   flex-shrink: 0;

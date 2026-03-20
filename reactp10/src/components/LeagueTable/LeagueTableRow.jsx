@@ -1,4 +1,6 @@
-export default function LeagueTableRow({ data }) {
+import { classifyTeamName } from "../../utils/utils";
+
+export default function LeagueTableRow({ data, isModal }) {
     const {
         pos,
         team_name,
@@ -13,7 +15,7 @@ export default function LeagueTableRow({ data }) {
     } = data;
 
     return (
-        <div className="leagueTableRow">
+        <div className={`leagueTableRow ${isModal ? classifyTeamName(team_name) : ""} ${isModal ? "noOutline" : ""} `}>
             <div className="col pos">{pos}</div>
             <div className="col team">{team_name}</div>
             <div className="col played">{played}</div>

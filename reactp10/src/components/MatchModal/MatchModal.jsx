@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import TeamComparisonTool from "../ResultsComparison/TeamComparisonTool";
 import { TEAMS } from "../../constants/teams";
 import FormContainer from "../FormGuide/FormContainer";
+import MatchFixtureCard from "./MatchFixtureCard";
+import MMPremSnapshot from "./MMPremSnapshot";
+import MatchNav from "./MatchNav";
 
 export default function MatchModal({ fixture, fixtures, filteredFixtures, onClose }) {
     const [currentFixture, setCurrentFixture] = useState(fixture);
@@ -40,25 +43,13 @@ export default function MatchModal({ fixture, fixtures, filteredFixtures, onClos
                 {/* HEADER */}
                 <div className="modalHeader">
 
-                  <button
-                    className="navArrow"
-                    onClick={goPrev}
-                    disabled={!prevFixture}
-                  >
-                    ←
-                  </button>
-
-                  <div className="fixtureTitle">
-                    {currentFixture.home_short} v {currentFixture.away_short}
-                  </div>
-
-                  <button
-                    className="navArrow"
-                    onClick={goNext}
-                    disabled={!nextFixture}
-                  >
-                    →
-                  </button>
+                  <MatchNav 
+                    currentFixture={currentFixture}
+                    goPrev={goPrev}
+                    goNext={goNext}
+                    hasPrev={!!prevFixture}
+                    hasNext={!!nextFixture}                  
+                  />
 
                   <button id="teamModalClose" onClick={onClose}>
                     ✕
@@ -69,26 +60,33 @@ export default function MatchModal({ fixture, fixtures, filteredFixtures, onClos
                 {/* BODY */}
                 <div className="modalCardBody">
 
-                  <div className="">
-                    <FormContainer 
-                      fixtures={fixtures}
-                      team1Id={team1Id}
-                      team2Id={team2Id}
-                      currentFixture={currentFixture}
-                    />
-                  </div>
+                  <MatchFixtureCard fixture={currentFixture} />
 
-                  <div className="">
+                  <MMPremSnapshot 
+                    team1Id={team1Id}
+                    team2Id={team2Id}   
+                  />
 
-                    <TeamComparisonTool
-                      teamsFromFixture={{
-                        team1: team1Id,
-                        team2: team2Id,
-                      }}
-                    />
 
-                  </div>
+                  <FormContainer 
+                    fixtures={fixtures}
+                    team1Id={team1Id}
+                    team2Id={team2Id}
+                    currentFixture={currentFixture}
+                  />      
+
+                  
+                
+                  <TeamComparisonTool
+                    teamsFromFixture={{
+                      team1: team1Id,
+                      team2: team2Id,
+                    }}
+                  />
+
+                  
                     
+
                 </div>
                     
               </div>

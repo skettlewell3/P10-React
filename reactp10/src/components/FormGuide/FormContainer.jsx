@@ -30,8 +30,11 @@ export default function FormContainer({
     
     const team1Past = team1Form.past;
     const team2Past = team2Form.past;
+    const team1Future = team1Form.future;
+    const team2Future = team2Form.future;
 
-    const maxRows = Math.max(team1Past.length, team2Past.length);
+    const formMaxRows = Math.max(team1Past.length, team2Past.length);
+    const upcomingMaxRows = Math.max(team1Future.length, team2Future.length)
 
     console.log("formFixtures 1: ", team1Form);
     console.log("formFixtures 2: ", team2Form);
@@ -39,7 +42,24 @@ export default function FormContainer({
 
     return (
         <div className="formContainer">
-            {Array.from({ length: maxRows }).map((_, i) => {
+
+            {Array.from({ length: upcomingMaxRows }).map((_, i) => {
+                const upcoming1 = team1Future[i] || null;
+                const upcoming2 = team2Future[i] || null;
+
+                return (
+                    <FormRow
+                        key={i}
+                        fixture1={upcoming1}
+                        fixture2={upcoming2}
+                        team1Name={team1Name}
+                        team2Name={team2Name}
+                        scale={1}
+                    />
+                )
+            })}
+            
+            {Array.from({ length: formMaxRows }).map((_, i) => {
                 const fixture1 = team1Past[i] || null;
                 const fixture2 = team2Past[i] || null;
             
@@ -54,6 +74,8 @@ export default function FormContainer({
                     />
                 );
             })}
+
+            
         </div>
     );
 }

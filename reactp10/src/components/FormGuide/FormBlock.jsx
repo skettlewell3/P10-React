@@ -38,26 +38,25 @@ export default function FormBlock({
     return (
         <div 
             className={`formBlock ${side}`}
-            style={{  fontSize: `${scale}em`}}
-            
-        >
-            <div className="resultColFG">
-                <div className={`resultIconFG ${result}`}>{result}</div>
-            </div>
+            style={{  fontSize: `${scale}em`}}            
+        >            
             <div className="dateColFG">
                 <div>{date}</div>
                 <div>{ko}</div>
             </div>
-            <div className="resultColFG">
-                <span>{goalsFor}</span>
-                <span>-</span>
-                <span>{goalsAgainst}</span>
+            <div className="venueFG">
+                {venue}
             </div>
             <div className={`oppoFG ${classifyTeamName(oppoClass)}`}>
                 {opponent}
             </div>
-            <div className="venueFG">
-                {venue}
+             <div className="resultColFG">
+                <span>{goalsFor}</span>
+                <span>-</span>
+                <span>{goalsAgainst}</span>
+            </div>
+            <div className="resultColFG">
+                <div className={`resultIconFG ${result}`}>{result}</div>
             </div>
         </div>
     )

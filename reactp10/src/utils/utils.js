@@ -160,7 +160,7 @@ export function getTeamFormFixtures({
 
   // 4. slice what you need
   const last = past.slice(-pastCount).reverse(); // most recent first
-  const next = future.slice(0, futureCount);
+  const next = future.slice(0, futureCount).reverse();
 
   return {
     past: last,

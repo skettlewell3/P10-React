@@ -1,6 +1,6 @@
 import LeagueTableRow from "./LeagueTableRow";
 
-export default function LeagueTableBodyDumb({ tableData, subjectId }) {
+export default function LeagueTableBodyDumb({ tableData, subjectId, isModal }) {
     if (!tableData || tableData.length === 0) {
         return <p className="leagueTableStatus">No data available</p>;
     }
@@ -11,6 +11,7 @@ export default function LeagueTableBodyDumb({ tableData, subjectId }) {
                 <LeagueTableRow
                     key={subjectId ? `${subjectId}-${row.team_name}` : row.team_name}
                     data={row}
+                    isModal={isModal}
                 />
             ))}
         </div>
