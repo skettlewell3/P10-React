@@ -9,6 +9,8 @@ export default function PremLeagueTableContainer() {
         overallTable,
         homeTable,
         awayTable,
+        form5Table,
+        form10Table,
         loading
     } = usePremLeagueTables();
 
@@ -19,6 +21,8 @@ export default function PremLeagueTableContainer() {
     if (mode === "overall") tableData = overallTable;
     if (mode === "home") tableData = homeTable;
     if (mode === "away") tableData = awayTable;
+    if (mode === "form5") tableData = form5Table;
+    if (mode === "form10") tableData = form10Table;
 
     if (loading) {
         return <p>Loading…</p>;
