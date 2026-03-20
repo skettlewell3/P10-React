@@ -8,6 +8,8 @@ export function PremDataLeagueTableProvider({ children }) {
   const [overallTable, setOverallTable] = useState([]);
   const [homeTable, setHomeTable] = useState([]);
   const [awayTable, setAwayTable] = useState([]);
+  const [form5Table, setForm5Table] = useState([]);
+  const [form10Table, setForm10Table] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const refreshPremLeagueTables = useCallback(async () => {
@@ -26,14 +28,15 @@ export function PremDataLeagueTableProvider({ children }) {
       const overall = data.filter(row => row.table_type === "overall");
       const home = data.filter(row => row.table_type === "home");
       const away = data.filter(row => row.table_type === "away");
+      const form5 = data.filter(row => row.table_type === "form_5");
+      const form10 = data.filter(row => row.table_type === "form_10");
 
       setOverallTable(overall);
       setHomeTable(home);
       setAwayTable(away);
+      setForm5Table(form5);
+      setForm10Table(form10);
 
-      console.log("overall:", overall);
-      console.log("home:", home);
-      console.log("away:", away);
 
     } catch (err) {
       console.error("PREM TABLE ERROR:", err.message);
@@ -52,6 +55,8 @@ export function PremDataLeagueTableProvider({ children }) {
         overallTable,
         homeTable,
         awayTable,
+        form5Table,
+        form10Table,
         loading,
         refreshPremLeagueTables
       }}

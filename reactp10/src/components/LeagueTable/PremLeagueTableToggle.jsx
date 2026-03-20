@@ -21,6 +21,20 @@ export default function PremLeagueTableToggle({ mode, setMode }) {
             >
                 Away
             </span>
+
+            <span
+                className={mode === "form5" ? "active" : ""}
+                onClick={() => setMode("form5")}
+            >
+                Form(5)
+            </span>
+
+            <span
+                className={mode === "form10" ? "active" : ""}
+                onClick={() => setMode("form10")}
+            >
+                Form(10)
+            </span>
         </div>
     );
 }
