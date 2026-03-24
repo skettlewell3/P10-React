@@ -219,11 +219,15 @@
 .navArrow {
   cursor: pointer;
   border: 1px solid white;
+  color: white;
   border-radius: 5px;
   width: 15%;
   background-color: var(--blue);
   text-align: center;
   align-self: center;
+  padding: 0.2em 0;
+  font-size: 1.2em;
+  line-height: 1.2em;
 }
 
 
