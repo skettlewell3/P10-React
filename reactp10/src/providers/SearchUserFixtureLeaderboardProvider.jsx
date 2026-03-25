@@ -22,13 +22,24 @@ export function SearchUserFixtureLeaderboardProvider({ children }) {
 
         if (error) throw error;
 
-        setLeaderboardsByFixture(prev => ({
-          ...prev,
-          [fixtureId]: data ?? []
-        }));
+        const newLastUpdated = data?.[0]?.last_updated || null;
+
+        setLeaderboardsByFixture(prev => {
+          const existing = prev[fixtureId];
+          if (existing && existing.lastUpdated === newLastUpdated) {
+            return prev;
+          }
+
+          return {
+            ...prev,
+            [fixtureId]: {
+              data: data ?? [],
+              lastUpdated: newLastUpdated
+            }
+          };
+        });
       } catch (err) {
         console.error("USER FIXTURE LEADERBOARD ERROR:", err.message);
-        setLeaderboardsByFixture(prev => ({ ...prev, [fixtureId]: [] }));
       } finally {
         setLoadingByFixture(prev => ({ ...prev, [fixtureId]: false }));
       }

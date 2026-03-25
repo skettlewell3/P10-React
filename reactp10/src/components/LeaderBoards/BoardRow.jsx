@@ -24,8 +24,6 @@ export default function BoardRow({ subject, businessData, isTeam }) {
 
     const handleOpenModal = () => setIsModalOpen(true);  
 
-    const handleCloseModal = () => setIsModalOpen(false);
-
 
     return (
         <>

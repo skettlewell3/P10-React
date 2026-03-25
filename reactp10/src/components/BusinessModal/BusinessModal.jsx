@@ -18,7 +18,7 @@ export default function BusinessModal({ Business, handleCloseModal }) {
 
     return (
         <div id="teamModalCard">
-            <div className="modalCardBody">
+            <div className="modalCardBody scrollable">
                 <ModalCardHeader
                     closeModal={handleCloseModal}
                 />

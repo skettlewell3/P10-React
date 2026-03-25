@@ -69,7 +69,6 @@ export default function PredictList({
 
     alert('Predictions saved!');
   };
-
     
 
   return (
@@ -100,6 +99,7 @@ export default function PredictList({
           fixture={modalFixture}
           filteredFixtures={filteredFixtures} 
           fixtures={fixtures}
+          subjectType={subjectType}
           onClose={() => setModalFixture(null)}
         />
       )}

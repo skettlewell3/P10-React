@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
-import TeamComparisonTool from "../ResultsComparison/TeamComparisonTool";
 import { TEAMS } from "../../constants/teams";
-import FormContainer from "../FormGuide/FormContainer";
 import MatchFixtureCard from "./MatchFixtureCard";
-import MMPremSnapshot from "./MMPremSnapshot";
 import MatchNav from "./MatchNav";
+import MMPreviewContent from "./MMPreviewContent";
+import MMReviewContent from "./MMReviewContent";
 
-export default function MatchModal({ fixture, fixtures, filteredFixtures, onClose }) {
+export default function MatchModal({ fixture, 
+  fixtures, 
+  filteredFixtures, 
+  onClose, 
+  subjectType 
+}) {
     const [currentFixture, setCurrentFixture] = useState(fixture);
+
+    const modalMode = currentFixture?.fixture_status === "upcoming" 
+    ? "preview"
+    : "review"
 
     useEffect(() => {
       setCurrentFixture(fixture);
@@ -62,29 +70,21 @@ export default function MatchModal({ fixture, fixtures, filteredFixtures, onClos
 
                   <MatchFixtureCard fixture={currentFixture} />
 
-                  <MMPremSnapshot 
-                    team1Id={team1Id}
-                    team2Id={team2Id}   
-                  />
+                  {modalMode === "preview" && (
+                    <MMPreviewContent
+                      team1Id={team1Id}
+                      team2Id={team2Id}
+                      fixtures={fixtures}
+                      currentFixture={currentFixture}
+                    />
+                  )}
 
-
-                  <FormContainer 
-                    fixtures={fixtures}
-                    team1Id={team1Id}
-                    team2Id={team2Id}
-                    currentFixture={currentFixture}
-                  />      
-
-                  
-                
-                  <TeamComparisonTool
-                    teamsFromFixture={{
-                      team1: team1Id,
-                      team2: team2Id,
-                    }}
-                  />
-
-                  
+                  {modalMode === "review" && (
+                    <MMReviewContent
+                      fixture={currentFixture}
+                      subjectType={subjectType}
+                    />
+                  )}               
                     
 
                 </div>
