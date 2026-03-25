@@ -45,7 +45,7 @@ export default function LeaderboardModal({
                 )}
             </div>
 
-            <div className="modalCardBody">
+            <div className="modalCardBody scrollable">
                 {activeModal === "Business" && businessData ? (
                     <BusinessContent 
                         Business={businessData} 

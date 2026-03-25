@@ -7,25 +7,29 @@ export default function MatchNav({
 }) {
     return (
         <div className="matchNav">
-            <div
+            <button
               className="navArrow"
               onClick={goPrev}
               disabled={!hasPrev}
             >
-              ←
-            </div>
+              <svg viewBox="0 0 24 24" className="arrow-icon" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
             <div className="matchNavFixture">
                 <span>{currentFixture.home_team}</span>
                 <span>v</span>
                 <span>{currentFixture.away_team}</span>
             </div>
-            <div
+            <button
               className="navArrow"
               onClick={goNext}
               disabled={!hasNext}
             >
-              →
-            </div>
+              <svg viewBox="0 0 24 24" className="arrow-icon" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
         </div>
     )
 }
