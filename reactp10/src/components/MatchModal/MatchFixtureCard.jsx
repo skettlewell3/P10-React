@@ -9,7 +9,7 @@ export default function MatchFixtureCard({ fixture }) {
 
   const statusMeta = statusMap[fixture.fixture_status];
 
-  console.log("Modalfixture", fixture)
+  // console.log("Modalfixture", fixture)
 
   return (
     <div className="fixturesCard matchCard">
