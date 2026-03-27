@@ -22,7 +22,7 @@ export default function FixtureFieldsetDB({
   const [awayValue, setAwayValue] = useState('');
 
   const location = useLocation();
-  const allowedPaths = ["/predict"] //TO DO: add "/review"
+  const allowedPaths = ["/predict", "/review"] //TO DO: add "/review"
   const showModalButton = allowedPaths.includes(location.pathname) && typeof openMatchModal === "function"
   
 

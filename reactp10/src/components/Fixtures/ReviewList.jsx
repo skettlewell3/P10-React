@@ -39,7 +39,9 @@ export default function ReviewList({
             {modalFixture && (
                 <MatchModal
                   fixture={modalFixture}
-                  fixtures={filteredFixtures} 
+                  fixtures={fixtures} 
+                  filteredFixtures={filteredFixtures}
+                  subjectType={subjectType}
                   onClose={() => setModalFixture(null)}
                 />
             )}
