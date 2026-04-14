@@ -37,8 +37,7 @@ export default function FormBlock({
 
     return (
         <div 
-            className={`formBlock ${side}`}
-            style={{  fontSize: `${scale}em`}}            
+            className={`formBlock ${side}`}          
         >            
             <div className="dateColFG">
                 <div>{date}</div>
@@ -50,13 +49,13 @@ export default function FormBlock({
             <div className={`oppoFG ${classifyTeamName(oppoClass)}`}>
                 {opponent}
             </div>
-             <div className="resultColFG">
+             <div className="resultColFG" style={{ fontSize: `${scale}em` }}>
                 <span>{goalsFor}</span>
                 <span>-</span>
                 <span>{goalsAgainst}</span>
             </div>
             <div className="resultColFG">
-                <div className={`resultIconFG ${result}`}>{result}</div>
+                <div className={`resultIconFG ${result}`} style={{ fontSize: `${scale}em` }}>{result}</div>
             </div>
         </div>
     )
