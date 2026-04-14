@@ -10,7 +10,9 @@ export default function FixturesCard({
     subjectType, 
     canToggle, 
     highlightedClub,
-    openMatchModal
+    openMatchModal,
+    predictions,
+    setPredictions
 }){
 
     const cardStatus = fixtures[0]?.fixture_status;
@@ -60,6 +62,13 @@ export default function FixturesCard({
                         toggledContent={toggledContent}
                         canToggle={canToggle}
                         openMatchModal={openMatchModal}
+                        value={predictions?.[fixture.fixture_id]} 
+                        onChange={(vals) => {
+                            setPredictions(prev => ({
+                                ...prev,
+                                [fixture.fixture_id]: vals
+                            }));
+                        }}
                     />
                 )                
             })}

@@ -1773,42 +1773,42 @@ outline: 2px solid #800000;
 
 /* team pos version */
 
-.liverpool.teamPos {
+.liverpool .teamPos {
   background-color: #fff;
   color: #dd0000;
 }
 
-.bournemouth.teamPos {
+.bournemouth .teamPos {
   background-color: black;
   color: #ed1c24;
 }
 
-.astonvilla.teamPos {
+.astonvilla .teamPos {
   background-color: #670e36;
   color: #95bfe5;
 }
 
-.arsenal.teamPos {
+.arsenal .teamPos {
   background-color: #fff;
   color: #ef0107;
 }
 
-.brighton.teamPos {
+.brighton .teamPos {
   background-color: #fff;
   color: #005daa;
 }
 
-.burnley.teamPos {
+.burnley .teamPos {
   background-color: #80bfff;
   color: #800000;
 }
 
-.chelsea.teamPos {
+.chelsea .teamPos {
   background-color: #d1d3d4;
   color: #034694;
 }
 
-.crystalpalace.teamPos {
+.crystalpalace .teamPos {
   background-color: #fff;
   /* color: #1b458f; */
   text-shadow: none;
@@ -1816,65 +1816,65 @@ outline: 2px solid #800000;
 
 }
 
-.everton.teamPos {
+.everton .teamPos {
   background-color: #fff;
   color: #274488;
 }
 
-.mancity.teamPos {
+.mancity .teamPos {
   background-color: #1c2c5b;
   color: #6cabdd;
 }
 
-.manunited.teamPos {
+.manunited .teamPos {
   /* background-color: #fbe122; */
   color: #da291c;
   background-color: #000;
 }
 
-.newcastle.teamPos {
+.newcastle .teamPos {
   background-color: #fff;
   color: #241f20;
 }
 
-.leeds.teamPos {
+.leeds .teamPos {
   color: #1d428a;
   /* color: #ffcd00; */
   background-color: #fff;
 }
 
-.fulham.teamPos {
+.fulham .teamPos {
   /* background-color: #cc0000; */
   color: #000;
   background-color: #fff;
 }
 
-.tottenham.teamPos {
+.tottenham .teamPos {
   background-color: #132257;
   color: #fff;
 }
 
-.westham.teamPos {
+.westham .teamPos {
   background-color: #7bcce6;
   color: #7c2c3b;
 }
 
-.sunderland.teamPos {
+.sunderland .teamPos {
   background-color: #211e1e;
   color: #eb1726;
 }
 
-.wolverhamptonwanderers.teamPos {
+.wolverhamptonwanderers .teamPos {
   background-color: #231f20;
   color: #fdb913;
 }
 
-.brentford.teamPos {
+.brentford .teamPos {
   background-color: #fff;
   color: #e30613;
 }
 
-.nottinghamforest.teamPos {
+.nottinghamforest .teamPos {
   background-color: #e53233;
   color: #fff;
 }

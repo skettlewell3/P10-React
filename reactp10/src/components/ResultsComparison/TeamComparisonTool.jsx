@@ -12,7 +12,7 @@ export default function TeamComparisonTool({ teamsFromFixture }) {
   // Single source of truth
   const activeTeams = teamsFromFixture || selectedTeams;
 
-  // Reset data when teams change (prevents stale flash)
+  // Reset data when teams change
   useEffect(() => {
     setCurrentData(null);
   }, [activeTeams]);
