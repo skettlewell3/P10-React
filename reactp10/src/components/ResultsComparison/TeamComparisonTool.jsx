@@ -5,38 +5,57 @@ import TeamComparisonSelector from "./TeamComparisonSelector";
 
 export default function TeamComparisonTool({ teamsFromFixture }) {
   const { fetchTeamComparison, comparisons, loading } = useSearchTeamComparison();
+
   const [currentData, setCurrentData] = useState(null);
-  const [teams, setTeams] = useState(teamsFromFixture || { team1: null, team2: null });
+  const [selectedTeams, setSelectedTeams] = useState(null);
 
+  // Single source of truth
+  const activeTeams = teamsFromFixture || selectedTeams;
+
+  // Reset data when teams change (prevents stale flash)
   useEffect(() => {
-    if (!teamsFromFixture?.team1 || !teamsFromFixture?.team2) return;
+    setCurrentData(null);
+  }, [activeTeams]);
 
-    setTeams(teamsFromFixture);
-    setCurrentData(null); 
-  }, [teamsFromFixture]);
-
-  // Trigger fetch when teams are set
+  // Fetch / load cached data
   useEffect(() => {
-    if (!teams.team1 || !teams.team2) return;
+    if (!activeTeams?.team1 || !activeTeams?.team2) return;
 
-    const key = `${teams.team1}-${teams.team2}`;
+    const key = `${activeTeams.team1}-${activeTeams.team2}`;
+
     if (comparisons[key]) {
       setCurrentData(comparisons[key]);
     } else {
-      fetchTeamComparison(teams.team1, teams.team2).then((data) => setCurrentData(data));
+      fetchTeamComparison(
+        activeTeams.team1,
+        activeTeams.team2
+      ).then((data) => setCurrentData(data));
     }
-  }, [teams, comparisons, fetchTeamComparison]);
+  }, [activeTeams, comparisons, fetchTeamComparison]);
 
   const handleCompareTeams = (team1, team2) => {
-    setTeams({ team1, team2 });
+    setSelectedTeams({ team1, team2 });
   };
 
   return (
     <div className="teamComparisonContainer statsSection">
-        <div className="statsSectionTitle text-right">COMPARE RESULTS...</div>
-      {!teamsFromFixture && <TeamComparisonSelector onSelect={handleCompareTeams} />}
+      <div className="statsSectionTitle text-right">
+        COMPARE RESULTS...
+      </div>
+
+      {/* Only show selector if not controlled by parent */}
+      {!teamsFromFixture && (
+        <TeamComparisonSelector onSelect={handleCompareTeams} />
+      )}
+
       {loading && <p>Loading...</p>}
-      {currentData && <TeamComparisonCore data={currentData} teams={teams}/>}
+
+      {currentData && (
+        <TeamComparisonCore
+          data={currentData}
+          teams={activeTeams}
+        />
+      )}
     </div>
   );
 }
