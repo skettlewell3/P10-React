@@ -1488,7 +1488,7 @@ input[type=number] {
   display: grid;
   grid-template-columns: 4fr 4fr;
   width: 100%;
-  gap: 1.5em;
+  gap: clamp(0.5rem, 2vw, 1.5em);
   
 }
 
@@ -1515,12 +1515,19 @@ input[type=number] {
 
 .oppoFG {
   border-radius: 4px;
+  font-size: 0.9em;
 }
 
 .resultIconFG {
-  border-radius: 50%;
-  aspect-ratio: 1;
+  width: 1.4em;
+  height: 1.4em;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
+  border-radius: 50%;
+  line-height: 1;
 }
 
 .resultIconFG.W {
@@ -1568,6 +1575,7 @@ input[type=number] {
   margin-bottom: 1em;
   color: var(--blue);
   background-color: rgb(255, 255, 255, 0) !important;
+  flex: 0 0 auto;
 }
 
 .noOutline {
