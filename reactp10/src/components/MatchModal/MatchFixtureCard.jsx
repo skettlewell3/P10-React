@@ -1,6 +1,10 @@
 import MatchFixtureRow from "./MatchFixtureRow";
 
-export default function MatchFixtureCard({ fixture }) {
+export default function MatchFixtureCard({ 
+  fixture,
+  predictions,
+  setPredictions
+}) {
   const statusMap = {
     upcoming: { label: 'Upcoming', color: 'amber' },
     live: { label: 'Live', color: 'green' },
@@ -27,7 +31,16 @@ export default function MatchFixtureCard({ fixture }) {
         )}
       </div>
 
-      <MatchFixtureRow fixture={fixture} />
+      <MatchFixtureRow 
+        fixture={fixture} 
+        value={predictions?.[fixture.fixture_id]}
+        onChange={(vals) => {
+          setPredictions(prev => ({
+            ...prev,
+            [fixture.fixture_id]: vals
+          }));
+        }}
+      />
     </div>
   );
 }

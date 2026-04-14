@@ -9,7 +9,9 @@ export default function MatchModal({ fixture,
   fixtures, 
   filteredFixtures, 
   onClose, 
-  subjectType 
+  subjectType,
+  predictions,
+  setPredictions
 }) {
     const [currentFixture, setCurrentFixture] = useState(fixture);
 
@@ -68,7 +70,11 @@ export default function MatchModal({ fixture,
                 {/* BODY */}
                 <div className="modalCardBody">
 
-                  <MatchFixtureCard fixture={currentFixture} />
+                  <MatchFixtureCard 
+                    fixture={currentFixture} 
+                    predictions={predictions}
+                    setPredictions={setPredictions}
+                  />
 
                   {modalMode === "preview" && (
                     <MMPreviewContent
