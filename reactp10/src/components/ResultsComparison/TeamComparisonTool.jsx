@@ -8,6 +8,13 @@ export default function TeamComparisonTool({ teamsFromFixture }) {
   const [currentData, setCurrentData] = useState(null);
   const [teams, setTeams] = useState(teamsFromFixture || { team1: null, team2: null });
 
+  useEffect(() => {
+    if (!teamsFromFixture?.team1 || !teamsFromFixture?.team2) return;
+
+    setTeams(teamsFromFixture);
+    setCurrentData(null); 
+  }, [teamsFromFixture]);
+
   // Trigger fetch when teams are set
   useEffect(() => {
     if (!teams.team1 || !teams.team2) return;
