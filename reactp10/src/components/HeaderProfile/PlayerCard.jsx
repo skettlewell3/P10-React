@@ -1,25 +1,12 @@
+import ProfileDropdown from "./ProfileDropdown";
+
 export default function PlayerCard({ overallRanking, user, overallScore, onLogout }) {
-    const handleLogoutClick = () => {
-        const confirmLogout = window.confirm(`Logout ${user?.name}`);
-        if (confirmLogout) {
-            onLogout(user);
-        }
-    };
+   
 
     return (
         <div id="playerCard">
-            {/* <img 
-                src="https://placehold.co/48" 
-                alt="player pic" 
-                id="playerImg" 
-                onClick={handleLogoutClick}
-            /> */}
-            <div 
-                id="logOut"
-                onClick={handleLogoutClick}
-            >
-                Log Out
-            </div>
+            <ProfileDropdown user={user} onLogout={onLogout} />
+            
             <div id="playerCardText">
                 <div id="playerCardScore">⭐:{overallScore}</div>
                 <div id="playerCardName">{user?.name}</div>
