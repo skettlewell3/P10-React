@@ -99,7 +99,7 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: 4px auto -webkit-focus-ring-color;
 }
 
 /* Project CSS */
@@ -125,15 +125,15 @@ button:focus-visible {
   padding: 0.25em;
 }
 
-#playerImg {
+/* #playerImg {
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,1);
   border: 4px solid white;
   max-height: 3.5rem;
   cursor: pointer;
-}
+} */
 
-#logOut {
+/* #logOut {
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,1);
   border: 4px solid white;
@@ -146,7 +146,7 @@ button:focus-visible {
   line-height: 1.1;
   font-weight: bold;
   background-color: var(--blue);
-}
+} */
 
 #playerCardText {
   border: 4px solid white;
@@ -164,6 +164,8 @@ button:focus-visible {
 #playerCardName {
   text-align: start;
   font-size: 1.3rem;
+  padding-left: 0.3em;
+  padding-top: 0.2em;
 }
 
 #playerCardRanking, #playerCardScore {
@@ -172,8 +174,74 @@ button:focus-visible {
 }
 
 #appDropdown {
-  padding: 0.25em;
+  padding: 0 0.25em;
   position: relative;
+}
+
+#dropdownToggle {
+  display: flex;   
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  /* width: 100%; */
+  border-radius: 50%;
+  cursor: pointer;
+  background: none;
+}
+
+#dropdownToggle img {
+  height: inherit;
+  object-fit: contain;
+  box-shadow: 0 1px 3px rgba(0,0,0,1);
+  border-radius: 50%;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0; /*left edge of button anchor*/
+  background: var(--green);
+  color: white;
+  border: 2px solid greenyellow;
+  border-radius: 4px;
+  min-width: 150px;
+  z-index:  1000;
+  padding-bottom: 0.2em;
+  margin-top: 0.5em;
+}
+
+.dropdownMenu.left {
+  left: 0;
+  right: auto;
+}
+
+.dropdownItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.5em;
+  cursor: pointer;
+}
+
+.dropdownItem.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dropdownItem:hover {
+  font-weight: bold;
+}
+
+.dropdownItem.logout {
+  font-size: 1.2em;
+}
+
+.tag {
+  font-size: 0.7em;
+  margin-right: 1em;
+  color: rgb(160, 216, 235);
 }
 
 #refreshControl {
@@ -181,19 +249,7 @@ button:focus-visible {
   position: relative;
 }
 
-#dropdownToggle {
-  display: flex; 
-  align-items: center;
-  gap: 0.5em; 
-  height: 3.5rem;
-  width: 100%;
-  background-color: var(--blue);
-  box-shadow: 0 1px 3px rgba(0,0,0,1);
-  color: white;
-  border: 4px solid white;
-  border-radius: 4px;
-  cursor: pointer;
-}
+
 
 #refreshButton {
   display: flex; 
