@@ -26,7 +26,7 @@ export default function ProfileDropdown({ user, onLogout }) {
   return (
     <div id="appDropdown" ref={ref}>
       <button id="dropdownToggle" onClick={toggleMenu}>
-        <img src="../../../public/assets/logos/FullLogo_Transparent_smallr.png" />
+        <img src="/assets/logos/FullLogo_Transparent_smallr.png" />
       </button>
 
       {open && (
