@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfileDropdown({ user, onLogout }) {
   const [open, setOpen] = useState(false);
   const ref = useRef();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setOpen(prev => !prev);
 
@@ -40,8 +42,14 @@ export default function ProfileDropdown({ user, onLogout }) {
           <div className="dropdownItem disabled">
             Join Club <span className="tag">Soon!</span>
           </div>
-          <div className="dropdownItem disabled">
-            Rules <span className="tag">Soon!</span>
+          <div 
+            className="dropdownItem"
+            onClick={() => {
+              navigate("/rules");
+              setOpen(false);
+            }}
+          >
+            Rules
           </div>
           <div 
             className="dropdownItem logout"

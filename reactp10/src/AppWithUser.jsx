@@ -7,6 +7,8 @@ import FooterNav from "./components/FooterNav/FooterNav";
 import HeaderProfile from "./components/HeaderProfile/HeaderProfile";
 import ContentContainer from "./components/ContentContainer";
 
+import Rules from "./components/MenuContent/Rules";
+
 import NewsView from "./components/Views/NewsView";
 import StatsView from "./components/Views/StatsView";
 import PredictView from "./components/Views/PredictView";
@@ -39,10 +41,14 @@ export default function AppWithUser() {
 
               <ContentContainer>
                 <Routes>
+                  <Route path="/rules" element={<Rules />} />
                   <Route path="/" element={<Navigate to="/predict" replace />} />
                   <Route path="*" element={<Navigate to="/predict" replace />} />
 
-                  <Route path="/news" element={<NewsView />} />
+                  <Route 
+                    path="/news" 
+                    element={<NewsView />} 
+                  />
 
                   <Route
                     path="/stats"
