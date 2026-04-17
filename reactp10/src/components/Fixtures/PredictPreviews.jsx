@@ -10,7 +10,7 @@ export default function PredictPreviews({ fixture_id, userPredictions, mode }) {
         pred => pred.fixture_id === fixture_id
     );
 
-    const filteredUserPredictions = userPredictions.filter(
+    const filteredUserPredictions = (userPredictions ?? []).filter(
         pred => pred.fixture_id === fixture_id
     );
     

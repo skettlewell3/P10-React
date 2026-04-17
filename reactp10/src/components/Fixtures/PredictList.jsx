@@ -26,10 +26,12 @@ export default function PredictList({
 
   // initialise from DB
   useEffect(() => {
-    if (!userPredictions) return;
+    if (!user || !userPredictions) return;
 
     const initial = {};
-    userPredictions.forEach(p => {
+    userPredictions
+      .filter(p => p.user_id === user.user_id)
+      .forEach(p => {
       initial[p.fixture_id] = {
         home: p.pred_home_goals ?? '',
         away: p.pred_away_goals ?? ''
@@ -37,7 +39,7 @@ export default function PredictList({
     });
 
     setPredictions(initial);
-  }, [userPredictions]);
+  }, [userPredictions, user]);
 
   if (loading) return <p>Loading Fixtures...</p>;
 

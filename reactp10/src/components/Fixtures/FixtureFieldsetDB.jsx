@@ -15,7 +15,7 @@ export default function FixtureFieldsetDB({
 }) {
   const { fixture_id, home_team, home_short, away_team, away_short, home_goals, away_goals } = fixture;
   const { overallTable } = usePremLeagueTables();
-  const { loading } = usePredictionsUser();
+  const { userPredictions, loading } = usePredictionsUser();
 
   const location = useLocation();
   const allowedPaths = ["/predict", "/review"];
@@ -155,7 +155,9 @@ export default function FixtureFieldsetDB({
       {expanded && toggledContent && (
         <div className="fieldsetToggledContainer">
           {React.cloneElement(toggledContent, {
-            fixture_id
+            fixture_id,
+            userPredictions: userPredictions ?? [],
+            mode
           })}
         </div>
       )}
