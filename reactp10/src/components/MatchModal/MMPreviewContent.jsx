@@ -2,7 +2,12 @@ import MMPremSnapshot from "./MMPremSnapshot";
 import FormContainer from "../FormGuide/FormContainer";
 import TeamComparisonTool from "../ResultsComparison/TeamComparisonTool";
 
-export default function MMPreviewContent({team1Id, team2Id, fixtures, currentFixture }) {
+export default function MMPreviewContent({
+  team1Id, 
+  team2Id, 
+  fixtures, 
+  currentFixture 
+}) {
 
     return (
         <>
