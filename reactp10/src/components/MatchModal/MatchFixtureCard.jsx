@@ -2,6 +2,7 @@ import MatchFixtureRow from "./MatchFixtureRow";
 
 export default function MatchFixtureCard({ 
   fixture,
+  mode,
   predictions,
   setPredictions
 }) {
@@ -33,6 +34,7 @@ export default function MatchFixtureCard({
 
       <MatchFixtureRow 
         fixture={fixture} 
+        mode={mode}
         value={predictions?.[fixture.fixture_id]}
         onChange={(vals) => {
           setPredictions(prev => ({

@@ -4,6 +4,7 @@ import { usePremLeagueTables } from "../../hooks/usePremLeagueTables";
 
 export default function MatchFixtureRow({ 
   fixture,
+  mode,
   value,
   onChange 
 }) {
@@ -16,6 +17,8 @@ export default function MatchFixtureRow({
     home_short,
     away_team,
     away_short,
+    home_goals,
+    away_goals
   } = fixture || {}; 
 
   useEffect(() => {
@@ -69,9 +72,11 @@ export default function MatchFixtureRow({
         <div className="posName">{home_short}</div>
       </div>
 
-      <div className="homeScore">
+      {mode === "form" ? (
+        <div className="homeScore">
         <input
           type="number"
+          name={home_team}
           min="0"
           max="10"
           className="pred"
@@ -79,10 +84,15 @@ export default function MatchFixtureRow({
           onChange={handleHomeChange}
         />
       </div>
+      ) : (
+        <div className="homeScore">{home_goals}</div>
+      )}
+      
 
       <div className="v">v</div>
 
-      <div className="awayScore">
+      {mode === "form" ? (
+        <div className="awayScore">
         <input
           type="number"
           min="0"
@@ -92,6 +102,10 @@ export default function MatchFixtureRow({
           onChange={handleAwayChange}
         />
       </div>
+      ) : (
+        <div className="awayScore">{away_goals}</div>
+      )}
+      
 
       <div className={`team pos away ${classifyTeamName(away_team)}`} title={away_team}>
         <div className="posName">{away_short}</div>

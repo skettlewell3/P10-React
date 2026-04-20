@@ -3,8 +3,14 @@ import { useUserFixtureLeaderboard } from "../../hooks/useUserFixtureLeaderboard
 import { useClubFixtureLeaderboard } from "../../hooks/useClubFixtureLeaderboard";
 import MatchLeaderboardHeader from "./MatchLeaderboardHeader";
 import MatchLeaderboardRow from "./MatchLeaderboardRow";
+import MMPremSnapshot from "./MMPremSnapshot";
 
-export default function MMReviewContent({ fixture, subjectType }) {
+export default function MMReviewContent({ 
+  fixture, 
+  subjectType,
+  team1Id, 
+  team2Id
+}) {
 
     const {
       leaderboardsByFixture: userLeaderboards,
@@ -45,6 +51,12 @@ export default function MMReviewContent({ fixture, subjectType }) {
 
   return (
     <div className="boardContainer">
+
+        <MMPremSnapshot 
+          team1Id={team1Id}
+          team2Id={team2Id}   
+        />
+
         <MatchLeaderboardHeader 
             subjectType={subjectType}
         />

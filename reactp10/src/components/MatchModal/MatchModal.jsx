@@ -10,6 +10,7 @@ export default function MatchModal({ fixture,
   filteredFixtures, 
   onClose, 
   subjectType,
+  mode,
   predictions,
   setPredictions
 }) {
@@ -74,6 +75,7 @@ export default function MatchModal({ fixture,
                     fixture={currentFixture} 
                     predictions={predictions}
                     setPredictions={setPredictions}
+                    mode={mode}
                   />
 
                   {modalMode === "preview" && (
@@ -89,6 +91,8 @@ export default function MatchModal({ fixture,
                     <MMReviewContent
                       fixture={currentFixture}
                       subjectType={subjectType}
+                      team1Id={team1Id}
+                      team2Id={team2Id}                      
                     />
                   )}               
                     
