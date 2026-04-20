@@ -117,6 +117,7 @@ export default function PredictList({
           fixture={modalFixture}
           filteredFixtures={filteredFixtures} 
           fixtures={fixtures}
+          mode={mode}
           subjectType={subjectType}
           onClose={() => setModalFixture(null)}
           predictions={predictions}
