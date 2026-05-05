@@ -85,9 +85,7 @@ export default function MMReviewContent({
                     points_tg={row.points_total_goals}
                 />
             ))}
-      </div>
-
-      
+      </div>      
 
     </div>
   );
