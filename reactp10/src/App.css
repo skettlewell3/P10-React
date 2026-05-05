@@ -779,10 +779,10 @@ input[type=number] {
 
 .boardAlign {
   display: grid;
-  grid-template-columns: 0.8fr 26% 1fr repeat(5, 0.9fr) 1fr;
+  grid-template-columns: 0.8fr 20% 1fr repeat(5, 0.9fr) 1fr;
   padding: 0;
   margin: 0;
-  gap: 0.25em;
+  gap: 0.15em;
   width: 100%;
 }
 
