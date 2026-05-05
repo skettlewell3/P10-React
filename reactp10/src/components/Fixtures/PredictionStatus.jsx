@@ -4,7 +4,7 @@ import { useGameweek } from "../../hooks/useGameweeks";
 
 export default function PredictionStatus() {
     const { user } = useUser();
-    const { currentWeek } = useGameweek();
+    const { currentWeek, deadline } = useGameweek();
     const { userPredictions, loading } =usePredictionsUser();
 
     if (loading || !user) return null;
@@ -19,10 +19,23 @@ export default function PredictionStatus() {
     );
 
     const hasPredictions = gwPredictions.length > 0;
-    console.log("predictions:", gwPredictions);
+    // console.log("predictions:", gwPredictions);
+
+    const deadlineDate = new Date(deadline);
+
+    const formattedDeadline = deadlineDate.toLocaleString("en-GB", {
+        weekday: "short",
+        day: "numeric",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 
     return (
-        <div >
+        <div className="weekStatus">
+
+            <p className="deadline">{`Deadline: ${formattedDeadline}`}</p>
+
             <div className="predictionStatus">
                 <span 
                     className="dot" 
@@ -33,6 +46,7 @@ export default function PredictionStatus() {
                     {hasPredictions ? "Submitted" : "Not Submitted"}                    
                 </span>
             </div>
+
 
             {hasPredictions && (
                 <p className="thanks">Thanks for Playing!</p>

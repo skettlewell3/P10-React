@@ -6,13 +6,15 @@ export function useGameweek() {
     currentWeek,
     currentGwStatus,
     isLoading,
-    refreshGameweek
+    refreshGameweek,
+    deadline
   } = useContext(GameweekContext);
 
   return {
     currentWeek,
     currentGwStatus,
     isLoading,
-    refreshGameweek
+    refreshGameweek,
+    deadline
   };
 }

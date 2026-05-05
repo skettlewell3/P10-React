@@ -5,6 +5,7 @@ import { supabase } from '../supbaseClient'
 export function GameweekProvider({children}) {
     const [currentWeek, setCurrentWeek] = useState(null);
     const [currentGwStatus, setCurrentGwStatus] = useState(null);
+    const [deadline, setDeadline] = useState(null)
     const [isLoading, setIsLoading] = useState(true);
 
     const refreshGameweek = useCallback(async () => {
@@ -17,6 +18,7 @@ export function GameweekProvider({children}) {
         } else if (data && data.length > 0) {
             setCurrentWeek(data[0].gameweek_number);
             setCurrentGwStatus(data[0].status);
+            setDeadline(data[0].deadline);
         }
 
         setIsLoading(false);
@@ -32,6 +34,7 @@ export function GameweekProvider({children}) {
                 currentWeek,
                 currentGwStatus,
                 isLoading,
+                deadline,
                 refreshGameweek,
             }}
         >
