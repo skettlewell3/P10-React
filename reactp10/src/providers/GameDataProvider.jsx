@@ -6,6 +6,7 @@ import { LeaderboardsRootProvider } from './LeaderboardsRootProvider';
 import { StatsRootProvider } from './StatsRootProvider';
 import { UserClubsProvider } from './UserClubsProvider';
 import { PremDataRootProvider } from './PremDataRootProvider';
+import { HoFProvider } from './HoFProvider';
 import { RefreshGate } from './RefreshGate';
 
 export function GameDataProvider({ children }) {
@@ -18,9 +19,11 @@ export function GameDataProvider({ children }) {
                             <StatsRootProvider>
                                 <LeaderboardsRootProvider>
                                     <PremDataRootProvider>
-                                        <RefreshGate>
-                                            {({ refreshAll }) => children({ refreshAll })}
-                                        </RefreshGate>
+                                        <HoFProvider>
+                                            <RefreshGate>
+                                                {({ refreshAll }) => children({ refreshAll })}
+                                            </RefreshGate>
+                                        </HoFProvider>
                                     </PremDataRootProvider>
                                 </LeaderboardsRootProvider>
                             </StatsRootProvider>
