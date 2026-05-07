@@ -8,6 +8,7 @@ import HeaderProfile from "./components/HeaderProfile/HeaderProfile";
 import ContentContainer from "./components/ContentContainer";
 
 import Rules from "./components/MenuContent/Rules";
+import HoFView from "./components/MenuContent/HoFView";
 
 import NewsView from "./components/Views/NewsView";
 import StatsView from "./components/Views/StatsView";
@@ -41,6 +42,7 @@ export default function AppWithUser() {
 
               <ContentContainer>
                 <Routes>
+                  <Route path="/hof" element={<HoFView />}/>
                   <Route path="/rules" element={<Rules />} />
                   <Route path="/" element={<Navigate to="/predict" replace />} />
                   <Route path="*" element={<Navigate to="/predict" replace />} />

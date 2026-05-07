@@ -5,9 +5,9 @@
   --tpgreen: rgb(32, 100, 60, 0.9);
   --bkgrey: #555;
   --gtable: rgba(50, 153, 91, .3);
-  --gold: #ccaa39;
-  --silver: #B0B8C0;
-  --bronze: #8C5A2C;
+  --gold: rgb(204, 170, 57);
+  --silver: rgb(176, 184, 192);
+  --bronze: rgb(140, 90, 44);
   --tpblue: rgb(28, 44, 91, 0.9);
   --red: #e70f0f;
   --amber: #dbbc0f;
@@ -1554,6 +1554,147 @@ input[type=number] {
   background-color: var(--red);
 }
 
+
+/* HALL OF FAME */
+
+#hofPage {
+  padding: 1em 0.5em;
+  width: 100%;
+}
+
+#hofBoard {
+  width: 100%;
+  padding: 0.5em 1em;
+  border: 1px solid brown;
+}
+
+.hofBoardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.hofRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 3fr;
+  border: 1px solid white;
+  border-radius: 8px;
+  /* background-color: var(--tpgreen); */
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.3),
+    inset 0 0 8px rgba(255, 255, 255, 0.05),
+    0 0 6px rgba(255, 255, 255, 0.08)
+  ;
+}
+
+.hofRow.firstHoF {
+  background: #a5abb0;
+  background: 
+    linear-gradient(90deg,
+    rgba(165, 171, 176, 1) 0%, 
+    rgba(204, 170, 57, 1) 80%)
+  ; 
+}
+
+.hofRow.secondHoF {
+  background: #a5abb0;
+  background: 
+    linear-gradient(90deg,
+    rgba(165, 171, 176, 1) 0%, 
+    rgb(161, 203, 245) 80%)
+  ; 
+}
+.hofRow.thirdHoF {
+  background: #a5abb0;
+  background: 
+    linear-gradient(90deg,
+    rgba(165, 171, 176, 1) 0%, 
+    rgba(140, 90, 44, 1) 80%)
+  ; 
+}
+.hofRow.rest {
+  background: #a5abb0;
+  background: 
+    linear-gradient(90deg,
+    rgba(165, 171, 176, 1) 0%, 
+    rgba(32, 100, 60, 1) 80%)
+  ;
+  
+}
+
+.hofRowSection{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hofRank {
+  /* background: rgb(255, 255, 255, 0.5); */
+  /* background: var(--tpblue); */
+  /* background-color: rgb(28, 44, 91, 0.75); */
+  background-color: rgb(32, 100, 60, 0.75);
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.hofRowSectionMeta {
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+  padding: 0.2em 0;
+  color: var(--tpblue);
+}
+
+.hofName {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: -0.2em;
+}
+
+.hofMetaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hofMetaLine {
+  font-size: 0.7em;
+  display: flex;
+  gap: 0.4rem;
+  color: white;
+}
+
+.hofRowSectionFocus {
+  gap: 1em;
+}
+
+.hofStat {
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.hofFocus {
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 1.8rem;
+  background: rgb(255, 255, 255, 0.5);
+
+}
+
+.hofSupporting {
+  height: 2rem;
+  width: 2rem;
+  background: rgb(255, 255, 255, 0.5);
+}
 
 
 
