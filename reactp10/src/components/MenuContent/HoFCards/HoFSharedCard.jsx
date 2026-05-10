@@ -14,7 +14,14 @@ export default function HoFSharedCard({ data, focus, rank }) {
     const supportData = supportMap[focus];    
 
     return (
-        <div className="hofRow hofRowSharedCard">
+        <div 
+            className={`hofRow hofRowGwwins ${rank === 1 
+                ? 'firstHoF' 
+                : rank === 2 ? 'secondHoF' 
+                : rank === 3 ? 'thirdHoF' 
+                : 'rest'}`
+            }
+        >
             <div className="hofRowSection hofRowRanking">
                 <div className="hofRank">{rank}</div>
             </div>

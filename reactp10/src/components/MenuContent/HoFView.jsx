@@ -6,7 +6,7 @@ import HoFHighScoreCard from "./HoFCards/HoFHighScoreCard";
 import HoFGwWinsCard from "./HoFCards/HoFGwWinsCard";
 
 export default function HoFView() {
-    const { hallOfFame, hoFLoading} = useHoF();
+    const { hallOfFame, hoFLoading } = useHoF();
     const [selectedCategory, setSelectedCategory] = useState("highestScoringWeeks");
 
     const activeData = hallOfFame[selectedCategory] ?? [];

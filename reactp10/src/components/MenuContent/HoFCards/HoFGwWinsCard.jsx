@@ -2,7 +2,14 @@ export default function HoFGwWinsCard({ data, rank }) {
     
 
     return (
-        <div className="hofRow hofRowGwWins">
+        <div 
+            className={`hofRow hofRowGwwins ${rank === 1 
+                ? 'firstHoF' 
+                : rank === 2 ? 'secondHoF' 
+                : rank === 3 ? 'thirdHoF' 
+                : 'rest'}`
+            }
+        >
             <div className="hofRowSection hofRowRanking">
                 <div className="hofRank">{rank}</div>
             </div>

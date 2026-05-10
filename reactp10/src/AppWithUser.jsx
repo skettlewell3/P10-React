@@ -8,7 +8,7 @@ import HeaderProfile from "./components/HeaderProfile/HeaderProfile";
 import ContentContainer from "./components/ContentContainer";
 
 import Rules from "./components/MenuContent/Rules";
-import HoFView from "./components/MenuContent/HoFView";
+import HallOfFame from "./components/MenuContent/HallOfFame";
 
 import NewsView from "./components/Views/NewsView";
 import StatsView from "./components/Views/StatsView";
@@ -19,6 +19,7 @@ import BoardsView from "./components/Views/BoardsView";
 import { GameDataProvider } from "./providers/GameDataProvider";
 import { useUser } from "./hooks/useUser";
 import StateBootstrapper from "./components/StateBootstrapper";
+import HoFCategoryPage from "./components/MenuContent/HoFCategoryPage";
 
 export default function AppWithUser() {
   const { user, handleLogout } = useUser();
@@ -42,10 +43,10 @@ export default function AppWithUser() {
 
               <ContentContainer>
                 <Routes>
-                  <Route path="/hof" element={<HoFView />}/>
+                  <Route path="/hof" element={<HallOfFame />}/>
+                  <Route path="/hof/:category" element={<HoFCategoryPage />}/>
                   <Route path="/rules" element={<Rules />} />
-                  <Route path="/" element={<Navigate to="/predict" replace />} />
-                  <Route path="*" element={<Navigate to="/predict" replace />} />
+                  
 
                   <Route 
                     path="/news" 
@@ -110,6 +111,9 @@ export default function AppWithUser() {
                       />
                     }
                   />
+
+                  <Route path="/" element={<Navigate to="/predict" replace />} />
+                  <Route path="*" element={<Navigate to="/predict" replace />} />
                 </Routes>
               </ContentContainer>
 
