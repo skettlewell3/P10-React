@@ -1,3 +1,5 @@
+import HoFRank from "./HoFRank";
+
 export default function HoFHighScoreCard({ data, rank }) {  
 
     return (
@@ -10,7 +12,7 @@ export default function HoFHighScoreCard({ data, rank }) {
             }
         >
             <div className="hofRowSection hofRowRanking">
-                <div className="hofRank">{rank}</div>
+                <HoFRank rank={rank}/>
             </div>
             <div className="hofRowSection hofRowSectionMeta">
                 <div className="hofName">{data.name}</div>

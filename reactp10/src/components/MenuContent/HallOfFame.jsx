@@ -2,9 +2,11 @@ import { useHoF } from "../../hooks/useHoF";
 import MenuTitleContainer from "./MenuTitleContainer";
 import HoFOverviewCard from "./HoFCards/HoFOverviewCard";
 import { categoryConfig } from "../../config";
+import { useHoFClub } from "../../hooks/useHoFClub";
 
 export default function HallOfFame() {
     const { hallOfFame, hofLoading } = useHoF();
+    const { clubHallOfFame, clubHofLoading} = useHoFClub();
 
     return (
         <div className="hofPage">
@@ -22,6 +24,7 @@ export default function HallOfFame() {
                             data={
                                 hallOfFame[key]?.[0]
                             }
+                            subject="user"
                         />
                     ))}
 
@@ -33,8 +36,9 @@ export default function HallOfFame() {
                             key={key}
                             category={key}
                             data={
-                                hallOfFame[key]?.[0]
+                                clubHallOfFame[key]?.[0]
                             }
+                            subject="club"
                         />
                     ))}
                 </div>

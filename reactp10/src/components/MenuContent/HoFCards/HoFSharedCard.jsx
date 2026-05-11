@@ -1,3 +1,5 @@
+import HoFRank from "./HoFRank";
+
 export default function HoFSharedCard({ data, focus, rank }) {
 
     const focusMap = {
@@ -23,7 +25,7 @@ export default function HoFSharedCard({ data, focus, rank }) {
             }
         >
             <div className="hofRowSection hofRowRanking">
-                <div className="hofRank">{rank}</div>
+                <HoFRank rank={rank}/>
             </div>
 
             <div className="hofRowSection hofRowSectionMeta">

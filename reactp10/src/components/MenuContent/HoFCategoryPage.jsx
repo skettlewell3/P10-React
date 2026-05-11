@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useHoF } from "../../hooks/useHoF";
+import { useHoFClub } from "../../hooks/useHoFClub";
 import { categoryConfig } from "../../config";
 
 import HoFSharedCard from "./HoFCards/HoFSharedCard";
@@ -9,16 +10,23 @@ import ViewTitle from "../ViewTitle";
 
 export default function HoFCategoryPage({}) {
     const navigate = useNavigate();
-    const { category } = useParams();
+    const { subject, category } = useParams();
     const { hallOfFame } = useHoF();
+    const { clubHallOfFame} = useHoFClub();
+
+    const hoFData = 
+        subject === "club"
+            ? clubHallOfFame
+            : hallOfFame;
 
     const config = categoryConfig[category];
+
 
     if (!config) {
         return <div>Invalid Category</div>;
     };
 
-    const activeData = hallOfFame[category] ?? [];
+    const activeData = hoFData[category] ?? [];
 
     const cardMap = {
         highestScoringWeeks: HoFHighScoreCard,

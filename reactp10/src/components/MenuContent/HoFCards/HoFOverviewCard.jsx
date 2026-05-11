@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { categoryConfig } from "../../../config";
 
-export default function HoFOverviewCard({ data, category }) {
+export default function HoFOverviewCard({ data, category, subject }) {
 
     const navigate = useNavigate();
 
@@ -19,8 +19,8 @@ export default function HoFOverviewCard({ data, category }) {
         <div 
             className="hofOverviewCard"
             onClick={() => {
-                console.log("navigate:", `/hof/${category}` ),
-                navigate(`/hof/${category}`)
+                console.log("navigate:", `/hof/${subject}/${category}` ),
+                navigate(`/hof/${subject}/${category}`)
             }}
         >
             <h4 className="hofOverviewTitle">
@@ -33,10 +33,10 @@ export default function HoFOverviewCard({ data, category }) {
 
             <div className="hofOverviewStats">
                 <span className="hofOverviewStat">
-                    {primaryStat} {config.primaryLabel}
+                    {primaryStat} <br /> {config.primaryLabel}
                 </span>
                 <span className="hofOverviewStat">
-                    {secondaryStat} {config.secondaryLabel}
+                    {secondaryStat} <br />  {config.secondaryLabel}
                 </span>
             </div>
 

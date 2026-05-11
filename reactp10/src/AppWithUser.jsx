@@ -44,7 +44,7 @@ export default function AppWithUser() {
               <ContentContainer>
                 <Routes>
                   <Route path="/hof" element={<HallOfFame />}/>
-                  <Route path="/hof/:category" element={<HoFCategoryPage />}/>
+                  <Route path="/hof/:subject/:category" element={<HoFCategoryPage />}/>
                   <Route path="/rules" element={<Rules />} />
                   
 
