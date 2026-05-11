@@ -45,6 +45,15 @@ export default function ProfileDropdown({ user, onLogout }) {
           <div 
             className="dropdownItem"
             onClick={() => {
+              navigate("/hof");
+              setOpen(false);
+            }}
+          >
+            Hall of Fame
+          </div>
+          <div 
+            className="dropdownItem"
+            onClick={() => {
               navigate("/rules");
               setOpen(false);
             }}
