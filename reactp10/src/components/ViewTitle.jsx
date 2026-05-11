@@ -1,7 +1,7 @@
 export default function ViewTitle({ title }) {
 
     const catchTitle = title === "Highest Scoring Week" 
-        ? "Top 10 Performances"
+        ? "Top 10 Points"
         : title
     ;
 
