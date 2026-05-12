@@ -30,7 +30,10 @@ export default function HoFHighScoreCard({ data, rank }) {
             </div>
             <div className="hofRowSection hofRowSectionFocus">
                 <div className="hofStat hofFocus">{data.total_points}</div>
-                <div className="hofStat hofSupporting">{data.perfect_10s}</div>
+                <div className="hofStat hofSupporting">
+                    <span className="supportingLabel">10s:</span>
+                    <span>{data.perfect_10s}</span>                    
+                </div>
             </div>
         </div>
     )

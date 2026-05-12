@@ -29,7 +29,10 @@ export default function HoFGwWinsCard({ data, rank }) {
             </div>
             <div className="hofRowSection hofRowSectionFocus">
                 <div className="hofStat hofFocus">{data.gws_won}</div>
-                <div className="hofStat hofSupporting">{data.gws_played}</div>
+                <div className="hofStat hofSupporting">
+                    <span className="supportingLabel">Played:</span>
+                    <span>{data.gws_played}</span>                     
+                </div>
             </div>
         </div>
     )
