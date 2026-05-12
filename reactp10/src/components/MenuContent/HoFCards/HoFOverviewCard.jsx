@@ -27,6 +27,10 @@ export default function HoFOverviewCard({ data, category, subject }) {
                 {config.title}
             </h4>
 
+            <div className="hofOverviewImg">
+                <img src={config.src} alt={config.alt} />
+            </div>
+
             <div className="hofOverviewName">
                 {data.name}
             </div>

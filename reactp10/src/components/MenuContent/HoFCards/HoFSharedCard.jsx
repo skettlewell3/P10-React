@@ -12,8 +12,14 @@ export default function HoFSharedCard({ data, focus, rank }) {
         mostCorrectResults: data.perfect_10s
     };
 
+    const labelMap = {
+        mostPerfect10s: "Results:",
+        mostCorrectResults: "10s:"
+    }
+
     const focusData = focusMap[focus];
-    const supportData = supportMap[focus];    
+    const supportData = supportMap[focus];   
+    const label = labelMap[focus]; 
 
     return (
         <div 
@@ -43,7 +49,10 @@ export default function HoFSharedCard({ data, focus, rank }) {
             </div>
             <div className="hofRowSection hofRowSectionFocus">
                 <div className="hofStat hofFocus">{focusData}</div>
-                <div className="hofStat hofSupporting">{supportData}</div>
+                <div className="hofStat hofSupporting">
+                    <span>{label}</span>
+                    <span>{supportData}</span>                    
+                </div>
             </div>
         </div>
     )

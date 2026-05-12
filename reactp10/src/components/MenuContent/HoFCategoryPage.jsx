@@ -45,9 +45,11 @@ export default function HoFCategoryPage({}) {
         <div className="hofPage">
             <div className="hofCategoryHeader">
                 <button 
+                    className="hofBackButton"
                     onClick={() => navigate("/hof")}
+                    aria-label="Go Back"
                 >
-                    back
+                    <img src="/assets/svg/backArrow.svg" alt="Go Back" />
                 </button>
 
                 <ViewTitle title={config.title} />
