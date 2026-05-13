@@ -1563,10 +1563,29 @@ input[type=number] {
 }
 
 .hofGallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: rgb(28, 44, 91, 0.5);
+  border-radius: 8px;
+  padding-bottom: 1rem;
+}
+
+.hofGalleryHeader {
+  background-color: var(--green);
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.hofGalleryBody {
   display: grid;
-  grid-template-columns: repeat(1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr;
 }
+
 
 
 .hofUser {
@@ -1678,7 +1697,8 @@ input[type=number] {
 
   transition:
     transform 0.15s ease,
-    opacity 0.15s ease;
+    opacity 0.15s ease
+  ;
 }
 
 .hofBackButton img {

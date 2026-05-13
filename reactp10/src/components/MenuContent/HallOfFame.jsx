@@ -14,33 +14,39 @@ export default function HallOfFame() {
             <MenuTitleContainer title="Hall of Fame" />
 
             <section className="hofGallery">
-                <div className="hofColumn hofUser">
-
-                    {Object.entries(categoryConfig).map(([key]) => (
-
-                        <HoFOverviewCard
-                            key={key}
-                            category={key}
-                            data={
-                                hallOfFame[key]?.[0]
-                            }
-                            subject="user"
-                        />
-                    ))}
-
+                <div className="hofGalleryHeader">
+                    Weekly Records - 25/26
                 </div>
-                <div className="hofColumn hofClub">
-                    {Object.entries(categoryConfig).map(([key]) => (
+                <div className="hofGalleryBody">
 
-                        <HoFOverviewCard
-                            key={key}
-                            category={key}
-                            data={
-                                clubHallOfFame[key]?.[0]
-                            }
-                            subject="club"
-                        />
-                    ))}
+                    <div className="hofColumn hofUser">
+
+                        {Object.entries(categoryConfig).map(([key]) => (
+
+                            <HoFOverviewCard
+                                key={key}
+                                category={key}
+                                data={
+                                    hallOfFame[key]?.[0]
+                                }
+                                subject="user"
+                            />
+                        ))}
+
+                    </div>
+                    <div className="hofColumn hofClub">
+                        {Object.entries(categoryConfig).map(([key]) => (
+
+                            <HoFOverviewCard
+                                key={key}
+                                category={key}
+                                data={
+                                    clubHallOfFame[key]?.[0]
+                                }
+                                subject="club"
+                            />
+                        ))}
+                    </div>
                 </div>
             </section>
 
