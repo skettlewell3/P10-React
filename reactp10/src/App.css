@@ -1560,6 +1560,7 @@ input[type=number] {
 .hofPage {
   padding: 1em 0.5em;
   width: 100%;
+  /* overflow: hidden; */
 }
 
 .hofGallery {
@@ -1570,6 +1571,7 @@ input[type=number] {
   background-color: rgb(28, 44, 91, 0.5);
   border-radius: 8px;
   padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .hofGalleryHeader {
@@ -1583,10 +1585,9 @@ input[type=number] {
 .hofGalleryBody {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
+  /* column-gap: 1rem; */
+  width: 100%;
 }
-
-
 
 .hofUser {
   grid-column: 1 / 2;
@@ -1600,8 +1601,9 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 1em;
+  width: 100%;
 }
 
 .hofOverviewCard {
@@ -1611,9 +1613,10 @@ input[type=number] {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  flex-shrink: 0;
   gap: 0.2em;
   padding: 0.25em;
-  width: 80%;
+  width: clamp(140px, 80%, 220px);
   aspect-ratio: 1;
   cursor: pointer;
 
@@ -1715,6 +1718,7 @@ input[type=number] {
   display: flex;
   flex-direction: column;
   gap: 0.3em;
+  overflow-y: scroll;
 }
 
 .hofRow {
@@ -1859,21 +1863,21 @@ input[type=number] {
 }
 
 .hofFocus {
-  height: 2.5rem;
-  width: 2.5rem;
-  font-size: 1.8rem;
+  height: 2.8rem;
+  width: 3rem;
+  font-size: clamp(1.2rem, 1.5rem, 1.8rem );
   background: rgb(255, 255, 255, 0.5);
 }
 
 .hofSupporting {
   height: 2.5rem;
   width: 2.5rem;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 1rem, 1.2rem );
   background: rgb(255, 255, 255, 0.5);
 }
 
 .supportingLabel {
-  font-size: 0.6rem;
+  font-size: clamp(0.6rem, 0.8rem, 0.9rem);
   margin-bottom: -5px;
 }
 

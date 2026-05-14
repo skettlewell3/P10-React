@@ -36,5 +36,127 @@ export const categoryConfig = {
         secondaryLabel: "P10s",
         src: "/assets/svg/HoFResults.svg",
         alt: "Podium svg"
+    },
+    seasonPerfect10s: {
+        title: "Most Perfect10s",
+        primaryStat: data => data.perfect_10s,
+        primaryLabel: "P10s",
+        secondaryStat: data => data.perfect_10s_accuracy,
+        secondaryLabel: "%",
+        src: "/assets/svg/HoF10s.svg",
+        alt: "Dartboard svg"
+    },
+    seasonCorrectResults: {
+        title: "Most Results",
+        primaryStat: data => data.correct_results,
+        primaryLabel: "RES",
+        secondaryStat: data => data.result_accuracy, 
+        secondaryLabel: "%",
+        src: "/assets/svg/HoFResults.svg",
+        alt: "Podium svg"
+    },
+    seasonCorrectHome: {
+        title: "Home Goals",
+        primaryStat: data => data.correct_home_goals,
+        primaryLabel: "H",
+        secondaryStat: data => data.home_accuracy, 
+        secondaryLabel: "%",
+        src: "/assets/svg/HoFResults.svg",
+        alt: "Podium svg"
+    },
+    seasonCorrectAway: {
+        title: "Away Goals",
+        primaryStat: data => data.correct_away_goals,
+        primaryLabel: "A",
+        secondaryStat: data => data.away_accuracy, 
+        secondaryLabel: "%",
+        src: "/assets/svg/HoFResults.svg",
+        alt: "Podium svg"
+    },
+    seasonCorrectGD: {
+        title: "Goal Difference",
+        primaryStat: data => data.correct_goal_differences,
+        primaryLabel: "GD",
+        secondaryStat: data => data.gd_accuracy, 
+        secondaryLabel: "%",
+        src: "/assets/svg/HoFResults.svg",
+        alt: "Podium svg"
+    },
+    seasonCorrectGoals: {
+        title: "Total Goals",
+        primaryStat: data => data.correct_total_goals,
+        primaryLabel: "Goals",
+        secondaryStat: data => data.goals_accuracy, 
+        secondaryLabel: "%",
+        src: "/assets/svg/HoFResults.svg",
+        alt: "Podium svg"
     }
+};
+
+export const seasonMetaConfig = {
+  seasonPerfect10s: {
+    line1: [
+      { label: "GW", field: "gw_perfect_10s" },
+      { label: "MAX", field: "max_perfect_10s" }
+    ],
+    line2: [
+      { label: "AVG", field: "avg_perfect_10s" },
+      { label: "TOTAL", field: "total_points" }
+    ]
+  },
+
+  seasonCorrectResults: {
+    line1: [
+      { label: "GW", field: "gw_results" },
+      { label: "MAX", field: "max_results" }
+    ],
+    line2: [
+      { label: "AVG", field: "avg_results" },
+      { label: "TOTAL", field: "total_points" }
+    ]
+  },
+
+  seasonCorrectHome: {
+    line1: [
+      { label: "GW", field: "gw_home" },
+      { label: "MAX", field: "max_home" }
+    ],
+    line2: [
+      { label: "AVG", field: "avg_home" },
+      { label: "TOTAL", field: "total_points" }
+    ]
+  },
+
+  seasonCorrectAway: {
+    line1: [
+      { label: "GW", field: "gw_away" },
+      { label: "MAX", field: "max_away" }
+    ],
+    line2: [
+      { label: "AVG", field: "avg_away" },
+      { label: "TOTAL", field: "total_points" }
+    ]
+  },
+
+  seasonCorrectGD: {
+    line1: [
+      { label: "GW", field: "gw_gd" },
+      { label: "MAX", field: "max_gd" }
+    ],
+    line2: [
+      { label: "AVG", field: "avg_gd" },
+      { label: "TOTAL", field: "total_points" }
+    ]
+  },
+
+  seasonCorrectGoals: {
+    line1: [
+      { label: "GW", field: "gw_goals" },
+      { label: "MAX", field: "max_goals" }
+    ],
+    line2: [
+      { label: "AVG", field: "avg_goals" },
+      { label: "TOTAL", field: "total_points" }
+    ]
+  }
 };
