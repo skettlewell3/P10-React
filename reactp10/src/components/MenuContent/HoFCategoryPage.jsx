@@ -1,7 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { categoryConfig } from "../../config";
 import { useHoF } from "../../hooks/useHoF";
 import { useHoFClub } from "../../hooks/useHoFClub";
-import { categoryConfig } from "../../config";
+import { useHoFSeasonClub } from "../../hooks/useHoFSeasonClub";
+import { useHoFSeasonUser } from "../../hooks/useHoFSeasonUser";
 
 import HoFSharedCard from "./HoFCards/HoFSharedCard";
 import HoFHighScoreCard from "./HoFCards/HoFHighScoreCard";
@@ -13,11 +15,22 @@ export default function HoFCategoryPage({}) {
     const { subject, category } = useParams();
     const { hallOfFame } = useHoF();
     const { clubHallOfFame} = useHoFClub();
+    const { hofSeasonClub } = useHoFSeasonClub();
+    const { hofSeasonUser} = useHoFSeasonUser();
 
-    const hoFData = 
-        subject === "club"
-            ? clubHallOfFame
-            : hallOfFame;
+    const isSeasonCategory = category.startsWith("season");
+
+    const hoFData = isSeasonCategory
+        ? (
+            subject === "club"
+                ? hofSeasonClub 
+                : hofSeasonUser
+        ) : (
+            subject === "club"
+                ? clubHallOfFame
+                : hallOfFame
+        )
+    ;
 
     const config = categoryConfig[category];
 
@@ -26,7 +39,15 @@ export default function HoFCategoryPage({}) {
         return <div>Invalid Category</div>;
     };
 
-    const activeData = hoFData[category] ?? [];
+    const activeData = isSeasonCategory
+        ? [...hoFData] 
+            .sort(
+                (a, b) => 
+                    categoryConfig[category].primaryStat(b)
+                    - categoryConfig[category].primaryStat(a)
+            )
+            .slice(0, 10)        
+        : (hoFData[category] ?? []).slice(0,10);
 
     const cardMap = {
         highestScoringWeeks: HoFHighScoreCard,
@@ -35,11 +56,10 @@ export default function HoFCategoryPage({}) {
         mostCorrectResults: HoFSharedCard,
     }
 
-    const ActiveCard = cardMap[category];
-
-    console.log("category:", category);
-    console.log("config:", config);
-    console.log("hallOfFame:", hallOfFame);
+    const ActiveCard = isSeasonCategory 
+        ? HoFSharedCard
+        : cardMap[category]
+    ;
 
     return (
         <div className="hofPage">
@@ -57,10 +77,11 @@ export default function HoFCategoryPage({}) {
             <div className="hofBoardBody">
                 {activeData.map((entry, index) => (
                     <ActiveCard
-                        key={`${entry.user_id}-${index}`}
+                        key={`${entry.user_id || entry.club_id}-${index}`}
                         data={entry}
                         rank={index + 1}
                         focus={category}
+                        meta={isSeasonCategory ? "season" : null}
                     />
                 ))}
             </div>

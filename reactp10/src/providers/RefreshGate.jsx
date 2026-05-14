@@ -16,6 +16,8 @@ import { useStatsClubSeasonHighs } from '../hooks/useStatsClubSeasonHighs';
 import { usePremLeagueTables } from '../hooks/usePremLeagueTables';
 import { useHoF } from '../hooks/useHoF';
 import { useHoFClub } from '../hooks/useHoFClub';
+import { useHoFSeasonUser } from '../hooks/useHoFSeasonUser';
+import { useHoFSeasonClub } from '../hooks/useHoFSeasonClub';
 
 
 export function RefreshGate({ children }) {
@@ -37,6 +39,8 @@ export function RefreshGate({ children }) {
     const premLeagueTables = usePremLeagueTables();
     const hof = useHoF();
     const clubHoF = useHoFClub();
+    const seasonUserHoF = useHoFSeasonUser();
+    const seasonClubHoF = useHoFSeasonClub();
 
     const refreshAll = async () => {
         await Promise.all([
@@ -57,8 +61,11 @@ export function RefreshGate({ children }) {
             seasonHighsClubs.refreshClubSeasonHighs?.(),
             premLeagueTables.refreshPremLeagueTables?.(),
             hof.refreshHallOfFame?.(),
-            clubHoF.refreshClubHallOfFame?.()
+            clubHoF.refreshClubHallOfFame?.(),
+            seasonUserHoF.refreshHoFSeasonUser?.(),
+            seasonClubHoF.refreshHoFSeasonClub?.()
         ]);
+        
     }
 
     return children({ refreshAll })
