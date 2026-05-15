@@ -48,7 +48,11 @@ export default function HoFSharedCard({ data, focus, rank, meta }) {
                         <div className="hofMetaLine">
                           {line2.map(item => (
                             <span key={item.field}>
-                              {item.label}: {data[item.field]}
+                              {item.label}: {
+                                item.format 
+                                    ? item.format(data[item.field])
+                                    : data[item.field]
+                                }
                             </span>
                           ))}
                         </div>
