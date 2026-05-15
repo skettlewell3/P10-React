@@ -96,8 +96,8 @@ export const categoryConfig = {
 export const seasonMetaConfig = {
   seasonPerfect10s: {
     line1: [
-      { label: "GW", field: "gw_perfect_10s" },
-      { label: "MAX", field: "max_perfect_10s" }
+      { label: "BEST", field: "max_perfect_10s" },
+      { label: "GW", field: "gw_perfect_10s" }
     ],
     line2: [
       { 
@@ -111,8 +111,8 @@ export const seasonMetaConfig = {
 
   seasonCorrectResults: {
     line1: [
-      { label: "GW", field: "gw_results" },
-      { label: "MAX", field: "max_results" }
+      { label: "BEST", field: "max_results" },
+      { label: "GW", field: "gw_results" }
     ],
     line2: [
       { 
@@ -126,8 +126,8 @@ export const seasonMetaConfig = {
 
   seasonCorrectHome: {
     line1: [
-      { label: "GW", field: "gw_home" },
-      { label: "MAX", field: "max_home" }
+      { label: "BEST", field: "max_home" },
+      { label: "GW", field: "gw_home" }
     ],
     line2: [
       { 
@@ -141,8 +141,8 @@ export const seasonMetaConfig = {
 
   seasonCorrectAway: {
     line1: [
-      { label: "GW", field: "gw_away" },
-      { label: "MAX", field: "max_away" }
+      { label: "BEST", field: "max_away" },
+      { label: "GW", field: "gw_away" }
     ],
     line2: [
       { 
@@ -156,8 +156,8 @@ export const seasonMetaConfig = {
 
   seasonCorrectGD: {
     line1: [
-      { label: "GW", field: "gw_gd" },
-      { label: "MAX", field: "max_gd" }
+      { label: "BEST", field: "max_gd" },
+      { label: "GW", field: "gw_gd" }
     ],
     line2: [
       { 
@@ -171,8 +171,8 @@ export const seasonMetaConfig = {
 
   seasonCorrectGoals: {
     line1: [
-      { label: "GW", field: "gw_goals" },
-      { label: "MAX", field: "max_goals" }
+      { label: "BEST", field: "max_goals" },
+      { label: "GW", field: "gw_goals" }
     ],
     line2: [
       { 
