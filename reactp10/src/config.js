@@ -2,16 +2,16 @@ export const CURRENT_WEEK = 36;
 
 export const categoryConfig = {
     highestScoringWeeks: {
-        title: "Highest Scoring Week",
+        title: "High Scores",
         primaryStat: data => data.total_points,
         primaryLabel: "PTS",
         secondaryStat: data => data.avg_gw_score,
         secondaryLabel: "AVG",
         src: "/assets/svg/HoFPoints.svg",
-        alt: "Star svg"
+        alt: "HighScore svg"
     },
     mostGwWins: {
-        title: "Most GW Wins",
+        title: "Most Wins",
         primaryStat: data => data.gws_won,
         primaryLabel: "WINS",
         secondaryStat: data => data.gws_played,
@@ -26,7 +26,7 @@ export const categoryConfig = {
         secondaryStat: data => data.correct_results,
         secondaryLabel: "RESULTS",
         src: "/assets/svg/HoF10s.svg",
-        alt: "Dartboard svg"
+        alt: "PErfect10s svg"
     },
     mostCorrectResults: {
         title: "Most Results",
@@ -35,7 +35,7 @@ export const categoryConfig = {
         secondaryStat: data => data.perfect_10s, 
         secondaryLabel: "P10s",
         src: "/assets/svg/HoFResults.svg",
-        alt: "Podium svg"
+        alt: "Results svg"
     },
     seasonPerfect10s: {
         title: "Most Perfect10s",
@@ -44,7 +44,7 @@ export const categoryConfig = {
         secondaryStat: data => data.perfect_10s_accuracy,
         secondaryLabel: "%",
         src: "/assets/svg/HoF10s.svg",
-        alt: "Dartboard svg"
+        alt: "PErfect10s svg"
     },
     seasonCorrectResults: {
         title: "Most Results",
@@ -53,7 +53,7 @@ export const categoryConfig = {
         secondaryStat: data => data.result_accuracy, 
         secondaryLabel: "%",
         src: "/assets/svg/HoFResults.svg",
-        alt: "Podium svg"
+        alt: "Results svg"
     },
     seasonCorrectHome: {
         title: "Home Goals",
@@ -61,8 +61,8 @@ export const categoryConfig = {
         primaryLabel: "H",
         secondaryStat: data => data.home_accuracy, 
         secondaryLabel: "%",
-        src: "/assets/svg/HoFResults.svg",
-        alt: "Podium svg"
+        src: "/assets/svg/HoFHome.svg",
+        alt: "Home svg"
     },
     seasonCorrectAway: {
         title: "Away Goals",
@@ -70,8 +70,8 @@ export const categoryConfig = {
         primaryLabel: "A",
         secondaryStat: data => data.away_accuracy, 
         secondaryLabel: "%",
-        src: "/assets/svg/HoFResults.svg",
-        alt: "Podium svg"
+        src: "/assets/svg/HoFAway.svg",
+        alt: "AWay svg"
     },
     seasonCorrectGD: {
         title: "Goal Difference",
@@ -79,8 +79,8 @@ export const categoryConfig = {
         primaryLabel: "GD",
         secondaryStat: data => data.gd_accuracy, 
         secondaryLabel: "%",
-        src: "/assets/svg/HoFResults.svg",
-        alt: "Podium svg"
+        src: "/assets/svg/HoFGD.svg",
+        alt: "GD svg"
     },
     seasonCorrectGoals: {
         title: "Total Goals",
@@ -88,8 +88,8 @@ export const categoryConfig = {
         primaryLabel: "Goals",
         secondaryStat: data => data.goals_accuracy, 
         secondaryLabel: "%",
-        src: "/assets/svg/HoFResults.svg",
-        alt: "Podium svg"
+        src: "/assets/svg/HoFGoals.svg",
+        alt: "Goals svg"
     }
 };
 
@@ -100,7 +100,11 @@ export const seasonMetaConfig = {
       { label: "MAX", field: "max_perfect_10s" }
     ],
     line2: [
-      { label: "AVG", field: "avg_perfect_10s" },
+      { 
+        label: "AVG", 
+        field: "avg_perfect_10s", 
+        format: value => `${Number(value).toFixed(2)}`
+      },
       { label: "TOTAL", field: "total_points" }
     ]
   },
@@ -111,7 +115,11 @@ export const seasonMetaConfig = {
       { label: "MAX", field: "max_results" }
     ],
     line2: [
-      { label: "AVG", field: "avg_results" },
+      { 
+        label: "AVG", 
+        field: "avg_results", 
+        format: value => `${Number(value).toFixed(2)}`
+      },
       { label: "TOTAL", field: "total_points" }
     ]
   },
@@ -122,7 +130,11 @@ export const seasonMetaConfig = {
       { label: "MAX", field: "max_home" }
     ],
     line2: [
-      { label: "AVG", field: "avg_home" },
+      { 
+        label: "AVG", 
+        field: "avg_home", 
+        format: value => `${Number(value).toFixed(2)}`
+      },
       { label: "TOTAL", field: "total_points" }
     ]
   },
@@ -133,7 +145,11 @@ export const seasonMetaConfig = {
       { label: "MAX", field: "max_away" }
     ],
     line2: [
-      { label: "AVG", field: "avg_away" },
+      { 
+        label: "AVG", 
+        field: "avg_away", 
+        format: value => `${Number(value).toFixed(2)}`
+      },
       { label: "TOTAL", field: "total_points" }
     ]
   },
@@ -144,7 +160,11 @@ export const seasonMetaConfig = {
       { label: "MAX", field: "max_gd" }
     ],
     line2: [
-      { label: "AVG", field: "avg_gd" },
+      { 
+        label: "AVG", 
+        field: "avg_gd", 
+        format: value => `${Number(value).toFixed(2)}`
+      },
       { label: "TOTAL", field: "total_points" }
     ]
   },
@@ -155,7 +175,11 @@ export const seasonMetaConfig = {
       { label: "MAX", field: "max_goals" }
     ],
     line2: [
-      { label: "AVG", field: "avg_goals" },
+      { 
+        label: "AVG",
+        field: "avg_goals", 
+        format: value => `${Number(value).toFixed(2)}`
+      },
       { label: "TOTAL", field: "total_points" }
     ]
   }

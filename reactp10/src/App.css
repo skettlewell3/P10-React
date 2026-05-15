@@ -1568,10 +1568,15 @@ input[type=number] {
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
-  background-color: rgb(28, 44, 91, 0.5);
+  background-color: rgba(28, 44, 91, 0.9);
   border-radius: 8px;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.3),
+    inset 0 0 8px rgba(255, 255, 255, 0.05),
+    0 0 6px rgba(255, 255, 255, 0.08)
+  ;
 }
 
 .hofGalleryHeader {
@@ -1579,7 +1584,15 @@ input[type=number] {
   width: 100%;
   text-align: center;
   font-weight: bold;
-  border-radius: 4px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  font-size: 1.8em;
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.3),
+    inset 0 0 8px rgba(255, 255, 255, 0.05),
+    0 0 6px rgba(255, 255, 255, 0.08)
+  ;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 .hofGalleryBody {
@@ -1614,7 +1627,7 @@ input[type=number] {
   align-items: center;
   justify-content: space-around;
   flex-shrink: 0;
-  gap: 0.2em;
+  gap: 0.15rem;
   padding: 0.25em;
   width: clamp(140px, 80%, 220px);
   aspect-ratio: 1;
@@ -1634,6 +1647,7 @@ input[type=number] {
   font-weight: bold;
   margin: 0;
   line-height: 1;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
 }
 
 .hofOverviewImg {
@@ -1660,6 +1674,9 @@ input[type=number] {
   text-align: center;
   overflow: hidden;
   max-width: 100px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
 }
 
 .hofOverviewStats {
