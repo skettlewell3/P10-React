@@ -23,7 +23,7 @@ export default function HallOfFame() {
     return (
         <div className="hofPage">
 
-            <MenuTitleContainer title="Hall of Fame" />
+            {/* <MenuTitleContainer title="Hall of Fame" /> */}
 
             <section className="hofGallery">
                 <div className="hofGalleryHeader">
